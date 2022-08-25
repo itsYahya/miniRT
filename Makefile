@@ -6,7 +6,7 @@
 #    By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 17:57:12 by yel-mrab          #+#    #+#              #
-#    Updated: 2022/08/24 22:21:22 by yel-mrab         ###   ########.fr        #
+#    Updated: 2022/08/25 19:57:42 by yel-mrab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,11 @@ BUILD = build
 CFILES = main \
 		utils/utils \
 		gtline/get_next_line  gtline/get_next_line_utils \
-		parser/checker parser/main
+		parser/checker parser/main \
+		list/ft_lstadd_back list/ft_lstadd_front list/ft_lstclear \
+		list/ft_lstdelone list/ft_lstiter list/ft_lstlast list/ft_lstmap \
+		list/ft_lstnew list/ft_lstsize
+
 
 OBJS := $(addprefix $(BUILD)/, $(CFILES:=.o))
 
