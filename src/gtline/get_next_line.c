@@ -6,11 +6,12 @@
 /*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 00:29:40 by yel-mrab          #+#    #+#             */
-/*   Updated: 2021/12/14 01:12:01 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/08/24 22:11:46 by yel-mrab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "mutils.h"
 
 char	*get_the_rest(char *table, int index, int *check)
 {

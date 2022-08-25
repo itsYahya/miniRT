@@ -6,7 +6,7 @@
 #    By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 17:57:12 by yel-mrab          #+#    #+#              #
-#    Updated: 2022/08/24 21:30:03 by yel-mrab         ###   ########.fr        #
+#    Updated: 2022/08/24 22:21:22 by yel-mrab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ NAME = miniRT.exe
 INC = -I ./inc
 BUILD = build
 
-CFILES = main utils/utils gtline/get_next_line  gtline/get_next_line_utils
+CFILES = main \
+		utils/utils \
+		gtline/get_next_line  gtline/get_next_line_utils \
+		parser/checker parser/main
+
 OBJS := $(addprefix $(BUILD)/, $(CFILES:=.o))
 
 HFILES = miniRT

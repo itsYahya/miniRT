@@ -6,7 +6,7 @@
 /*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:55:45 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/08/23 17:55:37 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/08/24 22:14:43 by yel-mrab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 #define MINIRT_H
 
 
-void	ft_putstr_fd(char *str, int fd);
 
 #endif

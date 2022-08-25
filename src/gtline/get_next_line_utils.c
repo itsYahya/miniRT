@@ -6,23 +6,11 @@
 /*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 21:47:51 by yel-mrab          #+#    #+#             */
-/*   Updated: 2021/12/12 22:35:39 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/08/24 22:08:45 by yel-mrab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_strlen(char *str)
-{
-	int	index;
-
-	index = 0;
-	if (!str)
-		return (index);
-	while (str[index])
-		index++;
-	return (index);
-}
 
 char	*ft_strlcat(char *dest, char *src, int stop)
 {
