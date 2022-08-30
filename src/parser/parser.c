@@ -3,10 +3,10 @@
 #include "parser.h"
 #include <fcntl.h>
 
-int	ft_read(int fd)
+static int	ft_read(int fd)
 {
 	char	*line;
-	
+
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -19,7 +19,7 @@ int	ft_read(int fd)
 int	parser(char *path)
 {
 	int	fd;
-	
+
 	if (validatePath(path))
 		return (ft_putstr_fd("the file scene isn't in the right form\n", 2), 1);
 	fd = open(path, O_RDONLY);

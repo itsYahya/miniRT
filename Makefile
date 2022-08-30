@@ -7,7 +7,7 @@ BUILD = build
 CFILES = main \
 		utils/utils \
 		gtline/get_next_line  gtline/get_next_line_utils \
-		parser/checker parser/main \
+		parser/checker parser/parser \
 		list/ft_lstadd_back list/ft_lstadd_front list/ft_lstclear \
 		list/ft_lstdelone list/ft_lstiter list/ft_lstlast list/ft_lstmap \
 		list/ft_lstnew list/ft_lstsize
@@ -26,7 +26,7 @@ $(BUILD)/%.o : src/%.c $(HEADERS)
 	mkdir -p $(@D)
 	$(CC) -c $< -o $@ $(INC)
 
-clean : 
+clean :
 	rm -rf $(BUILD)
 
 fclean : clean
