@@ -1,18 +1,16 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 16:55:45 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/08/24 22:14:43 by yel-mrab         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MINIRT_H
 #define MINIRT_H
 
+#include "list.h"
+#include "sceneMaterial.h"
 
+
+typedef struct s__data
+{
+	t_light			light;
+	t_camera		camera;
+	t_ambLightning	ambient;
+	t_list			*objects;
+}	t__data;
 
 #endif
