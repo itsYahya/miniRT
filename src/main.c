@@ -6,9 +6,10 @@
 
 int	main(int argc, char **argv)
 {
-	
+	t__data	data;
+
 	if (argc != 2)
 		return (ft_putstr_fd("invalid argumanet\n", 2), 1);
-	parser(argv[1]);
+	parser(argv[1], &data);
 	return (0);
 }
