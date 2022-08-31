@@ -5,7 +5,7 @@ INC = -I ./inc
 BUILD = build
 
 CFILES = main \
-		utils/utils \
+		utils/utils utils/split \
 		gtline/get_next_line  gtline/get_next_line_utils \
 		parser/checker parser/parser \
 		list/ft_lstadd_back list/ft_lstadd_front list/ft_lstclear \
