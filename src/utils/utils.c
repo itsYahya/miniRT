@@ -1,7 +1,8 @@
 #include "miniRT.h"
 #include <unistd.h>
 
-int	ft_strlen(char *str){
+int	ft_strlen(const char *str)
+{
 	int	index;
 
 	if (!str)
@@ -20,7 +21,7 @@ void	ft_putstr_fd(char *str, int fd)
 	write(fd, str, ft_strlen(str));
 }
 
-int	ft_strncmp(char *s1, char *s2, int n)
+int	ft_strncmp(const char *s1, const char *s2, int n)
 {
 	int	i;
 
@@ -33,6 +34,17 @@ int	ft_strncmp(char *s1, char *s2, int n)
 		i++;
 	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 }
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	length;
+
+	length = ft_strlen(s1);
+	if (length < ft_strlen(s2))
+		length = ft_strlen(s2);
+	return ft_strncmp(s1, s2, length);
+}
+
 
 int	wordCount(char **table)
 {

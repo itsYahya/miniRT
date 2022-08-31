@@ -5,21 +5,21 @@
 #include <stdio.h>
 #include "sceneMaterial.h"
 
-static int	identifier(char	*id)
+static int	identifier(const char	*id)
 {
-	if (ft_strncmp(id, "A", 1) == 0)
+	if (ft_strcmp("A", id) == 0)
 		return ('A');
-	if (ft_strncmp(id, "C", 1) == 0)
+	if (ft_strcmp("C", id) == 0)
 		return ('C');
-	if (ft_strncmp(id, "L", 1) == 0)
+	if (ft_strcmp("L", id) == 0)
 		return ('L');
-	if (ft_strncmp("pl", id, 2) == 0)
+	if (ft_strcmp("pl", id) == 0)
 		return ('P');
-	if (ft_strncmp("sp", id, 2) == 0)
+	if (ft_strcmp("sp", id) == 0)
 		return ('S');
-	if (ft_strncmp("cy", id, 2) == 0)
+	if (ft_strcmp("cy", id) == 0)
 		return ('Y');
-	if (ft_strncmp("\n", id, 1) == 0 )
+	if (ft_strcmp("\n", id) == 0 )
 		return ('N');
 	return (-1);
 }

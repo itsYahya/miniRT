@@ -18,7 +18,7 @@ typedef struct s_data
 	int		ko;
 }t_data;
 
-int		ft_strlen(char *str);
+int		ft_strlen(const char *str);
 char	*ft_strlcat(char *dest, char *src, int stop);
 char	*ft_strdup(char *str);
 void	*ft_calloc(size_t count, size_t size);
