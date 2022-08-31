@@ -33,3 +33,13 @@ int	ft_strncmp(char *s1, char *s2, int n)
 		i++;
 	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 }
+
+int	wordCount(char **table)
+{
+	int	i;
+
+	i = 0;
+	while (table[i])
+		i++;
+	return (i);
+}
