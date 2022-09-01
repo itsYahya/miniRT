@@ -3,9 +3,9 @@
 
 typedef struct s_vect3
 {
-	int	x;
-	int	y;
-	int z;
+	double x;
+	double y;
+	double z;
 }	t_vect3;
 
 typedef enum e_type
@@ -28,7 +28,7 @@ typedef struct s_camera
 {
 	t_vect3	coordinates;
 	t_vect3	orientation_vect;
-	int		fov;
+	double	fov;
 }	t_camera;
 
 typedef struct s_light
