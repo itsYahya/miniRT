@@ -16,6 +16,6 @@ void	invalid_argements(char *element)
 
 void	invalid_identifier()
 {
-	ptintf("miniRT parsr: invalid identifier\n");
+	printf("miniRT parsr: invalid identifier\n");
 	exit(1);
 }
