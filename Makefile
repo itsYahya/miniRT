@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = miniRT.exe
 INC = -I ./inc
 BUILD = build
@@ -15,11 +15,11 @@ HEADERS := $(addprefix inc/, $(HFILES:=.h))
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADERS)
-	$(CC) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(BUILD)/%.o : src/%.c $(HEADERS)
 	mkdir -p $(@D)
-	$(CC) -c $< -o $@ $(INC)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 clean :
 	rm -rf $(BUILD)
