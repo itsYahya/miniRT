@@ -1,4 +1,4 @@
-#include "sceneMaterial.h"
+#include "objects.h"
 #include <stdio.h>
 #include "parser.h"
 

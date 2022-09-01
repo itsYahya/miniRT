@@ -3,7 +3,7 @@
 #include "parser.h"
 #include <fcntl.h>
 #include <stdio.h>
-#include "sceneMaterial.h"
+#include "objects.h"
 
 static int	identifier(const char	*id)
 {
