@@ -6,7 +6,7 @@ void	parseAmbLightning(char **tokens, t__data *data)
 {
 	static int	count = 0;
 
-	if (count)
+	if (count++)
 		multiple_elm_exit("A");
 	if (ft_arr_size(tokens) != 3)
 		invalid_argements("Ambient lightning");

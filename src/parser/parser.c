@@ -19,7 +19,7 @@ static int	identifier(const char	*id)
 		return ('S');
 	if (ft_strcmp("cy", id) == 0)
 		return ('Y');
-	if (ft_strcmp("\n", id) == 0 )
+	if (ft_strcmp("\n", id) == 0)
 		return ('N');
 	return (-1);
 }
@@ -49,7 +49,8 @@ static int	ft_read(int fd, t__data *data)
 	line = get_next_line(fd);
 	while (line)
 	{
-		chomp(line, '\n');
+		if (ft_strlen(line) > 1)
+			chomp(line, '\n');
 		tokens = ft_split(line, ' ');
 		if (! tokens || !*tokens)
 			exit(1);
