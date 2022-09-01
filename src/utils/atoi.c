@@ -25,28 +25,40 @@ static int	is_space(char ch)
 	return (0);
 }
 
-int	ft_atoi(const char *num)
+typedef struct s_data_atoi
 {
 	int	index;
 	int	sign;
 	int	test;
 	int	number;
+}	t_atoi_d;
 
-	index = 0;
-	test = 0;
-	sign = 1;
-	number = 0;
-	while (is_space(num[index]) && num[index] != '\0')
-		index++;
-	while (num[index] == 45 || num[index] == 43)
+static void	ft_init(t_atoi_d *data)
+{
+	data->index = 0;
+	data->test = 0;
+	data->sign = 1;
+	data->number = 0;
+}
+
+int	ft_atoi(const char *num)
+{
+	t_atoi_d	data;
+
+	if (!num)
+		return (0);
+	ft_init(&data);
+	while (is_space(num[data.index]) && num[data.index] != '\0')
+		data.index++;
+	while (num[data.index] == 45 || num[data.index] == 43)
 	{
-		if (num[index] == 45)
-			sign = -1;
-		if (test)
+		if (num[data.index] == 45)
+			data.sign = -1;
+		if (data.test)
 			return (0);
-		test = 1;
-		index++;
+		data.test = 1;
+		data.index++;
 	}
-	number = looper(num, index);
-	return (number * sign);
+	data.number = looper(num, data.index);
+	return (data.number * data.sign);
 }
