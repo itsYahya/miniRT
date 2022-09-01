@@ -12,5 +12,6 @@ void	parseSphere(char **tokens, t__data *data);
 void	parsePlane(char **tokens, t__data *data);
 void	parseCylinder(char **tokens, t__data *data);
 t_vect3	get_vect3(const char *arg);
+t_vect3	get_orientation_vect3(const char *arg);
 
 #endif
