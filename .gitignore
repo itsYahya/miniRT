@@ -4,3 +4,4 @@ miniRT.exe
 .DS_Store
 .vscode/
 *.rt
+*.dSYM
