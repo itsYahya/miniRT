@@ -55,7 +55,7 @@ static int	ft_read(int fd, t__data *data)
 			exit(1);
 		id = identifier(tokens[0]);
 		if (id < 0)
-			exit(1);
+			invalid_identifier();
 		if (id != 'N')
 			parseElements(tokens, id, data);
 		line = get_next_line(fd);
