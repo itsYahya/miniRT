@@ -49,7 +49,10 @@ static int	ft_read(int fd, t__data *data)
 	line = get_next_line(fd);
 	while (line)
 	{
+		chomp(line, '\n');
 		tokens = ft_split(line, ' ');
+		if (! tokens || !*tokens)
+			exit(1);
 		id = identifier(tokens[0]);
 		if (id < 0)
 			exit(1);

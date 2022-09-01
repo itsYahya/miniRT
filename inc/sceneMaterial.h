@@ -1,12 +1,12 @@
 #ifndef	SCENEMATERIAL_H
 #define	SCENEMATERIAL_H
 
-typedef struct s_point
+typedef struct s_vect3
 {
 	int	x;
 	int	y;
 	int z;
-}	t_point;
+}	t_vect3;
 
 typedef enum e_type
 {
@@ -26,36 +26,36 @@ typedef struct s_ambLightning
 
 typedef struct s_camera
 {
-	t_point	point;
-	t_point	vect;
+	t_vect3	coordinates;
+	t_vect3	orientation_vect;
 	int		fov;
 }	t_camera;
 
 typedef struct s_light
 {
-	t_point	point;
+	t_vect3	point;
 	float	bRatio;
 	int		color;
 }	t_light;
 
 typedef struct s_sphere
 {
-	t_point	center;
+	t_vect3	center;
 	float	diameter;
 	int		color;
 }	t_sphere;
 
 typedef struct s_plane
 {
-	t_point	point;
-	t_point	vect;
+	t_vect3	point;
+	t_vect3	vect;
 	int		color;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	t_point	point;
-	t_point	vect;
+	t_vect3	point;
+	t_vect3	vect;
 	float	diameter;
 	float	height;
 	int		color;
