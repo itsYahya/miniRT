@@ -20,5 +20,6 @@ bool	is_double(const char *s);
 void	*ft_free(void *p);
 void	*ft_arr_free(char **arr);
 void	arr_print(char **arr);
+bool	is_int(const char *s);
 
 #endif
