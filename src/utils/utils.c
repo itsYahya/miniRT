@@ -15,9 +15,6 @@ int	ft_strlen(const char *str)
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	int	index;
-
-	index = 0;
 	write(fd, str, ft_strlen(str));
 }
 

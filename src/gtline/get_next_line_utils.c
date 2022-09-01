@@ -37,13 +37,6 @@ char	*ft_strdup(char *str)
 	return (dest);
 }
 
-char	*ft_free(char *line)
-{
-	if (line)
-		free(line);
-	return (0);
-}
-
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*table;

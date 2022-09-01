@@ -102,15 +102,3 @@ char	*get_next_line(int fd)
 		return (ft_free(data.line));
 	return (data.line);
 }
-
-// int main()
-// {
-// 	//int fd = open("gnlTester/files/41_with_nl", O_RDWR);
-// 	char *buffer = get_next_line(0);
-// 	while (buffer)
-// 	{
-// 		printf("%s", buffer);
-// 		free(buffer);
-// 		buffer = get_next_line(0);
-// 	}
-// }
