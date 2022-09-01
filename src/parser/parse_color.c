@@ -28,7 +28,7 @@ static void	print_err_exit(char **colors)
 	exit(1);
 }
 
-static int rgb_to_int(t_rgb data, char **colors)
+static int rgb_to_int(t_rgb data)
 {
 	int	color;
 
@@ -36,7 +36,6 @@ static int rgb_to_int(t_rgb data, char **colors)
 	color = data.r << 16;
 	color |= data.g << 8;
 	color |= data.b;
-	ft_arr_free(colors);
 	return (color);
 }
 
@@ -56,5 +55,6 @@ int	get_color(char *token)
 	rgb.b = ft_atoi(colors[2]);
 	if (!ft_check_rgb(rgb))
 		print_err_exit(colors);
-	return (rgb_to_int(rgb, colors));
+	colors = ft_arr_free(colors);
+	return (rgb_to_int(rgb));
 }

@@ -12,5 +12,4 @@ void	parseAmbLightning(char **tokens, t__data *data)
 		invalid_argements("Ambient lightning");
 	data->ambient.ratio = get_ratio(tokens[1]);
 	data->ambient.color = get_color(tokens[2]);
-	ft_arr_free(tokens);
 }
