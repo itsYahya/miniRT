@@ -20,5 +20,4 @@ void	parseLight(char **tokens, t__data *data)
 	data->light.color = get_color(tokens[3]);
 	if (errno)
 		print_error_exit();
-	ft_arr_free(tokens);
 }

@@ -12,6 +12,4 @@ void	parseAmbLightning(char **tokens, t__data *data)
 		invalid_argements("Ambient lightning");
 	data->ambient.ratio = get_ratio(tokens[1]);
 	data->ambient.color = get_color(tokens[2]);
-	printf("%f\t%d\n", data->ambient.ratio, data->ambient.color);
-	printf("all goood for the ambient lightning so far\n");
 }
