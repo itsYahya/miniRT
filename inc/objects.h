@@ -10,12 +10,12 @@ typedef struct s_vect3
 
 typedef enum e_type
 {
-	ambLightning = 'A',
-	camera = 'C',
-	light = 'L',
-	sphere = 'S',
-	plane = 'P',
-	cylinfer = 'Y'
+	E_AMBLIGHTNING = 'A',
+	E_CAMERA = 'C',
+	E_LIGHT = 'L',
+	E_SPHERE = 'S',
+	E_PLANE = 'P',
+	E_CYLINFER = 'Y'
 }	t_type;
 
 typedef struct s_ambLightning
@@ -61,18 +61,11 @@ typedef struct s_cylinder
 	int		color;
 }	t_cylinder;
 
-typedef union u_objs
+typedef union u_object
 {
 	t_sphere	sphere;
 	t_plane		plane;
 	t_cylinder	cylinder;
-}	t_objs;
-
-typedef struct s_object
-{
-	t_type	type;
-	t_objs	content;
-}	t_object;
-
+}	t_uobject;
 
 #endif

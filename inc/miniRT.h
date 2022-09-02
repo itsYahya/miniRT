@@ -2,7 +2,7 @@
 #define MINIRT_H
 
 #include "list.h"
-#include "sceneMaterial.h"
+#include "objects.h"
 
 
 typedef struct s__data
