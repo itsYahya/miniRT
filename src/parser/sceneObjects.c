@@ -8,8 +8,3 @@ void	parseCylinder(char **tokens, t__data *data)
 	data->camera.fov = 8;
 	printf("here we go again cylinder %s\n", tokens[0]);
 }
-
-void	parsePlane(char **tokens, t__data *data){
-	(void)tokens;
-	(void)data;
-}
