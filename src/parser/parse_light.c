@@ -1,15 +1,9 @@
-#include "sceneMaterial.h"
+#include "objects.h"
 #include <stdio.h>
 #include "parser.h"
 #include "mutils.h"
 #include <errno.h>
 #include <stdio.h>
-
-static void	print_error_exit()
-{
-	printf("light parser: invalid cordinates\n");
-	exit(1);
-}
 
 void	parseLight(char **tokens, t__data *data)
 {
@@ -19,5 +13,8 @@ void	parseLight(char **tokens, t__data *data)
 	data->light.bRatio = get_ratio(tokens[2]);
 	data->light.color = get_color(tokens[3]);
 	if (errno)
-		print_error_exit();
+	{
+		ft_lstclear(&data->objects, free);
+		invalid_argements("light");
+	}
 }

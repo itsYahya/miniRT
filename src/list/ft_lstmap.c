@@ -10,7 +10,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	new_head = 0;
 	while (head)
 	{
-		new_node = ft_lstnew((f)(head->content));
+		new_node = ft_lstnew((f)(head->content), -1);
 		if (new_node)
 		{
 			if (new_head == 0)

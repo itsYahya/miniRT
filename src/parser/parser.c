@@ -26,15 +26,15 @@ static int	identifier(const char	*id)
 
 static void	parseElements(char **tokens, int id, t__data *data)
 {
-	if (id == ambLightning)
+	if (id == E_AMBLIGHTNING)
 		parseAmbLightning(tokens, data);
-	else if (id == camera)
+	else if (id == E_CAMERA)
 		parseCamera(tokens, data);
-	else if (id == light)
+	else if (id == E_LIGHT)
 		parseLight(tokens, data);
-	else if (id == sphere)
+	else if (id == E_SPHERE)
 		parseSphere(tokens, data);
-	else if (id == plane)
+	else if (id == E_PLANE)
 		parsePlane(tokens, data);
 	else
 		parseCylinder(tokens, data);
@@ -52,13 +52,15 @@ static int	ft_read(int fd, t__data *data)
 		if (ft_strlen(line) > 1)
 			chomp(line, '\n');
 		tokens = ft_split(line, ' ');
+		line = ft_free(line);
 		if (! tokens || !*tokens)
-			exit(1);
+			return (ft_arr_free(tokens), exit(1), 0);
 		id = identifier(tokens[0]);
 		if (id < 0)
 			invalid_identifier();
 		if (id != 'N')
 			parseElements(tokens, id, data);
+		tokens = ft_arr_free(tokens);
 		line = get_next_line(fd);
 	}
 	return (0);

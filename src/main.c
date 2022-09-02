@@ -8,6 +8,7 @@ int	main(int argc, char **argv)
 {
 	t__data	data;
 
+	data.objects = NULL;
 	if (argc != 2)
 		return (ft_putstr_fd("invalid argumanet\n", 2), 1);
 	if (parser(argv[1], &data) != 0)

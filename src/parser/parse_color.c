@@ -2,6 +2,7 @@
 #include "parser.h"
 #include "miniRT.h"
 #include <stdio.h>
+#include <errno.h>
 
 typedef struct s_rgb
 {
@@ -19,13 +20,6 @@ static bool	ft_check_rgb(t_rgb data)
 	if (data.b > 255 || data.b < 0)
 		return (false);
 	return (true);
-}
-
-static void	print_err_exit(char **colors)
-{
-	ft_arr_free(colors);
-	printf("color parser: invalid input\n");
-	exit(1);
 }
 
 static int rgb_to_int(t_rgb data)
@@ -49,12 +43,12 @@ int	get_color(char *token)
 		|| !is_int(colors[0])
 		|| !is_int(colors[1])
 		|| !is_int(colors[2]))
-		invalid_argements("color");
+		return (ft_arr_free(colors), errno = 1, 0);
 	rgb.r = ft_atoi(colors[0]);
 	rgb.g = ft_atoi(colors[1]);
 	rgb.b = ft_atoi(colors[2]);
-	if (!ft_check_rgb(rgb))
-		print_err_exit(colors);
 	colors = ft_arr_free(colors);
+	if (!ft_check_rgb(rgb))
+		return (errno = 1, 0);
 	return (rgb_to_int(rgb));
 }

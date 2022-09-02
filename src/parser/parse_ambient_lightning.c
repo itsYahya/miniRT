@@ -1,6 +1,7 @@
 #include "parser.h"
 #include "mutils.h"
 #include <stdio.h>
+#include <errno.h>
 
 void	parseAmbLightning(char **tokens, t__data *data)
 {
@@ -12,4 +13,9 @@ void	parseAmbLightning(char **tokens, t__data *data)
 		invalid_argements("Ambient lightning");
 	data->ambient.ratio = get_ratio(tokens[1]);
 	data->ambient.color = get_color(tokens[2]);
+	if (errno)
+	{
+		ft_lstclear(&data->objects, free);
+		invalid_argements("Ambient lightning");
+	}
 }
