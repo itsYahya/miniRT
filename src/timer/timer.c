@@ -34,16 +34,10 @@ static t_timer* ft_get_timer_by_key(const char *key)
 
 void	startTimer(const char *key)
 {
-	t_timer *t;
-
-	t_timer *s = ft_get_timer_by_key(key);
-	if (! s)
-		t = malloc(sizeof(t_timer));
-	else
-		t = s;
+	t_timer *t = malloc(sizeof(t_timer));
 	t->key = key;
 	t->start = ft_get_time();
-	ft_lstadd_back(&timers, ft_lstnew(t, -1));
+	ft_lstadd_front(&timers, ft_lstnew(t, -1));
 }
 
 void	endTimer(const char *key)

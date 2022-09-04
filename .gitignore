@@ -1,5 +1,6 @@
 build
 *.o
+*.a
 miniRT.exe
 .DS_Store
 .vscode/
