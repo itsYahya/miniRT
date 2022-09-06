@@ -3,6 +3,7 @@
 
 # include "tuple.h"
 # include <stdint.h>
+# include "mlx.h"
 
 typedef struct s_canvas t_canvas;
 struct s_canvas

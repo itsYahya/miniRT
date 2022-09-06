@@ -8,13 +8,10 @@ typedef struct s_tuple t_tuple;
 typedef struct s_tuple t_tuple;
 struct s_tuple
 {
-	struct
-	{
-		float	x;
-		float	y;
-		float	z;
-		float	w;
-	};
+	float	x;
+	float	y;
+	float	z;
+	float	w;
 };
 
 
@@ -31,6 +28,7 @@ t_tuple	divide_tuple(t_tuple v, float scalar);
 float	dot(t_tuple v1, t_tuple v2);
 float	magnitude(t_tuple v);
 t_tuple	normalize(t_tuple v);
+t_tuple	cross(t_tuple a, t_tuple b);
 
 
 #endif
