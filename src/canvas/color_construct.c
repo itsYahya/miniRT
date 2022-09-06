@@ -1,6 +1,6 @@
 #include "canvas.h"
 
-t_tuple	color(float r, float g, float b)
+t_color		ft_color(uint8_t r, uint8_t g, uint8_t b)
 {
-	return tuple(r, g, b, 1);
+	return (t_color){r, g, b, 1};
 }

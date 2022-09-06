@@ -5,8 +5,8 @@
 
 typedef struct s_tuple t_tuple;
 
-typedef union u_tuple t_tuple;
-union u_tuple
+typedef struct s_tuple t_tuple;
+struct s_tuple
 {
 	struct
 	{
@@ -14,13 +14,6 @@ union u_tuple
 		float	y;
 		float	z;
 		float	w;
-	};
-	struct
-	{
-		float	r;
-		float	g;
-		float	b;
-		float	a;
 	};
 };
 

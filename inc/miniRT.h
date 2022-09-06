@@ -4,7 +4,6 @@
 #include "list.h"
 #include "objects.h"
 
-
 typedef struct s__data
 {
 	t_light			light;
