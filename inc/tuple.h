@@ -4,13 +4,26 @@
 # include <math.h>
 
 typedef struct s_tuple t_tuple;
-struct s_tuple
+
+typedef union u_tuple t_tuple;
+union u_tuple
 {
-	float	x;
-	float	y;
-	float	z;
-	float	w;
+	struct
+	{
+		float	x;
+		float	y;
+		float	z;
+		float	w;
+	};
+	struct
+	{
+		float	r;
+		float	g;
+		float	b;
+		float	a;
+	};
 };
+
 
 t_tuple	point(float x, float y, float z);
 t_tuple	vector(float x, float y, float z);
