@@ -3,6 +3,7 @@
 #include "mutils.h"
 #include <fcntl.h>
 #include "parser.h"
+#include "tuple.h"
 
 int	main(int argc, char **argv)
 {
