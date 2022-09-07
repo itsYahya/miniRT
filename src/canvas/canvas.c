@@ -2,7 +2,7 @@
 
 void		ft_write_pixel(t_canvas c, int x, int y, t_color color)
 {
-	(*ft_pixel_at(c, x, y)) = color.color;
+	(*ft_pixel_at(c, x, y)) = color.raw;
 }
 
 uint32_t*	ft_pixel_at(t_canvas c, int x, int y)

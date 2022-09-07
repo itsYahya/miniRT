@@ -4,12 +4,15 @@
 #include <fcntl.h>
 #include "parser.h"
 #include "tuple.h"
+#include <errno.h>
+#include "canvas.h"
 
 int	main(int argc, char **argv)
 {
 	t__data	data;
 
 	data.objects = NULL;
+	errno = 0;
 	if (argc != 2)
 		return (ft_putstr_fd("invalid argumanet\n", 2), 1);
 	if (parser(argv[1], &data) != 0)
@@ -21,5 +24,6 @@ int	main(int argc, char **argv)
 	}
 	printf("\n");
 	ft_lstclear(&data.objects, free);
+	renderer();
 	return (0);
 }
