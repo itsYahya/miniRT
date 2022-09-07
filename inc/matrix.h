@@ -5,6 +5,13 @@
 # include "tuple.h"
 # include <stdint.h>
 
+# define IDENTITY_MATRIX (t_matrix){{ \
+	1, 0, 0, 0, \
+	0, 1, 0, 0, \
+	0, 0, 1, 0, \
+	0, 0, 0, 1  \
+}}
+
 typedef union u_matrix t_matrix;
 union u_matrix
 {
