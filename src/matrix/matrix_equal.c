@@ -1,7 +1,7 @@
 #include "matrix.h"
 #include "algebra.h"
 
-bool	ft_matrix_equal(t_matrix mt1, t_matrix mt2)
+bool	matrix_equal(t_matrix mt1, t_matrix mt2)
 {
 	int	i;
 	int	j;
