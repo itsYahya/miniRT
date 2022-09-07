@@ -1,7 +1,7 @@
 #include "matrix.h"
 #include <stdio.h>
 
-void		ft_print_matrix(t_matrix mt)
+void		print_matrix(t_matrix mt)
 {
 	int i = -1;
 	int	j = -1;
