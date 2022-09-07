@@ -30,5 +30,6 @@ float	magnitude(t_tuple v);
 t_tuple	normalize(t_tuple v);
 t_tuple	cross(t_tuple a, t_tuple b);
 
+void	print_tuple(t_tuple t);
 
 #endif
