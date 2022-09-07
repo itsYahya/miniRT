@@ -1,4 +1,5 @@
 #include "matrix.h"
+#include "algebra.h"
 
 bool	ft_matrix_equal(t_matrix mt1, t_matrix mt2)
 {
@@ -10,7 +11,7 @@ bool	ft_matrix_equal(t_matrix mt1, t_matrix mt2)
 	{
 		j = -1;
 		while (++j < 4)
-			if (mt1.raw[i][j] != mt2.raw[i][j])
+			if (! equal(mt1.raw[i][j], mt2.raw[i][j]))
 				return false;
 	}
 	return (true);
