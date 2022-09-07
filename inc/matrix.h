@@ -48,6 +48,5 @@ void		print_matrix(t_matrix mt);
 t_tuple		matrix_tuple_multiply(t_matrix mt, t_tuple t);
 t_matrix	ft_transpose(t_matrix mt);
 t_matrix	inverse(t_matrix mtx);
-bool		is_invertible(t_matrix mt);
 
 #endif
