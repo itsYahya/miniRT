@@ -45,6 +45,7 @@ t_tuple		get_row(t_matrix t, uint8_t row);
 t_matrix	matrix_multiply(t_matrix mt1, t_matrix mt2);
 void		print_matrix(t_matrix mt);
 t_tuple		matrix_tuple_multiply(t_matrix mt, t_tuple t);
+t_matrix	ft_transpose(t_matrix mt);
 
 
 // typedef union u_matrix2x2 t_matrix2x2;
