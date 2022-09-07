@@ -31,5 +31,7 @@ t_tuple	normalize(t_tuple v);
 t_tuple	cross(t_tuple a, t_tuple b);
 
 void	print_tuple(t_tuple t);
+void	print_point(t_tuple t);
+void	print_vector(t_tuple t);
 
 #endif
