@@ -9,3 +9,13 @@ t_matrix	translate(float x, float y, float z)
 		0, 0, 0, 1
 	}};
 }
+
+t_matrix	scale(float x, float y, float z)
+{
+	return (t_matrix){{
+		x, 0, 0, 0,
+		0, y, 0, 0,
+		0, 0, z, 0,
+		0, 0, 0, 1
+	}};
+}
