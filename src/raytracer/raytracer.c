@@ -22,7 +22,7 @@ t_tuple	ft_position(t_ray r, float t)
 	return add_tuple(r.origin, multiply_tuple(r.direction, t));
 }
 
-t_xs	ft_intersect(t_object sphere, t_ray ray)
+t_xs	ft_intersect(t_object object, t_ray ray)
 {
 	struct
 	{
@@ -35,7 +35,7 @@ t_xs	ft_intersect(t_object sphere, t_ray ray)
 	t_intersection	t1;
 	t_intersection	t2;
 
-	(void)sphere;
+	ray = ft_transform(ray, inverse(object.transform_matrix));
 	sphere_to_ray = subst_tuple(ray.origin, point(0, 0, 0));
 	f.a = dot(ray.direction, ray.direction);
 	f.b = 2 * dot(ray.direction, sphere_to_ray);
@@ -43,8 +43,8 @@ t_xs	ft_intersect(t_object sphere, t_ray ray)
 	discripminant = pow(f.b, 2) - 4 * f.a * f.c;
 	if (discripminant < 0)
 		return (t_xs){0};
-	t1 = ft_intersection((-f.b - sqrt(discripminant)) / (2 * f.a), sphere);
-	t2 = ft_intersection((-f.b + sqrt(discripminant)) / (2 * f.a), sphere);
+	t1 = ft_intersection((-f.b - sqrt(discripminant)) / (2 * f.a), object);
+	t2 = ft_intersection((-f.b + sqrt(discripminant)) / (2 * f.a), object);
 	if (discripminant == 0)
 		return ft_intersections(1, t1);
 	return ft_intersections(2, t1, t2);

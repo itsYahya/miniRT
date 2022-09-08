@@ -13,10 +13,10 @@ int	main(int argc, char **argv)
 	(void)argv;
 	int		i;
 
-	t_object s = ft_sphere();
-	t_intersection i1 = ft_intersection(10, s);
-	t_intersection i2 = ft_intersection(2, s);
-	t_xs xs = ft_intersections(2, i1, i2);
+	t_ray r = ft_ray(point(0, 0, -5), vector(0, 0, 1));
+	t_object	s = ft_sphere();
+	set_transform(&s, rotate_x(M_PI / 2));
+	t_xs xs = ft_intersect(s, r);
 	printf("count: %d\n", xs.count);
 	i = -1;
 	while (++i < xs.count)

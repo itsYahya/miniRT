@@ -3,6 +3,7 @@
 
 # include "tuple.h"
 # include "list.h"
+# include "matrix.h"
 
 typedef struct s_ray t_ray;
 struct s_ray
@@ -14,7 +15,7 @@ struct s_ray
 typedef struct s_object t_object;
 struct s_object
 {
-
+	t_matrix	transform_matrix;
 };
 
 typedef struct s_intersection t_intersection;
@@ -39,5 +40,8 @@ t_intersection	ft_intersection(float t, t_object object);
 t_xs			ft_intersections(unsigned int count, ...);
 void			destroy_intersections(t_xs *xs);
 t_intersection	ft_hit(t_xs xs);
+
+t_ray			ft_transform(t_ray ray, t_matrix transformation_matrix);
+void			set_transform(t_object *object, t_matrix matrix);
 
 #endif
