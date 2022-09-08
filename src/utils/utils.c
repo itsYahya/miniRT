@@ -1,4 +1,4 @@
-#include "miniRT.h"
+#include "mutils.h"
 #include <unistd.h>
 
 int	ft_strlen(const char *str)

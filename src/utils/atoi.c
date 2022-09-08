@@ -1,4 +1,4 @@
-#include "miniRT.h"
+#include "mutils.h"
 
 static int	ft_isdigit(int ch)
 {
