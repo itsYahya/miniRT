@@ -6,7 +6,10 @@
 
 t_object ft_sphere()
 {
-	return (t_object){};
+	t_object	object;
+
+	set_transform(&object, IDENTITY_MATRIX);
+	return (object);
 }
 
 t_ray	ft_ray(t_tuple origin, t_tuple direction)

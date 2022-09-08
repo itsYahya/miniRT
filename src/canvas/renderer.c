@@ -7,9 +7,10 @@
 #include <pthread.h>
 #include "pair.h"
 #include "transform.h"
+#include "raytracer.h"
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 480
+# define HEIGHT 480
 
 
 static void ft_draw_point(t_canvas canvas, float x, float y, t_color color)
@@ -32,7 +33,7 @@ static void ft_draw_point(t_canvas canvas, float x, float y, t_color color)
 	}
 }
 
-static t_canvas	ft_clock_canvas()
+t_canvas	ft_clock_canvas()
 {
 	t_canvas	canvas;
 	float		clock_radius;
@@ -64,11 +65,43 @@ static t_canvas	ft_clock_canvas()
 	return (canvas);
 }
 
+t_canvas	ft_simple_sphere()
+{
+	float x, y;
+	float world_x, world_y;
+	t_tuple	position;
+	const float wall_size = 10;
+	const float wall_z = 10;
+	const float canvas_pixels = WIDTH;
+	const float pixel_size = wall_size / canvas_pixels;
+	const float half = wall_size / 2;
+
+	t_tuple ray_origin = point(0, 0, -5);
+	t_canvas canvas = ft_canvas(WIDTH, HEIGHT);
+	t_color color = ft_color(255, 0, 0);
+	t_object shape = ft_sphere();
+	y = -1;
+	while (++y < canvas_pixels)
+	{
+		world_y = half - y * pixel_size;
+		x = -1;
+		while (++x < canvas_pixels)
+		{
+			world_x = -half + x * pixel_size;
+			position = point(world_x, world_y, wall_z);
+			t_xs xs = ft_intersect(shape, ft_ray(ray_origin, normalize(subst_tuple(position, ray_origin))));
+			if (ft_hit(xs).t >= 0)
+				ft_write_pixel(canvas, x, y, color);
+		}
+	}
+	return (canvas);
+}
+
 void	renderer()
 {
 	t_canvas	canvas_clock;
 
-	canvas_clock = ft_clock_canvas();
+	canvas_clock = ft_simple_sphere();
 	ft_show_canvas(canvas_clock);
 	mlx_loop(canvas_clock.mlx_ptr);
 }
