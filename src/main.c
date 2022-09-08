@@ -5,23 +5,12 @@
 #include "parser.h"
 #include "matrix.h"
 #include <errno.h>
+#include "transform.h"
+#include "canvas.h"
 
 int	main(int argc, char **argv)
 {
-	t__data	data;
-
-	errno = 0;
-	data.objects = NULL;
-	if (argc != 2)
-		return (ft_putstr_fd("invalid argumanet\n", 2), 1);
-	if (parser(argv[1], &data) != 0)
-		exit(1);
-	t_list *lst = data.objects;
-	while (lst) {
-		printf("%c - ", lst->type);
-		lst = lst->next;
-	}
-	printf("\n");
-	ft_lstclear(&data.objects, free);
-	return (0);
+	(void)argc;
+	(void)argv;
+	renderer();
 }
