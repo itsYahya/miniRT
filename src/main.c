@@ -10,7 +10,10 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
-	renderer();
+	t__data	data;
+
+	errno = 0;
+	if (argc != 2 || parser(argv[1], &data))
+		return (1);
+	renderer_rt(&data);
 }

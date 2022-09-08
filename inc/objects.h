@@ -1,6 +1,7 @@
 #ifndef	SCENEMATERIAL_H
 #define	SCENEMATERIAL_H
 
+#include "tuple.h"
 typedef struct s_vect3
 {
 	double x;
