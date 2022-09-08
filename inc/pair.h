@@ -16,8 +16,8 @@ union u_pair
 	};
 	struct
 	{
-		int	height;
 		int	width;
+		int	height;
 	};
 };
 
