@@ -31,12 +31,12 @@ typedef struct s_camera
 	double	fov;
 }	t_camera;
 
-typedef struct s_light
-{
-	t_vect3	point;
-	float	bRatio;
-	int		color;
-}	t_light;
+// typedef struct s_light
+// {
+// 	t_vect3	point;
+// 	float	bRatio;
+// 	int		color;
+// }	t_light;
 
 typedef struct s_sphere
 {

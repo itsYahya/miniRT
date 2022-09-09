@@ -19,3 +19,14 @@ t_tuple			reflect(t_tuple v, t_tuple normal)
 {
 	return subst_tuple(v, multiply_tuple(normal, dot(v, normal) * 2));
 }
+
+t_light	point_light(t_tuple position, t_color intensity)
+{
+	return (t_light){position, intensity};
+}
+
+// t_tuple	ft_lighting(t_material material, t_light light, t_tuple position,
+// 			t_tuple eyev, t_tuple normalv)
+// {
+// 	// TODO: implement
+// }

@@ -9,6 +9,7 @@ t_object ft_sphere()
 	t_object	object;
 
 	set_transform(&object, IDENTITY_MATRIX);
+	object.material = ft_material();
 	return (object);
 }
 

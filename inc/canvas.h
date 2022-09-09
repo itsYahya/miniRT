@@ -30,6 +30,7 @@ union u_color
 };
 
 t_color		ft_color(uint8_t r, uint8_t g, uint8_t b);
+bool 		color_equal(t_color c1, t_color c2);
 t_color		ft_hadamard_product(t_color c1, t_color c2);
 t_canvas	ft_canvas(float width, float height);
 void		ft_destroy_canvas(t_canvas canvas);
