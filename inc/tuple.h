@@ -3,15 +3,23 @@
 # include <stdbool.h>
 # include <math.h>
 
-typedef struct s_tuple t_tuple;
-
-typedef struct s_tuple t_tuple;
-struct s_tuple
+typedef union u_tuple t_tuple;
+union u_tuple
 {
-	float	x;
-	float	y;
-	float	z;
-	float	w;
+	struct
+	{
+		float x;
+		float y;
+		float z;
+		float w;
+	};
+	struct
+	{
+		float r;
+		float g;
+		float b;
+		float a;
+	};
 };
 
 
@@ -29,6 +37,8 @@ float	dot(t_tuple v1, t_tuple v2);
 float	magnitude(t_tuple v);
 t_tuple	normalize(t_tuple v);
 t_tuple	cross(t_tuple a, t_tuple b);
+
+t_tuple	ft_hadamard_product(t_tuple c1, t_tuple c2);
 
 void	print_tuple(t_tuple t);
 void	print_point(t_tuple t);

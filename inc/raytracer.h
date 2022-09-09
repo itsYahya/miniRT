@@ -69,5 +69,6 @@ t_tuple			reflect(t_tuple v, t_tuple normal);
 t_light			point_light(t_tuple position, t_color intensity);
 t_material		ft_material();
 bool			material_equal(t_material m1, t_material m2);
+t_tuple			ft_lighting(t_material material, t_light light, t_tuple position, t_tuple eyev, t_tuple normalv);
 
 #endif

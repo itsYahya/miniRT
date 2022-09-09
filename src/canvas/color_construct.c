@@ -5,7 +5,7 @@ t_color		ft_color(float r, float g, float b)
 {
 	if (r < 0 || r > 1 || g < 0 || g > 1 || b < 0 || b > 1)
 		printf("Color values must be between 0 and 1\n");
-	return (t_color){r, g, b};
+	return (t_color){{r, g, b, 1}};
 }
 
 bool 		color_equal(t_color c1, t_color c2)
@@ -34,5 +34,5 @@ t_color	ft_hexcolor(uint32_t color)
 	red = (float)((color & 0x00ff0000) >> 16) / 255;
 	green = (float)((color & 0x0000ff00) >> 8) / 255;
 	blue = (float)(color & 0x000000ff) / 255;
-	return (t_color){red, green, blue};
+	return (t_color){{red, green, blue, 1}};
 }

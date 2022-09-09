@@ -30,3 +30,8 @@ void	destroy_canvas(t_canvas canvas)
 	(void)canvas;
 	// TODO
 }
+
+void		print_color(t_color c)
+{
+	printf("r: %f, g: %f, b: %f\n", c.r, c.g, c.b);
+}

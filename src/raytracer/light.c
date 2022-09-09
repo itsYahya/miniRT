@@ -25,8 +25,28 @@ t_light	point_light(t_tuple position, t_color intensity)
 	return (t_light){position, intensity};
 }
 
-// t_tuple	ft_lighting(t_material material, t_light light, t_tuple position,
-// 			t_tuple eyev, t_tuple normalv)
-// {
-// 	// TODO: implement
-// }
+t_tuple	ft_lighting(t_material material, t_light light, t_tuple position,
+			t_tuple eyev, t_tuple normalv)
+{
+	t_tuple	diffuse = ft_color(0, 0, 0);
+	t_tuple specular = ft_color(0, 0, 0);
+	t_tuple lightv = normalize(subst_tuple(light.position, position));
+	t_color	effictive_color = ft_hadamard_product(material.color, light.intensity);
+	t_tuple	ambient = multiply_tuple(effictive_color, material.ambient);
+	float light_dot_normal = dot(lightv, normalv);
+
+	if (light_dot_normal >= 0)
+	{
+		diffuse = multiply_tuple(effictive_color, material.diffuse * light_dot_normal);
+		t_tuple reflectv = reflect(multiply_tuple(lightv, -1), normalv);
+		float reflect_dot_eye = dot(reflectv, eyev);
+		if (reflect_dot_eye <= 0)
+			specular = ft_color(0, 0, 0);
+		else
+		{
+			float factor = pow(reflect_dot_eye, material.shininess);
+			specular = multiply_tuple(light.intensity, material.specular * factor);
+		}
+	}
+	return (add_tuple(ambient, add_tuple(diffuse, specular)));
+}
