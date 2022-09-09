@@ -7,6 +7,7 @@
 #include <errno.h>
 #include "transform.h"
 #include "canvas.h"
+#include "randerer.h"
 
 int	main(int argc, char **argv)
 {
