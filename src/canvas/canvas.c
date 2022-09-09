@@ -1,8 +1,8 @@
 #include "canvas.h"
 
-void		ft_write_pixel(t_canvas c, int x, int y, t_color color)
+void		ft_write_pixel(t_canvas c, int x, int y, uint32_t color)
 {
-	(*ft_pixel_at(c, x, y)) = color.raw;
+	(*ft_pixel_at(c, x, y)) = color;
 }
 
 uint32_t*	ft_pixel_at(t_canvas c, int x, int y)

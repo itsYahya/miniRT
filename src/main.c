@@ -6,6 +6,7 @@
 #include "transform.h"
 #include "canvas.h"
 #include "raytracer.h"
+#include "algebra.h"
 
 int	main(int argc, char **argv)
 {

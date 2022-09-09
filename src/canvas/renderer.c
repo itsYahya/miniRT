@@ -13,7 +13,7 @@
 # define HEIGHT 480
 
 
-static void ft_draw_point(t_canvas canvas, float x, float y, t_color color)
+static void ft_draw_point(t_canvas canvas, float x, float y, uint32_t color)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ t_canvas	ft_clock_canvas()
 		);
 	}
 	// draw origin point
-	ft_draw_point(canvas, WIDTH / 2, HEIGHT / 2, (t_color){.raw = 0xffff00ff});
+	ft_draw_point(canvas, WIDTH / 2, HEIGHT / 2, 0xffff00ff);
 
 	i = -1;
 	while (++i < 12)
@@ -60,7 +60,7 @@ t_canvas	ft_clock_canvas()
 		// map points values from -1 -> 1 to 0 -> (WIDTH, HEIGHT)
 		pts[i].x = clock_radius * ((pts[i].x / 2.0f) + 0.5) + (WIDTH - clock_radius) / 2;
 		pts[i].z = clock_radius * ((pts[i].z / 2.0f) + 0.5) + (HEIGHT - clock_radius) / 2;
-		ft_draw_point(canvas, pts[i].x, pts[i].z, (t_color){.raw = 0xffffffff});
+		ft_draw_point(canvas, pts[i].x, pts[i].z, 0xffffffff);
 	}
 	return (canvas);
 }
@@ -78,7 +78,6 @@ t_canvas	ft_simple_sphere()
 
 	t_tuple ray_origin = point(0, 0, -5);
 	t_canvas canvas = ft_canvas(WIDTH, HEIGHT);
-	t_color color = ft_color(255, 0, 0);
 	t_object shape = ft_sphere();
 	y = -1;
 	while (++y < canvas_pixels)
@@ -91,7 +90,7 @@ t_canvas	ft_simple_sphere()
 			position = point(world_x, world_y, wall_z);
 			t_xs xs = ft_intersect(shape, ft_ray(ray_origin, normalize(subst_tuple(position, ray_origin))));
 			if (ft_hit(xs).t >= 0)
-				ft_write_pixel(canvas, x, y, color);
+				ft_write_pixel(canvas, x, y, to_raw_color(ft_color(255, 0, 0)));
 		}
 	}
 	return (canvas);
