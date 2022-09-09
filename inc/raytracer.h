@@ -45,5 +45,6 @@ t_ray			ft_transform(t_ray ray, t_matrix transformation_matrix);
 void			set_transform(t_object *object, t_matrix matrix);
 
 t_tuple			normal_at(t_object object, t_tuple point);
+t_tuple			reflect(t_tuple v, t_tuple normal);
 
 #endif

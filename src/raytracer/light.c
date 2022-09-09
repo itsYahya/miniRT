@@ -14,3 +14,8 @@ t_tuple			normal_at(t_object object, t_tuple p)
 	normal.w = 0;
 	return (normalize(normal));
 }
+
+t_tuple			reflect(t_tuple v, t_tuple normal)
+{
+	return subst_tuple(v, multiply_tuple(normal, dot(v, normal) * 2));
+}
