@@ -17,7 +17,7 @@ int	key_ev(int key, t_canvas *canva)
 {
 	(void)canva;
 	(void)key;
-
+	exit(0);
 	return (0);
 }
 

@@ -5,30 +5,32 @@
 #include "objects.h"
 #include "randerer.h"
 
+static t_uobject	*ft_content(t_list *node)
+{
+	if (!node)
+		return ((void*)0);
+	return (node->content);
+}
+
+void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
+{
+	while (head)
+	{
+		if (head->type == E_SPHERE)
+			ft_solve_sphere(ray, ft_content(head)->sphere, info);
+		head = head->next;
+	}
+}
+
 static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__data *data)
 {
 	t_ray		ray;
-	t_list		*head;
-	t_sphere	sphere;
 	t_info		info;
 
 	ft_setray(vcamera, &ray, pair);
-	head = data->objects;
 	info.color.raw = 0x00ffffff;
 	info.t = -1;
-	while (head)
-	{
-		if (head->type != E_SPHERE)
-		{
-			head = head->next;
-			continue;
-		}
-		sphere = ((t_uobject*)head->content)->sphere;
-		ft_solve_sphere(ray, sphere, &info);
-		head = head->next;
-	}
-	if (info.t != -1)
-		ft_lightning(&info, data->light);
+	ft_look_inters(data->objects, ray, &info);
 	ft_write_pixel(canvas, pair.x, pair.y, info.color);
 }
 
