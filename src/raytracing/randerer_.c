@@ -14,7 +14,7 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 
 	ft_setray(vcamera, &ray, pair);
 	head = data->objects;
-	info.color.raw = 0;
+	info.color.raw = 0x00ffffff;
 	info.t = -1;
 	while (head)
 	{
@@ -27,6 +27,8 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 		ft_solve_sphere(ray, sphere, &info);
 		head = head->next;
 	}
+	if (info.t != -1)
+		ft_lightning(&info, data->light);
 	ft_write_pixel(canvas, pair.x, pair.y, info.color);
 }
 

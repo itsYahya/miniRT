@@ -6,3 +6,4 @@ miniRT.exe
 .vscode/
 *.rt
 *.dSYM
+*.txt
