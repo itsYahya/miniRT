@@ -1,11 +1,13 @@
 #ifndef RAYTRACER_H
 # define RAYTRACER_H
 
+# include <stdlib.h>
 # include <math.h>
 # include "tuple.h"
 # include "list.h"
 # include "matrix.h"
 # include "canvas.h"
+# include "transform.h"
 
 typedef struct s_ray t_ray;
 struct s_ray
@@ -52,14 +54,21 @@ struct s_light
     t_color	intensity;
 };
 
+typedef struct s_world t_world;
+struct s_world
+{
+	t_light		light;
+	t_list		*objects;
+};
+
 t_ray			ft_ray(t_tuple origin, t_tuple direction);
 t_tuple			ft_position(t_ray r, float t);
 t_xs			ft_intersect(t_object s, t_ray r);
 t_object		ft_sphere();
 t_intersection	ft_intersection(float t, t_object object);
 t_xs			ft_intersections(unsigned int count, ...);
-void			destroy_intersections(t_xs *xs);
 t_intersection	ft_hit(t_xs xs);
+void			destroy_intersections(t_xs *xs);
 
 t_ray			ft_transform(t_ray ray, t_matrix transformation_matrix);
 void			set_transform(t_object *object, t_matrix matrix);
@@ -70,5 +79,10 @@ t_light			point_light(t_tuple position, t_color intensity);
 t_material		ft_material();
 bool			material_equal(t_material m1, t_material m2);
 t_tuple			ft_lighting(t_material material, t_light light, t_tuple position, t_tuple eyev, t_tuple normalv);
+
+t_world			ft_world();
+t_world			default_world();
+void			destroy_world(t_world w);
+t_xs			intersect_world(t_world w, t_ray ray);
 
 #endif
