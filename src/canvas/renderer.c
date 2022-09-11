@@ -90,7 +90,7 @@ t_canvas	ft_simple_sphere()
 			position = point(world_x, world_y, wall_z);
 			t_xs xs = ft_intersect(shape, ft_ray(ray_origin, normalize(subst_tuple(position, ray_origin))));
 			if (ft_hit(xs).t >= 0)
-				ft_write_pixel(canvas, x, y, to_raw_color(ft_color(255, 0, 0)));
+				ft_write_pixel(canvas, x, y, to_raw_color(ft_color(1, 0, 0)));
 		}
 	}
 	return (canvas);
@@ -98,9 +98,9 @@ t_canvas	ft_simple_sphere()
 
 void	renderer()
 {
-	t_canvas	canvas_clock;
+	t_canvas	canvas;
 
-	canvas_clock = ft_simple_sphere();
-	ft_show_canvas(canvas_clock);
-	mlx_loop(canvas_clock.mlx_ptr);
+	canvas = ft_simple_sphere();
+	ft_show_canvas(canvas);
+	mlx_loop(canvas.mlx_ptr);
 }

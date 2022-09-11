@@ -22,7 +22,7 @@ uint32_t	to_raw_color(t_color c)
 	red = (uint32_t)(c.r * 255) << 16;
 	green = (uint32_t)(c.g * 255) << 8;
 	blue = (uint32_t)(c.b * 255);
-	return (0xff000000 | red | green | blue);
+	return (0 | red | green | blue);
 }
 
 t_color	ft_hexcolor(uint32_t color)
