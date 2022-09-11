@@ -28,6 +28,16 @@ t_light	point_light(t_tuple position, t_color intensity)
 t_tuple	ft_lighting(t_material material, t_light light, t_tuple position,
 			t_tuple eyev, t_tuple normalv)
 {
+	// TODO: fix
+	// t_world w = default_world();
+	// t_ray	r = ft_ray(point(0, 0, -5), vector(0, 0, 1));
+	// t_object sp = *(t_object *)w.objects->content;
+	// t_intersection inter = ft_intersection(4, sp);
+	// t_comps comps = hitpoint_info(inter, r);
+	// t_color c = shade_hit(w, comps);
+	// print_color(c);
+	// c = color(0.38066, 0.47583, 0.2855)
+
 	t_tuple	diffuse = ft_color(0, 0, 0);
 	t_tuple specular = ft_color(0, 0, 0);
 	t_tuple lightv = normalize(subst_tuple(light.position, position));

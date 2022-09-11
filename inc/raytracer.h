@@ -61,6 +61,18 @@ struct s_world
 	t_list		*objects;
 };
 
+typedef struct s_comps t_comps;
+struct s_comps
+{
+	float		t;
+	t_object	object;
+	t_tuple		point;
+	t_tuple		eyev;
+	t_tuple		normalv;
+	bool		inside;
+};
+
+
 t_ray			ft_ray(t_tuple origin, t_tuple direction);
 t_tuple			ft_position(t_ray r, float t);
 t_xs			ft_intersect(t_object s, t_ray r);
@@ -84,5 +96,9 @@ t_world			ft_world();
 t_world			default_world();
 void			destroy_world(t_world w);
 t_xs			intersect_world(t_world w, t_ray ray);
+
+t_color			color_at(t_world w, t_ray r);
+t_color			shade_hit(t_world w, t_comps comps);
+t_comps			hitpoint_info(t_intersection intersection, t_ray r);
 
 #endif
