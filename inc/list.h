@@ -1,17 +1,14 @@
 #ifndef LIST_H
 # define LIST_H
 
-# include "objects.h"
-
 typedef struct s_list
 {
-	t_type			type;
 	void			*content;
 	struct s_list	*next;
 }t_list;
 
 void			ft_lstadd_front(t_list **list, t_list *new_);
-t_list			*ft_lstnew(void *content, t_type type);
+t_list			*ft_lstnew(void *content);
 int				ft_lstsize(t_list *head);
 t_list			*ft_lstlast(t_list *head);
 void			ft_lstadd_back(t_list **head, t_list *new_);

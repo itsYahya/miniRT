@@ -15,11 +15,11 @@ t_world			default_world()
 	objects = NULL;
 	obj = malloc(sizeof(t_object));
 	*obj = ft_sphere();
-	ft_lstadd_back(&objects, ft_lstnew(obj, -1));
+	ft_lstadd_back(&objects, ft_lstnew(obj));
 	obj = malloc(sizeof(t_object));
 	*obj = ft_sphere();
 	obj->transform_matrix = scale(0.5, 0.5, 0.5);
-	ft_lstadd_back(&objects, ft_lstnew(obj, -1));
+	ft_lstadd_back(&objects, ft_lstnew(obj));
 	return (t_world){
 		.light = point_light(point(-10, 10, -10), ft_color(1, 1, 1)),
 		.objects = objects

@@ -64,7 +64,7 @@ static void	push_intersections(t_list **lst, t_xs xs)
 	{
 		inter = malloc(sizeof(t_intersection));
 		*inter = xs.inters[i];
-		ft_lstadd_back(lst, ft_lstnew(inter, -1));
+		ft_lstadd_back(lst, ft_lstnew(inter));
 	}
 }
 
