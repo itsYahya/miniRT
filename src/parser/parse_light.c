@@ -1,9 +1,4 @@
-#include "objects.h"
-#include <stdio.h>
-#include "parser.h"
-#include "mutils.h"
-#include <errno.h>
-#include <stdio.h>
+#include "parser_.h"
 
 void	parseLight(char **tokens, t__data *data)
 {

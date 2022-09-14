@@ -1,9 +1,4 @@
-#include "get_next_line.h"
-#include "mutils.h"
-#include "parser.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include "objects.h"
+#include "parser_.h"
 
 static int	identifier(const char	*id)
 {

@@ -36,6 +36,5 @@ void		ft_destroy_canvas(t_canvas canvas);
 void		ft_write_pixel(t_canvas c, int x, int y, t_color color);
 uint32_t*	ft_pixel_at(t_canvas c, int x, int y);
 void		ft_show_canvas(t_canvas canvas);
-void		renderer();
 
 #endif

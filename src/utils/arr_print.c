@@ -1,4 +1,4 @@
-#include "mutils.h"
+#include "utils.h"
 
 void	arr_print(char **arr)
 {

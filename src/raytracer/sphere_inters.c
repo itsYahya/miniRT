@@ -1,9 +1,4 @@
-#include "canvas.h"
-#include "pair.h"
-#include <stdio.h>
-#include "ray.h"
-#include "objects.h"
-#include "randerer.h"
+#include "raytracer.h"
 
 typedef struct s_paramerers
 {
@@ -17,7 +12,7 @@ static void	ft_results(t_param param, t_sphere sphere, t_info *info, t_ray ray)
 {
 	float	rs;
 	t_tuple	center;
-	
+
 	rs = -1 * param.b - sqrt(param.delta);
 	rs = rs / (2 * param.a);
 	if (rs > 0 && (info->t < 0 || rs < info->t))
@@ -28,7 +23,7 @@ static void	ft_results(t_param param, t_sphere sphere, t_info *info, t_ray ray)
 		center = point(sphere.center.x, sphere.center.y, sphere.center.z);
 		info->normal = normalize(subst_tuple(info->point, center));
 	}
-}	
+}
 
 void	ft_solve_sphere(const t_ray ray, t_sphere sphere, t_info *info)
 {

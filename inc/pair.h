@@ -21,4 +21,24 @@ union u_pair
 	};
 };
 
+typedef union u_fpair t_fpair;
+union u_fpair
+{
+	struct
+	{
+		float	x;
+		float	y;
+	};
+	struct
+	{
+		float	i;
+		float	j;
+	};
+	struct
+	{
+		float	width;
+		float	height;
+	};
+};
+
 #endif

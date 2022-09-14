@@ -1,8 +1,4 @@
-#include "mutils.h"
-#include "parser.h"
-#include "miniRT.h"
-#include <stdio.h>
-#include <errno.h>
+#include "parser_.h"
 
 typedef struct s_rgb
 {

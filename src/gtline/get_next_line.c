@@ -1,5 +1,5 @@
 #include "get_next_line.h"
-#include "mutils.h"
+#include "utils.h"
 
 char	*get_the_rest(char *table, int index, int *check)
 {

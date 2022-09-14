@@ -1,5 +1,4 @@
 #include "matrix.h"
-#include "tuple.h"
 
 t_matrix	matrix_multiply(t_matrix mt1, t_matrix mt2)
 {

@@ -1,5 +1,5 @@
 #include "canvas.h"
-#include "miniRT.h"
+#include "mlx_events.h"
 
 void		ft_write_pixel(t_canvas c, int x, int y, t_color color)
 {

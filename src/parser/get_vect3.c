@@ -1,9 +1,4 @@
-#include "objects.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include "parser.h"
-#include "mutils.h"
-#include <errno.h>
+#include "parser_.h"
 
 t_vect3	get_vect3(const char *arg)
 {

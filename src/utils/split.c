@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <unistd.h>
-#include "mutils.h"
+#include "utils.h"
 
 static int	ft_word_length(const char *str, int i, char sep)
 {
