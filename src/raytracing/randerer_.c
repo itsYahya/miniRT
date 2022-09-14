@@ -18,6 +18,8 @@ void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 	{
 		if (head->type == E_SPHERE)
 			ft_solve_sphere(ray, ft_content(head)->sphere, info);
+		else if (head->type == E_PLANE)
+			ft_solve_plane(ray, ft_content(head)->plane, info);
 		head = head->next;
 	}
 }
@@ -46,9 +48,17 @@ void	ft_shading(t__data *data, t_info *info)
 	ft_look_inters(data->objects, ray, &shade);
 	if (shade.t == -1)
 	{
-		info->color.r = info->color.r * d + (255*0.2 *d);
-		info->color.g = info->color.g * d + (255*0.2*d);
-		info->color.b = info->color.b * d + (255*0.2*d);
+		t_color c;
+		c.raw = data->ambient.color;
+		info->color.r = info->color.r * d;
+		if (info->color.r > 255)
+			info->color.r = 255;
+		info->color.g = info->color.g * d;
+		if (info->color.g > 255)
+			info->color.g = 255;
+		info->color.b = info->color.b * d;
+		if (info->color.b > 255)
+			info->color.b = 255;
 	}
 	else
 		info->color.raw = 0;
@@ -60,7 +70,7 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 	t_info		info;
 
 	ft_setray(vcamera, &ray, pair);
-	info.color.raw = 0x00ffaaff;
+	info.color.raw = 0x00ffffff;
 	info.t = -1;
 	ft_look_inters(data->objects, ray, &info);
 	if (info.t != -1)
