@@ -1,5 +1,4 @@
 #include "matrix.h"
-#include <stdio.h>
 
 void		print_matrix(t_matrix mt)
 {

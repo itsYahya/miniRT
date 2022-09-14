@@ -1,4 +1,4 @@
-#include "mutils.h"
+#include "utils.h"
 
 int	ft_arr_size(char **arr)
 {

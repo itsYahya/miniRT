@@ -1,16 +1,7 @@
-#include "canvas.h"
-#include <stdlib.h>
-#include <time.h>
-#include <stdio.h>
-#include <unistd.h>
-#include "timer.h"
-#include <pthread.h>
-#include "pair.h"
+#include "raytracer.h"
+#include "tuple.h"
+#include "matrix.h"
 #include "transform.h"
-
-# define WIDTH 600
-# define HEIGHT 600
-
 
 static void ft_draw_point(t_canvas canvas, float x, float y, t_color color)
 {

@@ -4,6 +4,9 @@
 # include <stdbool.h>
 # include "tuple.h"
 # include <stdint.h>
+# include "algebra.h"
+# include <stdio.h>
+# include "pair.h"
 
 # define IDENTITY_MATRIX (t_matrix){{ \
 	1, 0, 0, 0, \

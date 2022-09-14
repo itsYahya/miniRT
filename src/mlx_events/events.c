@@ -1,10 +1,9 @@
-#include "canvas.h"
-#include "mlx.h"
-#include "miniRT.h"
-#include <stdlib.h>
+#include "parser_.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include "canvas.h"
 
-static int close(void *data)
+static int onClose(void *data)
 {
 	t__data *data_ = (t__data *)data;
 	int	i = 0;
@@ -23,6 +22,6 @@ int	key_ev(int key, t_canvas *canva)
 
 void	ft_setup_mlxevnets(void *win, t__data *data, t_canvas canvas)
 {
-	mlx_hook(win, 17, 0, close, data);
+	mlx_hook(win, 17, 0, onClose, data);
 	mlx_hook(win, 2, 0, key_ev, &canvas);
 }
