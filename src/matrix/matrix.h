@@ -7,6 +7,7 @@
 # include "algebra.h"
 # include <stdio.h>
 # include "pair.h"
+# include <math.h>
 
 # define IDENTITY_MATRIX (t_matrix){{ \
 	1, 0, 0, 0, \
@@ -51,5 +52,11 @@ void		print_matrix(t_matrix mt);
 t_tuple		matrix_tuple_multiply(t_matrix mt, t_tuple t);
 t_matrix	ft_transpose(t_matrix mt);
 t_matrix	inverse(t_matrix mtx);
+
+t_matrix	translate(float x, float y, float z);
+t_matrix	scale(float x, float y, float z);
+t_matrix	rotate_x(float radians);
+t_matrix	rotate_y(float radians);
+t_matrix	rotate_z(float radians);
 
 #endif
