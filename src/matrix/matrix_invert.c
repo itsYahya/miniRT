@@ -1,6 +1,4 @@
 #include "matrix.h"
-#include <stdio.h>
-#include "pair.h"
 
 static float		determinant(t_matrix m, uint8_t size);
 

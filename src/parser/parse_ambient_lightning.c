@@ -1,7 +1,4 @@
-#include "parser.h"
-#include "mutils.h"
-#include <stdio.h>
-#include <errno.h>
+#include "parser_.h"
 
 void	parseAmbLightning(char **tokens, t__data *data)
 {

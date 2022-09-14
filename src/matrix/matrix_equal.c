@@ -1,5 +1,4 @@
 #include "matrix.h"
-#include "algebra.h"
 
 bool	matrix_equal(t_matrix mt1, t_matrix mt2)
 {

@@ -1,9 +1,4 @@
-#include "objects.h"
-#include <stdio.h>
-#include "parser.h"
-#include <stdlib.h>
-#include "mutils.h"
-#include <errno.h>
+#include "parser_.h"
 
 void	parsePlane(char **tokens, t__data *data)
 {

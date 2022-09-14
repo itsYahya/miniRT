@@ -1,7 +1,4 @@
-#include "mutils.h"
-#include "parser.h"
-#include "miniRT.h"
-#include <stdio.h>
+#include "parser_.h"
 
 static void	print_error_exit()
 {

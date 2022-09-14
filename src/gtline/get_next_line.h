@@ -10,14 +10,14 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "mutils.h"
+# include "utils.h"
 
 typedef struct s_data
 {
 	char	*table;
 	char	*line;
 	int		ko;
-}t_data;
+}	t_data;
 
 char	*ft_strlcat(char *dest, char *src, int stop);
 char	*ft_strdup(char *str);

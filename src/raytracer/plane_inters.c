@@ -1,5 +1,4 @@
-#include "miniRT.h"
-#include "randerer.h"
+#include "raytracer.h"
 #include <math.h>
 
 void	ft_solve_plane(t_ray ray, t_plane plane, t_info *info)
