@@ -29,7 +29,7 @@ static int rgb_to_int(t_rgb data)
 	return (color);
 }
 
-int	get_color(char *token)
+uint32_t	get_color(char *token)
 {
 	t_rgb	rgb;
 	char	**colors;

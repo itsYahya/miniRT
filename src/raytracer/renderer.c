@@ -1,18 +1,14 @@
 #include "raytracer.h"
 
-static t_uobject	*ft_content(t_list *node)
-{
-	if (!node)
-		return ((void*)0);
-	return (node->content);
-}
-
 void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 {
+	t_object	obj;
+
 	while (head)
 	{
-		if (head->type == E_SPHERE)
-			ft_solve_sphere(ray, ft_content(head)->sphere, info);
+		obj = lst_object(head);
+		if (obj.type == E_SPHERE)
+			ft_solve_sphere(ray, obj, info);
 		head = head->next;
 	}
 }
