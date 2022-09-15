@@ -18,4 +18,7 @@ int	main(int argc, char **argv)
 	if (! data.objects)
 		printf("no object");
 	render(&data);
+	// t_ray	r = (t_ray){point(0, 0, 0), vector(0, 1, 0)};
+	// uint32_t color = cylinder_intersect(ft_cylinder(), r);
+	// printf("%x\n", color);
 }

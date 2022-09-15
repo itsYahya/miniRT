@@ -9,6 +9,8 @@ void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 		obj = lst_object(head);
 		if (obj.type == E_SPHERE)
 			ft_solve_sphere(ray, obj, info);
+		if (obj.type == E_CYLINDER)
+			(*info).color.raw = cylinder_intersect(obj.cylinder, ray);
 		head = head->next;
 	}
 }

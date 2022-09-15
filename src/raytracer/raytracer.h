@@ -9,6 +9,9 @@
 # include "list.h"
 # include "lst_utils.h"
 # include "params.h"
+# include "algebra.h"
+# include "matrix.h"
+# include "params.h"
 
 # define WIDTH 600
 # define HEIGHT 600
@@ -49,5 +52,8 @@ void		ft_solve_sphere(const t_ray ray, t_object sph_obj, t_info *info);
 t_vcamera	ft_setup_camera(const t_camera camera);
 t_ray		ft_setray(const t_vcamera camera, t_pair pair);
 // t_info		ft_lightning(t_light light);
+
+uint32_t	cylinder_intersect(t_cylinder cy, t_ray ray);
+t_cylinder	ft_cylinder();
 
 #endif

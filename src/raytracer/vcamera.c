@@ -13,7 +13,7 @@ t_vcamera	ft_setup_camera(const t_camera camera)
 	c.w = c.h * c.ar;
 	c.origin = point(camera.coordinates.x, camera.coordinates.y, camera.coordinates.z);
 	c.forward = vector(camera.orientation_vect.x, camera.orientation_vect.y, camera.orientation_vect.z);
-	c.up = normalize(cross(c.forward, vector(0, 1, 0)));
+	c.up = normalize(cross(c.forward, vector(-1, 0, 0)));
 	c.right = normalize(cross(c.forward, c.up));
 	return (c);
 }
