@@ -10,8 +10,8 @@
 # include "lst_utils.h"
 # include "params.h"
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef struct s_ray
 {
@@ -48,6 +48,9 @@ void		render(t__data *data);
 void		ft_solve_sphere(const t_ray ray, t_object sph_obj, t_info *info);
 t_vcamera	ft_setup_camera(const t_camera camera);
 t_ray		ft_setray(const t_vcamera camera, t_pair pair);
+void		ft_solve_plane(t_ray ray, t_object obj, t_info *info);
+void		ft_look_inters(t_list *head, t_ray ray, t_info *info);
+void		ft_shading(t__data *data, t_info *info);
 // t_info		ft_lightning(t_light light);
 
 #endif

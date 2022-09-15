@@ -1,4 +1,5 @@
 #include "raytracer.h"
+#include "algebra.h"
 
 static void	ft_results(t_params param, t_object sph_obj, t_info *info, t_ray ray)
 {
@@ -7,7 +8,7 @@ static void	ft_results(t_params param, t_object sph_obj, t_info *info, t_ray ray
 
 	rs = -1 * param.b - sqrt(param.desc);
 	rs = rs / (2 * param.a);
-	if (rs > 0 && (info->t < 0 || rs < info->t))
+	if (rs > EPSILON && ((info->t < 0 && rs > EPSILON) || rs < info->t))
 	{
 		info->t = rs;
 		info->color.raw = sph_obj.color;
