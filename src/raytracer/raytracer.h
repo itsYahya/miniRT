@@ -8,8 +8,8 @@
 # include <stdio.h>
 # include "list.h"
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef struct s_ray
 {

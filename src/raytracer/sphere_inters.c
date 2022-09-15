@@ -1,4 +1,5 @@
 #include "raytracer.h"
+#include "algebra.h"
 
 typedef struct s_paramerers
 {
@@ -15,7 +16,7 @@ static void	ft_results(t_param param, t_sphere sphere, t_info *info, t_ray ray)
 
 	rs = -1 * param.b - sqrt(param.delta);
 	rs = rs / (2 * param.a);
-	if (rs > 0 && (info->t < 0 || rs < info->t))
+	if (rs > EPSILON && ((info->t < 0 && rs > EPSILON) || rs < info->t))
 	{
 		info->t = rs;
 		info->color.raw = sphere.color;
@@ -35,6 +36,6 @@ void	ft_solve_sphere(const t_ray ray, t_sphere sphere, t_info *info)
 	param.b = dot(vect, ray.direction)  * 2;
 	param.c = dot(vect, vect) - pow(sphere.diameter, 2);
 	param.delta = pow(param.b, 2) - 4 * param.a * param.c;
-	if (param.delta >= 0)
+	if (param.delta >= EPSILON)
 		ft_results(param, sphere, info, ray);
 }

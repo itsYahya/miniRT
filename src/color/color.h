@@ -18,7 +18,8 @@ union u_color
 
 t_color	ft_color(uint8_t r, uint8_t g, uint8_t b);
 t_color	ft_hadamard_product(t_color c1, t_color c2);
-t_color	ft_multiply_color(t_color color, double ratio);
+t_color	ft_scale_color(t_color color, double ratio);
 t_color	ft_add_color(t_color c1, t_color c2);
+t_color	ft_multiply_color(t_color c1, t_color c2);
 
 #endif
