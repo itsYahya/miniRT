@@ -47,13 +47,17 @@ struct s_scene
 
 };
 
+void		init_info(t_info *info);
 void		render(t__data *data);
 void		ft_solve_sphere(const t_ray ray, t_object sph_obj, t_info *info);
 t_vcamera	ft_setup_camera(const t_camera camera);
 t_ray		ft_setray(const t_vcamera camera, t_pair pair);
 // t_info		ft_lightning(t_light light);
 
-uint32_t	cylinder_intersect(t_cylinder cy, t_ray ray);
+void		cylinder_intersect(t_object obj, t_ray ray, t_info *info);
 t_cylinder	ft_cylinder();
+
+t_ray		ray_transform(t_ray ray, t_matrix transformation_matrix);
+t_tuple		ft_position(t_ray r, float t);
 
 #endif

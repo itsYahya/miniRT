@@ -21,4 +21,7 @@ int	main(int argc, char **argv)
 	// t_ray	r = (t_ray){point(0, 0, 0), vector(0, 1, 0)};
 	// uint32_t color = cylinder_intersect(ft_cylinder(), r);
 	// printf("%x\n", color);
+	// t_ray	r = (t_ray){point(0, 0, -5), vector(0, 1, 0)};
+	// float	t = local_intersect(r);
+	// printf("%f\n", t);
 }

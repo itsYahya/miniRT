@@ -66,7 +66,7 @@ struct s_object
 	{
 		t_sphere	sphere;
 		t_plane		plane;
-		t_cylinder	cylinder;
+		t_cylinder	cy;
 	};
 };
 

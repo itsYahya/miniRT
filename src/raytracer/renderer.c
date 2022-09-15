@@ -10,7 +10,7 @@ void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 		if (obj.type == E_SPHERE)
 			ft_solve_sphere(ray, obj, info);
 		if (obj.type == E_CYLINDER)
-			(*info).color.raw = cylinder_intersect(obj.cylinder, ray);
+			cylinder_intersect(obj, ray, info);
 		head = head->next;
 	}
 }
@@ -20,9 +20,8 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 	t_ray		ray;
 	t_info		info;
 
+	init_info(&info);
 	ray = ft_setray(vcamera, pair);
-	info.color.raw = 0;
-	info.t = -1;
 	ft_look_inters(data->objects, ray, &info);
 	ft_write_pixel(canvas, pair.x, pair.y, info.color);
 }

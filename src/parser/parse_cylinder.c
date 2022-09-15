@@ -8,9 +8,9 @@ void	parseCylinder(char **tokens, t__data *data)
 	object->position = get_position_point(tokens[1]);
 	object->color = get_color(tokens[5]);
 	object->type = E_CYLINDER;
-	object->cylinder.orientation = get_orientation_vect3(tokens[2]);
-	object->cylinder.diameter = ft_stod(tokens[3]);
-	object->cylinder.height = ft_stod(tokens[4]);
+	object->cy.orientation = get_orientation_vect3(tokens[2]);
+	object->cy.diameter = ft_stod(tokens[3]);
+	object->cy.height = ft_stod(tokens[4]);
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
 	if (errno)
 	{
