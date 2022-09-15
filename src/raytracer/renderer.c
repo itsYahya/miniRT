@@ -1,20 +1,16 @@
 #include "raytracer.h"
 
-static t_uobject	*ft_content(t_list *node)
+void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 {
-	if (!node)
-		return ((void*)0);
-	return (node->content);
-}
+	t_object	obj;
 
-void	ft_intersect(t_list *head, t_ray ray, t_info *info)
-{
 	while (head)
 	{
-		if (head->type == E_SPHERE)
-			ft_solve_sphere(ray, ft_content(head)->sphere, info);
-		else if (head->type == E_PLANE)
-			ft_solve_plane(ray, ft_content(head)->plane, info);
+		obj = lst_object(head);
+		if (obj.type == E_SPHERE)
+			ft_solve_sphere(ray, obj, info);
+		else if (obj.type == E_PLANE)
+			ft_solve_plane(ray, obj, info);
 		head = head->next;
 	}
 }
@@ -28,7 +24,7 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 	ray = ft_setray(vcamera, pair);
 	info.color.raw = 0;
 	info.t = -1;
-	ft_intersect(data->objects, ray, &info);
+	ft_look_inters(data->objects, ray, &info);
 	if (info.t != -1)
 		ft_shading(data, &info);
 	ft_write_pixel(canvas, pair.x, pair.y, info.color);

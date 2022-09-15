@@ -50,7 +50,7 @@ void	ft_shading(t__data *data, t_info *info)
 	light_color.raw = data->light.color;
 	shade_info.t = -1;
 	d = ft_cos(normalize(light_vect), info->normal);
-	ft_intersect(data->objects, ray, &shade_info);
+	ft_look_inters(data->objects, ray, &shade_info);
 	ambient = ft_merge_color(info->color, ambient, data->ambient.ratio);
 	if (shade_info.t == -1)
 	{

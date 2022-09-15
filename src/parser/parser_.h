@@ -10,13 +10,9 @@
 # include <errno.h>
 # include <fcntl.h>
 # include "get_next_line.h"
+# include "matrix.h"
 
-typedef struct s_vect3
-{
-	double x;
-	double y;
-	double z;
-}	t_vect3;
+typedef t_tuple t_vect3;
 
 typedef struct s_ambLightning
 {
@@ -26,47 +22,53 @@ typedef struct s_ambLightning
 
 typedef struct s_camera
 {
-	t_vect3	coordinates;
-	t_vect3	orientation_vect;
+	t_tuple	coordinates;
+	t_tuple	orientation_vect;
 	double	fov;
 }	t_camera;
 
 typedef struct s_light
 {
-	t_vect3	point;
+	t_tuple point;
 	float	bRatio;
 	int		color;
 }	t_light;
 
 typedef struct s_sphere
 {
-	t_vect3	center;
 	float	diameter;
-	int		color;
 }	t_sphere;
 
 typedef struct s_plane
 {
-	t_vect3	point;
-	t_vect3	vect;
-	int		color;
+	t_tuple		orientation;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	t_vect3	point;
-	t_vect3	vect;
-	float	diameter;
-	float	height;
-	int		color;
+	t_tuple		orientation;
+	float		diameter;
+	float		height;
 }	t_cylinder;
 
-typedef union u_object
+typedef struct s_object t_object;
+struct s_object
 {
-	t_sphere	sphere;
-	t_plane		plane;
-	t_cylinder	cylinder;
-}	t_uobject;
+	union
+	{
+		t_tuple	position;
+		t_tuple	p;
+	};
+	uint32_t	color;
+	t_type		type;
+	t_matrix	transform;
+	union
+	{
+		t_sphere	sphere;
+		t_plane		plane;
+		t_cylinder	cylinder;
+	};
+};
 
 typedef struct s__data
 {
@@ -77,20 +79,20 @@ typedef struct s__data
 }	t__data;
 
 
-int		validatePath(char *path);
-int		parser(char *path, t__data *data);
-void	parseAmbLightning(char **tokens, t__data *data);
-void	parseCamera(char **tokens, t__data *data);
-void	parseLight(char **tokens, t__data *data);
-void	parseSphere(char **tokens, t__data *data);
-void	parsePlane(char **tokens, t__data *data);
-void	parseCylinder(char **tokens, t__data *data);
-t_vect3	get_vect3(const char *arg);
-t_vect3	get_orientation_vect3(const char *arg);
-float	get_ratio(const char *token);
-void	multiple_elm_exit(char *id);
-void	invalid_argements(char *id);
-void	invalid_identifier(void);
-int		get_color(char *token);
+int			validatePath(char *path);
+int			parser(char *path, t__data *data);
+void		parseAmbLightning(char **tokens, t__data *data);
+void		parseCamera(char **tokens, t__data *data);
+void		parseLight(char **tokens, t__data *data);
+void		parseSphere(char **tokens, t__data *data);
+void		parsePlane(char **tokens, t__data *data);
+void		parseCylinder(char **tokens, t__data *data);
+t_tuple		get_orientation_vect3(const char *arg);
+t_tuple		get_position_point(const char *arg);
+float		get_ratio(const char *token);
+void		multiple_elm_exit(char *id);
+void		invalid_argements(char *id);
+void		invalid_identifier(void);
+uint32_t	get_color(char *token);
 
 #endif
