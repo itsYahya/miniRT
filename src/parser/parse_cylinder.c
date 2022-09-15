@@ -4,13 +4,14 @@ void	parseCylinder(char **tokens, t__data *data)
 {
 	if (ft_arr_size(tokens) != 6)
 		invalid_argements("cylinder");
-	t_uobject* object = malloc(sizeof(t_uobject));
-	object->cylinder.point = get_vect3(tokens[1]);
-	object->cylinder.vect = get_orientation_vect3(tokens[2]);
+	t_object* object = malloc(sizeof(t_object));
+	object->position = get_position_point(tokens[1]);
+	object->color = get_color(tokens[5]);
+	object->type = E_CYLINDER;
+	object->cylinder.orientation = get_orientation_vect3(tokens[2]);
 	object->cylinder.diameter = ft_stod(tokens[3]);
 	object->cylinder.height = ft_stod(tokens[4]);
-	object->cylinder.color = get_color(tokens[5]);
-	ft_lstadd_back(&data->objects, ft_lstnew(object, E_CYLINFER));
+	ft_lstadd_back(&data->objects, ft_lstnew(object));
 	if (errno)
 	{
 		ft_arr_free(tokens);

@@ -7,6 +7,8 @@
 # include "pair.h"
 # include <stdio.h>
 # include "list.h"
+# include "lst_utils.h"
+# include "params.h"
 
 # define WIDTH 600
 # define HEIGHT 600
@@ -43,7 +45,7 @@ struct s_scene
 };
 
 void		render(t__data *data);
-void		ft_solve_sphere(const t_ray ray, t_sphere sphere, t_info *info);
+void		ft_solve_sphere(const t_ray ray, t_object sph_obj, t_info *info);
 t_vcamera	ft_setup_camera(const t_camera camera);
 t_ray		ft_setray(const t_vcamera camera, t_pair pair);
 // t_info		ft_lightning(t_light light);

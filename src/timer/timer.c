@@ -37,7 +37,7 @@ void	startTimer(const char *key)
 	t_timer *t = malloc(sizeof(t_timer));
 	t->key = key;
 	t->start = ft_get_time();
-	ft_lstadd_front(&timers, ft_lstnew(t, -1));
+	ft_lstadd_front(&timers, ft_lstnew(t));
 }
 
 void	endTimer(const char *key)
