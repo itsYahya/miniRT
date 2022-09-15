@@ -48,8 +48,10 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 {
 	float		t;
 
-	ray = ray_transform(ray, inverse(obj.transform));
+	// ray = ray_transform(ray, inverse(obj.transform));
 	t = cy_local_intersect(ray);
+	// todo
+	// info->color = tuple2color(ray.direction);
 	if (t > 0 && (info->t < 0 || t < info->t))
 	{
 		info->t = t;

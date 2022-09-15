@@ -4,7 +4,8 @@
 # include <stdlib.h>
 # include <math.h>
 
-# define EPSILON 0.00001
+# define EPSILON 0.0001
+# define SIGN(x) x/fabs(x)
 
 bool	equal(float a, float b);
 

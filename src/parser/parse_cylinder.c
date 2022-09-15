@@ -1,16 +1,36 @@
 #include "parser_.h"
+#include "algebra.h"
+
+float	rad2deg(float x)
+{
+	return (x * 180) / M_PI;
+}
+
+float	get_angle(t_tuple projection_vect)
+{
+	float angle = EPSILON;
+	if (! is_equal(projection_vect, vector(0, 0, 0)))
+		angle = acos(dot(projection_vect, vector(0, 0, 1)));
+	if (! equal(angle, 0))
+		angle = SIGN(angle);
+	return (angle);
+}
 
 static void	set_cy_transform(t_object *object)
 {
 	t_matrix	transform;
+	float		x_angle;
+	float		y_angle;
 
+	x_angle = get_angle(clone_withx(object->cy.orientation, 0.0f));
+	y_angle = get_angle(clone_withy(object->cy.orientation, 0.0f));
+	printf("x_angle: %f\n", x_angle);
+	printf("y_angle: %f\n", y_angle);
 	transform = IDENTITY_MATRIX;
-	transform = matrix_multiply(transform, translate(object->position.x, object->position.y, object->position.z));
-	// TODO: fix rotation to match orientation vector
-	transform = matrix_multiply(transform, rotate_x(object->cy.orientation.x * M_2_PI));
-	transform = matrix_multiply(transform, rotate_y(object->cy.orientation.y * M_2_PI));
-	transform = matrix_multiply(transform, rotate_z(object->cy.orientation.z * M_2_PI));
-	transform = matrix_multiply(transform, scale(1, 1, object->cy.height / 2.0f));
+	// transform = matrix_multiply(transform, translate(object->position.x, object->position.y, object->position.z));
+	transform = matrix_multiply(transform, rotate_x(x_angle));
+	transform = matrix_multiply(transform, rotate_y(y_angle));
+	// transform = matrix_multiply(transform, scale(object->cy.diameter, object->cy.diameter, object->cy.height / 2.0f));
 	object->transform = transform;
 }
 
