@@ -1,6 +1,6 @@
 #include "raytracer.h"
 
-void	ft_set_info(t_info *info, t_object obj, t_ray ray)
+static void	ft_set_info(t_info *info, t_object obj, t_ray ray)
 {
 	t_tuple	hitpoint;
 
@@ -17,7 +17,7 @@ static bool	isvalid_intersection(t_ray r, float t)
 	return (t > 0 && fabs(z) <= 1);
 }
 
-static float	cylinder_local_intersect(t_ray ray)
+static float	cy_local_intersect(t_ray ray)
 {
 	t_params	params;
 	float		disc;
@@ -44,18 +44,10 @@ static float	cylinder_local_intersect(t_ray ray)
 
 void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 {
-	t_matrix	transform;
 	float		t;
 
-	transform = IDENTITY_MATRIX;
-	transform = matrix_multiply(transform, translate(obj.position.x, obj.position.y, obj.position.y));
-	transform = matrix_multiply(transform, rotate_x(obj.cy.orientation.y * M_2_PI));
-	transform = matrix_multiply(transform, rotate_y(obj.cy.orientation.y * M_2_PI));
-	transform = matrix_multiply(transform, rotate_z(obj.cy.orientation.z * M_2_PI));
-	transform = matrix_multiply(transform, scale(1, 1, obj.cy.height / 2.0f));
-	ray = ray_transform(ray, inverse(transform));
-
-	t = cylinder_local_intersect(ray);
+	ray = ray_transform(ray, inverse(obj.transform));
+	t = cy_local_intersect(ray);
 	if (t > 0 && (info->t < 0 || t < info->t))
 	{
 		info->t = t;
