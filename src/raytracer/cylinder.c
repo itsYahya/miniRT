@@ -7,6 +7,8 @@ static void	ft_set_info(t_info *info, t_object obj, t_ray ray)
 	hitpoint = add_tuple(ray.origin, multiply_tuple(ray.direction, info->t));
 	info->color.raw = obj.color;
 	info->normal = subst_tuple(hitpoint, point(0, 0, hitpoint.z));
+	if (dot(ray.direction, info->normal) > 0)
+		info->normal = negate_tuple(info->normal);
 }
 
 static bool	isvalid_intersection(t_ray r, float t)
