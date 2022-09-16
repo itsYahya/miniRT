@@ -1,13 +1,19 @@
 #include "raytracer.h"
 
-static void	ft_set_info(t_info *info, t_object obj, t_ray ray)
+static void	ft_set_info(t_info *info, t_object obj, t_ray ray, t_tuple eyev)
 {
 	t_tuple	hitpoint;
 
 	hitpoint = add_tuple(ray.origin, multiply_tuple(ray.direction, info->t));
 	info->color.raw = obj.color;
 	info->normal = subst_tuple(hitpoint, point(0, 0, hitpoint.z));
-	if (dot(ray.direction, info->normal) > 0)
+	info->normal = matrix_tuple_multiply(
+					ft_transpose(inverse(obj.transform)),
+					info->normal
+					);
+	info->normal.w = 0;
+	info->normal = normalize(info->normal);
+	if (dot(info->normal, eyev) < 0)
 		info->normal = negate_tuple(info->normal);
 }
 
@@ -47,14 +53,14 @@ static float	cy_local_intersect(t_ray ray)
 void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 {
 	float		t;
+	t_tuple		eyev;
 
-	// ray = ray_transform(ray, inverse(obj.transform));
+	eyev = negate_tuple(ray.direction);
+	ray = ray_transform(ray, inverse(obj.transform));
 	t = cy_local_intersect(ray);
-	// todo
-	// info->color = tuple2color(ray.direction);
 	if (t > 0 && (info->t < 0 || t < info->t))
 	{
 		info->t = t;
-		ft_set_info(info, obj, ray);
+		ft_set_info(info, obj, ray, eyev);
 	}
 }

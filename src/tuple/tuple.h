@@ -2,6 +2,8 @@
 # define TUPLE_H
 # include <stdbool.h>
 # include <math.h>
+# include <stdio.h>
+# include "algebra.h"
 
 typedef struct s_tuple t_tuple;
 
@@ -38,4 +40,6 @@ void	print_vector(t_tuple t);
 t_tuple	clone_withx(t_tuple t, float x);
 t_tuple	clone_withy(t_tuple t, float y);
 t_tuple	clone_withz(t_tuple t, float z);
+
+float	angle_between(t_tuple v1, t_tuple v2);
 #endif

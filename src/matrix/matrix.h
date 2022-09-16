@@ -8,6 +8,7 @@
 # include <stdio.h>
 # include "pair.h"
 # include <math.h>
+# include <stdarg.h>
 
 # define IDENTITY_MATRIX (t_matrix){{ \
 	1, 0, 0, 0, \
@@ -58,5 +59,6 @@ t_matrix	scale(float x, float y, float z);
 t_matrix	rotate_x(float radians);
 t_matrix	rotate_y(float radians);
 t_matrix	rotate_z(float radians);
+t_matrix	transforms(int count, ...);
 
 #endif
