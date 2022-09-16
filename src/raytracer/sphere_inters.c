@@ -11,7 +11,7 @@ static void	ft_results(t_params param, t_object sph_obj, t_info *info, t_ray ray
 	if (rs > EPSILON && ((info->t < 0 && rs > EPSILON) || rs < info->t))
 	{
 		info->t = rs;
-		info->color.raw = sph_obj.color;
+		info->color = sph_obj.color;
 		info->point = add_tuple(ray.origin, multiply_tuple(ray.direction, rs));
 		center = point(sph_obj.p.x, sph_obj.p.y, sph_obj.p.z);
 		info->normal = normalize(subst_tuple(info->point, center));

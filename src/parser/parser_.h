@@ -11,6 +11,7 @@
 # include <fcntl.h>
 # include "get_next_line.h"
 # include "matrix.h"
+# include "color.h"
 
 typedef t_tuple t_vect3;
 
@@ -31,7 +32,7 @@ typedef struct s_light
 {
 	t_tuple point;
 	float	bRatio;
-	int		color;
+	t_color	color;
 }	t_light;
 
 typedef struct s_sphere
@@ -59,7 +60,7 @@ struct s_object
 		t_tuple	position;
 		t_tuple	p;
 	};
-	uint32_t	color;
+	t_color		color;
 	t_type		type;
 	t_matrix	transform;
 	union

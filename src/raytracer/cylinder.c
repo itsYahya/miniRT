@@ -5,7 +5,7 @@ static void	ft_set_info(t_info *info, t_object obj, t_ray ray, t_tuple eyev)
 	t_tuple	hitpoint;
 
 	hitpoint = add_tuple(ray.origin, multiply_tuple(ray.direction, info->t));
-	info->color.raw = obj.color;
+	info->color = obj.color;
 	info->normal = subst_tuple(hitpoint, point(0, 0, hitpoint.z));
 	info->normal = matrix_tuple_multiply(
 					ft_transpose(inverse(obj.transform)),

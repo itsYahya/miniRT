@@ -47,7 +47,7 @@ void	ft_shading(t__data *data, t_info *info)
 	ray.direction = light_vect;
 	ray.origin = info->point;
 	ambient.raw = data->ambient.color;
-	light_color.raw = data->light.color;
+	light_color = data->light.color;
 	shade_info.t = -1;
 	d = ft_cos(normalize(light_vect), info->normal);
 	ft_look_inters(data->objects, ray, &shade_info);
@@ -60,4 +60,3 @@ void	ft_shading(t__data *data, t_info *info)
 	else
 		info->color = ambient;
 }
-
