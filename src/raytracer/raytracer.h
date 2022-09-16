@@ -50,7 +50,25 @@ t_vcamera	ft_setup_camera(const t_camera camera);
 t_ray		ft_setray(const t_vcamera camera, t_pair pair);
 void		ft_solve_plane(t_ray ray, t_object obj, t_info *info);
 void		ft_look_inters(t_list *head, t_ray ray, t_info *info);
-void		ft_shading(t__data *data, t_info *info);
+void		ft_shading(t__data *data, t_info *info, t_ray ray);
 // t_info		ft_lightning(t_light light);
+
+
+typedef struct s_shader
+{
+	t_ray	ray;
+	t_tuple	light_vect;
+	t_tuple	light_point;
+	t_color	difuse;
+	t_color light_color;
+	float	light_ratio;
+	t_color	ambient;
+	float	am_ratio;
+	t_color specular;
+}	t_shader;
+
+double	ft_max(double f1, double f2);
+t_color	ft_specular(t_shader *shader, t_info *info, t_tuple view);
+double	ft_cos(t_tuple v1, t_tuple v2);
 
 #endif

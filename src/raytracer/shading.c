@@ -1,26 +1,13 @@
 #include "raytracer.h"
-
-typedef struct s_shader
-{
-	t_ray	ray;
-	t_tuple	light_vect;
-	t_tuple	light_point;
-	t_color	difuse;
-	t_color light_color;
-	float	light_ratio;
-	t_color	ambient;
-	float	am_ratio;
-	t_color specular;
-}	t_shader;
-
-static double	ft_max(double f1, double f2)
+ 
+double	ft_max(double f1, double f2)
 {
 	if (f1 > f2)
 		return (f1);
 	return (f2);
 }
 
-static double	ft_cos(t_tuple v1, t_tuple v2)
+double	ft_cos(t_tuple v1, t_tuple v2)
 {
 	double	d;
 
@@ -43,7 +30,7 @@ static void	ft_shader_init(t__data *data, t_info *info, t_shader *shdata, t_info
 	shade_info->t = -1;
 }
 
-void	ft_shading(t__data *data, t_info *info)
+void	ft_shading(t__data *data, t_info *info, t_ray ray)
 {
 	t_info		shade_info;
 	t_shader	shade;
@@ -56,7 +43,8 @@ void	ft_shading(t__data *data, t_info *info)
 	if (shade_info.t == -1)
 	{
 		shade.difuse = ft_merge_color(info->color, shade.light_color, d * shade.light_ratio);
-		info->color = ft_add_color(shade.difuse, shade.ambient);
+		shade.specular = ft_specular(&shade, info, multiply_tuple(ray.direction, -1));
+		info->color = ft_add_color(ft_add_color(shade.difuse, shade.ambient), shade.specular);
 	}
 	else
 		info->color = shade.ambient;
