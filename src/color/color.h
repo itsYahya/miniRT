@@ -21,5 +21,6 @@ t_color	ft_hadamard_product(t_color c1, t_color c2);
 t_color	ft_scale_color(t_color color, double ratio);
 t_color	ft_add_color(t_color c1, t_color c2);
 t_color	ft_multiply_color(t_color c1, t_color c2);
+t_color	ft_map_color(t_color color);
 
 #endif
