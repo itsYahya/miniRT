@@ -18,8 +18,8 @@ static float	ft_scaler(t_tuple reflect, t_tuple view)
 	float	specular_strenght;
 	float	n;
 
-	specular_strenght = 0.5;
-	n = 128;
+	specular_strenght = 1;
+	n = 40;
 	scaler = pow(ft_cos(reflect, view), n);
 	return (specular_strenght * scaler);
 }
@@ -32,6 +32,6 @@ t_color	ft_specular(t_shader *shader, t_info *info, t_tuple view)
 
 	reflect = ft_reflect(shader, info);
 	ratio = ft_scaler(reflect, view);
-	specular = ft_merge_color(info->color, shader->light_color, ratio);
+	specular = ft_merge_color(info->color, shader->light_color, ratio * shader->light_ratio);
 	return (specular);
 }
