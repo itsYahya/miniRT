@@ -1,18 +1,13 @@
 #include "raytracer.h"
-
-static t_tuple	vectotuple(t_vect3 vec)
-{
-	return (tuple(vec.x, vec.y, vec.z, 0));
-}
-
-static double	ft_max(double f1, double f2)
+ 
+double	ft_max(double f1, double f2)
 {
 	if (f1 > f2)
 		return (f1);
 	return (f2);
 }
 
-static double	ft_cos(t_tuple v1, t_tuple v2)
+double	ft_cos(t_tuple v1, t_tuple v2)
 {
 	double	d;
 
@@ -21,43 +16,37 @@ static double	ft_cos(t_tuple v1, t_tuple v2)
 	return (d);
 }
 
-t_color	ft_merge_color(t_color main, t_color add, float ratio)
+static void	ft_shader_init(t__data *data, t_info *info, t_shader *shdata, t_info *shade_info)
 {
-	t_color	result;
-
-	result.r = main.r * (add.r / 255) * ratio;
-	result.g = main.g * (add.g / 255) * ratio;
-	result.b = main.b * (add.b / 255) * ratio;
-	return (result);
+	shdata->light_point = data->light.point;
+	shdata->light_vect = subst_tuple(shdata->light_point, info->point);
+	shdata->ambient.raw = data->ambient.color;
+	shdata->am_ratio = data->ambient.ratio;
+	shdata->light_color.raw = data->light.color;
+	shdata->light_point = data->light.point;
+	shdata->light_ratio = data->light.bRatio;
+	shdata->ray.origin = info->point;
+	shdata->ray.direction = shdata->light_vect;
+	shade_info->t = -1;
 }
 
-void	ft_shading(t__data *data, t_info *info)
+void	ft_shading(t__data *data, t_info *info, t_ray ray)
 {
-	t_tuple	light_vect;
-	t_tuple	light_point;
-	t_ray	ray;
-	t_info	shade_info;
-	t_color	difuse;
-	t_color light_color;
-	t_color	ambient;
+	t_info		shade_info;
+	t_shader	shade;
 	float	d;
 
-	light_point = vectotuple(data->light.point);
-	light_vect = subst_tuple(light_point, info->point);
-	ray.direction = light_vect;
-	ray.origin = info->point;
-	ambient.raw = data->ambient.color;
-	light_color.raw = data->light.color;
-	shade_info.t = -1;
-	d = ft_cos(normalize(light_vect), info->normal);
-	ft_look_inters(data->objects, ray, &shade_info);
-	ambient = ft_merge_color(info->color, ambient, data->ambient.ratio);
+	ft_shader_init(data, info, &shade, &shade_info);
+	d = ft_cos(normalize(shade.light_vect), info->normal);
+	ft_look_inters(data->objects, shade.ray, &shade_info);
+	shade.ambient = ft_merge_color(info->color, shade.ambient, shade.am_ratio);
 	if (shade_info.t == -1)
 	{
-		difuse = ft_merge_color(info->color, light_color, d * data->light.bRatio);
-		info->color = ft_add_color(difuse, ambient);
+		shade.difuse = ft_merge_color(info->color, shade.light_color, d * shade.light_ratio);
+		shade.specular = ft_specular(&shade, info, multiply_tuple(ray.direction, -1));
+		info->color = ft_add_color(ft_add_color(shade.difuse, shade.ambient), shade.specular);
 	}
 	else
-		info->color = ambient;
+		info->color = shade.ambient;
 }
 

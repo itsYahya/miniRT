@@ -14,7 +14,7 @@ static int	identifier(const char	*id)
 		return ('S');
 	if (ft_strcmp("cy", id) == 0)
 		return ('Y');
-	if (ft_strcmp("\n", id) == 0)
+	if (ft_strcmp("\n", id) == 0 || ft_strcmp("#", id) == 0)
 		return ('N');
 	return (-1);
 }

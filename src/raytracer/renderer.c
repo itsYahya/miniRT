@@ -22,11 +22,12 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 	t_info		info;
 
 	ray = ft_setray(vcamera, pair);
-	info.color.raw = 0;
+	info.color.raw = data->ambient.color;
+	info.color = ft_scale_color(info.color, data->ambient.ratio);
 	info.t = -1;
 	ft_look_inters(data->objects, ray, &info);
 	if (info.t != -1)
-		ft_shading(data, &info);
+		ft_shading(data, &info, ray);
 	ft_write_pixel(canvas, pair.x, pair.y, info.color);
 }
 
