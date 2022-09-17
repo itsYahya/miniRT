@@ -6,6 +6,7 @@ static void	init(t__data *data)
 {
 	errno = 0;
 	data->objects = NULL;
+	data->lights = NULL;
 }
 
 int	main(int argc, char **argv)
