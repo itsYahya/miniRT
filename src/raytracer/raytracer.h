@@ -55,7 +55,7 @@ void		print_camera(t_vcamera c);
 t_ray		ft_setray(const t_vcamera camera, t_pair pair);
 void		ft_solve_plane(t_ray ray, t_object obj, t_info *info);
 void		ft_look_inters(t_list *head, t_ray ray, t_info *info);
-void		ft_shading(t__data *data, t_info *info);
+void		ft_shading(t__data *data, t_info *info, t_tuple viewDir);
 // t_info		ft_lightning(t_light light);
 
 void		cylinder_intersect(t_object obj, t_ray ray, t_info *info);

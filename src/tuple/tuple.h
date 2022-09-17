@@ -42,4 +42,6 @@ t_tuple	clone_withy(t_tuple t, float y);
 t_tuple	clone_withz(t_tuple t, float z);
 
 float	angle_between(t_tuple v1, t_tuple v2);
+t_tuple	tuple_product(t_tuple t1, t_tuple t2);
+
 #endif

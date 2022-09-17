@@ -18,7 +18,7 @@ typedef t_tuple t_vect3;
 typedef struct s_ambLightning
 {
 	float	ratio;
-	int		color;
+	t_color	color;
 } t_ambLightning;
 
 typedef struct s_camera

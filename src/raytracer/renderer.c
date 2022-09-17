@@ -22,12 +22,14 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 {
 	t_ray		ray;
 	t_info		info;
+	t_tuple		viewDir;
 
 	init_info(&info);
 	ray = ft_setray(vcamera, pair);
 	ft_look_inters(data->objects, ray, &info);
-	if (info.t < 0)
-		ft_shading(data, &info);
+	viewDir = normalize(subst_tuple(vcamera.origin, info.point));
+	if (info.t > 0)
+		ft_shading(data, &info, viewDir);
 	ft_write_pixel(canvas, pair.x, pair.y, info.color);
 }
 

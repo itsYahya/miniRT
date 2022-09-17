@@ -1,33 +1,45 @@
 #include "raytracer.h"
 #include "algebra.h"
 
-static void	ft_results(t_params param, t_object sph_obj, t_info *info, t_ray ray)
+float	get_rs(t_fpair t)
 {
 	float	rs;
-	t_tuple	center;
 
-	rs = -1 * param.b - sqrt(param.desc);
-	rs = rs / (2 * param.a);
+	rs = -1;
+	if (t._0 > 0)
+		rs = t._0;
+	if (t._1 > 0 && (rs == -1 || t._1 < rs))
+		rs = t._1;
+	return (rs);
+}
+
+static void	ft_results(t_params param, t_object obj, t_info *info, t_ray ray)
+{
+	t_fpair t;
+	float	rs;
+
+	t._0 = (-1 * param.b - sqrt(param.desc)) / (2 * param.a);
+	t._1 = (-1 * param.b + sqrt(param.desc)) / (2 * param.a);
+	rs = get_rs(t);
 	if (rs > EPSILON && ((info->t < 0 && rs > EPSILON) || rs < info->t))
 	{
 		info->t = rs;
-		info->color = sph_obj.color;
-		info->point = add_tuple(ray.origin, multiply_tuple(ray.direction, rs));
-		center = point(sph_obj.p.x, sph_obj.p.y, sph_obj.p.z);
-		info->normal = normalize(subst_tuple(info->point, center));
+		info->color = obj.color;
+		info->point = ft_position(ray, info->t);
+		info->normal = normalize(subst_tuple(info->point, obj.position));
 	}
 }
 
-void	ft_solve_sphere(const t_ray ray, t_object sph_obj, t_info *info)
+void	ft_solve_sphere(const t_ray ray, t_object obj, t_info *info)
 {
 	t_tuple		vect;
 	t_params	param;
 
 	param.a = dot(ray.direction, ray.direction);
-	vect = subst_tuple(ray.origin, point(sph_obj.p.x, sph_obj.p.y, sph_obj.p.z));
+	vect = subst_tuple(ray.origin, point(obj.p.x, obj.p.y, obj.p.z));
 	param.b = dot(vect, ray.direction)  * 2;
-	param.c = dot(vect, vect) - pow(sph_obj.sphere.diameter, 2);
+	param.c = dot(vect, vect) - pow(obj.sphere.diameter, 2);
 	param.desc = pow(param.b, 2) - 4 * param.a * param.c;
-	if (param.desc >= 0)
-		ft_results(param, sph_obj, info, ray);
+	if (param.desc >= 0 && param.a != 0)
+		ft_results(param, obj, info, ray);
 }

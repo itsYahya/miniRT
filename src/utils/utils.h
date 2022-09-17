@@ -21,5 +21,7 @@ void	*ft_arr_free(char **arr);
 void	arr_print(char **arr);
 bool	is_int(const char *s);
 void	ft_swap(float *a, float *b);
+float	ft_min(float a, float b);
+float	ft_max(float a, float b);
 
 #endif
