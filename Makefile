@@ -1,7 +1,6 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = miniRT.exe
-INC = -I./inc -Imlx
 BUILD = build
 
 # libs
@@ -9,14 +8,13 @@ MLX_DIR = mlx
 MLX_FLAGS = -L./$(MLX_DIR) -l$(MLX_DIR) -framework OpenGL -framework AppKit
 MLX_HEADER = ${wildcard mlx/*.h}
 
-_HFILES = ${wildcard inc/*.h}
+HEADERS = ${wildcard inc/*.h} ${wildcard src/*.h} ${wildcard src/**/*.h}
+INC =  -Imlx $(addprefix -I, ${dir ${HEADERS}})
 _CFILES = ${wildcard src/*.c} ${wildcard src/**/*.c}
 CFILES = ${_CFILES:src/%.c=%}
-HFILES = ${_HFILES:inc/%.h=%}
 
 OBJS := $(addprefix $(BUILD)/, $(CFILES:=.o))
 
-HEADERS := $(addprefix inc/, $(HFILES:=.h)) $(MLX_HEADER)
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADERS)

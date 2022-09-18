@@ -9,7 +9,7 @@ void	print_comps(t_comps comps)
 	printf("inside: %d\n", comps.inside);
 }
 
-t_comps			hitpoint_info(t_intersection intersection, t_ray r)
+t_comps			hitpoint_info(t_inter intersection, t_ray r)
 {
 	t_comps comps;
 
@@ -35,7 +35,7 @@ t_color	shade_hit(t_world w, t_comps comps)
 t_color color_at(t_world w, t_ray r)
 {
 	t_xs			xs;
-	t_intersection	intersection;
+	t_inter	intersection;
 	t_comps			comps;
 
 	xs = intersect_world(w, r);

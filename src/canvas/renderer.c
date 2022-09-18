@@ -6,64 +6,11 @@
 #include "timer.h"
 #include <pthread.h>
 #include "pair.h"
-#include "transform.h"
+#include "matrix.h"
 #include "raytracer.h"
 
 # define WIDTH 480
 # define HEIGHT 480
-
-
-static void ft_draw_point(t_canvas canvas, float x, float y, uint32_t color)
-{
-	int	i;
-
-	i = 0;
-	ft_write_pixel(canvas, x, y, color);
-	while (++i < 12)
-	{
-		ft_write_pixel(canvas, x + i, y, color);
-		ft_write_pixel(canvas, x, y + i, color);
-		ft_write_pixel(canvas, x, y - i, color);
-		ft_write_pixel(canvas, x - i, y, color);
-
-		ft_write_pixel(canvas, x + i, y + i, color);
-		ft_write_pixel(canvas, x - i, y + i, color);
-		ft_write_pixel(canvas, x - i, y - i, color);
-		ft_write_pixel(canvas, x + i, y - i, color);
-	}
-}
-
-t_canvas	ft_clock_canvas()
-{
-	t_canvas	canvas;
-	float		clock_radius;
-	int			i;
-
-	canvas = ft_canvas(WIDTH, HEIGHT);
-	clock_radius = (1.0f / 2.0f) * 600.0f;
-	t_tuple	pts[12];
-
-	i = -1;
-	while (++i < 12)
-	{
-		pts[i] = matrix_tuple_multiply(
-			rotate_y(i * M_PI / 6),
-			point(0, 0, 1)
-		);
-	}
-	// draw origin point
-	ft_draw_point(canvas, WIDTH / 2, HEIGHT / 2, 0xffff00ff);
-
-	i = -1;
-	while (++i < 12)
-	{
-		// map points values from -1 -> 1 to 0 -> (WIDTH, HEIGHT)
-		pts[i].x = clock_radius * ((pts[i].x / 2.0f) + 0.5) + (WIDTH - clock_radius) / 2;
-		pts[i].z = clock_radius * ((pts[i].z / 2.0f) + 0.5) + (HEIGHT - clock_radius) / 2;
-		ft_draw_point(canvas, pts[i].x, pts[i].z, 0xffffffff);
-	}
-	return (canvas);
-}
 
 t_canvas	ft_simple_sphere()
 {
@@ -92,8 +39,8 @@ t_canvas	ft_simple_sphere()
 			world_x = -half + x * pixel_size;
 			position = point(world_x, world_y, wall_z);
 			t_ray ray = ft_ray(ray_origin, normalize(subst_tuple(position, ray_origin)));
-			t_xs xs = ft_intersect(sphere, ray);
-			t_intersection hit = ft_hit(xs);
+			t_xs xs = intersect(sphere, ray);
+			t_inter hit = ft_hit(xs);
 			if (hit.t >= 0) {
 				t_tuple	point = ft_position(ray, hit.t);
 				t_tuple normalv = normal_at(hit.object, point);

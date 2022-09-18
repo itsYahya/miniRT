@@ -1,20 +1,6 @@
 #include "raytracer.h"
 #include <stdio.h>
 
-t_tuple			normal_at(t_object object, t_tuple p)
-{
-	t_tuple normal;
-
-	p = matrix_tuple_multiply(object.transform_matrix, p);
-	normal = subst_tuple(p, point(0, 0, 0));
-	normal = matrix_tuple_multiply(
-					ft_transpose(inverse(object.transform_matrix)),
-					normal
-					);
-	normal.w = 0;
-	return (normalize(normal));
-}
-
 t_tuple			reflect(t_tuple v, t_tuple normal)
 {
 	return subst_tuple(v, multiply_tuple(normal, dot(v, normal) * 2));
@@ -25,19 +11,21 @@ t_light	point_light(t_tuple position, t_color intensity)
 	return (t_light){position, intensity};
 }
 
+t_tuple	ft_correct_color(t_tuple color)
+{
+	if (color.r > 1)
+		color.r = 1;
+	if (color.g > 1)
+		color.g = 1;
+	if (color.b > 1)
+		color.b = 1;
+	color.a = 0;
+	return (color);
+}
+
 t_tuple	ft_lighting(t_material material, t_light light, t_tuple position,
 			t_tuple eyev, t_tuple normalv)
 {
-	// TODO: fix
-	// t_world w = default_world();
-	// t_ray	r = ft_ray(point(0, 0, -5), vector(0, 0, 1));
-	// t_object sp = *(t_object *)w.objects->content;
-	// t_intersection inter = ft_intersection(4, sp);
-	// t_comps comps = hitpoint_info(inter, r);
-	// t_color c = shade_hit(w, comps);
-	// print_color(c);
-	// c = color(0.38066, 0.47583, 0.2855)
-
 	t_tuple	diffuse = ft_color(0, 0, 0);
 	t_tuple specular = ft_color(0, 0, 0);
 	t_tuple lightv = normalize(subst_tuple(light.position, position));
@@ -57,5 +45,6 @@ t_tuple	ft_lighting(t_material material, t_light light, t_tuple position,
 		float factor = pow(reflect_dot_eye, material.shininess);
 		specular = multiply_tuple(light.intensity, material.specular * factor);
 	}
-	return (add_tuple(ambient, add_tuple(diffuse, specular)));
+	t_tuple result = (add_tuple(ambient, add_tuple(diffuse, specular)));
+	return (ft_correct_color(result));
 }

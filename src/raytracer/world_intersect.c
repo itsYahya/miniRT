@@ -8,10 +8,10 @@ static t_xs	inters_list2arr(t_list *inters)
 	xs = (t_xs){0, NULL};
 	lst_size = ft_lstsize(inters);
 	if (lst_size > 0)
-		xs.inters = malloc(sizeof(t_intersection) * ft_lstsize(inters));
+		xs.inters = malloc(sizeof(t_inter) * ft_lstsize(inters));
 	while (inters)
 	{
-		xs.inters[xs.count++] = *(t_intersection *)inters->content;
+		xs.inters[xs.count++] = *(t_inter *)inters->content;
 		inters = inters->next;
 	}
 	if (xs.count == -1)
@@ -19,9 +19,9 @@ static t_xs	inters_list2arr(t_list *inters)
 	return (xs);
 }
 
-static void	swap(t_intersection *i1, t_intersection *i2)
+static void	swap(t_inter *i1, t_inter *i2)
 {
-	t_intersection	temp;
+	t_inter	temp;
 
 	if (!i1 || !i2)
 		return;
@@ -30,7 +30,7 @@ static void	swap(t_intersection *i1, t_intersection *i2)
 	*i2 = temp;
 }
 
-static void	sort_intersections(t_xs xs)
+static void	sort_inters(t_xs xs)
 {
 	int				i;
 	int				j;
@@ -57,12 +57,12 @@ static void	sort_intersections(t_xs xs)
 static void	push_intersections(t_list **lst, t_xs xs)
 {
 	int				i;
-	t_intersection	*inter;
+	t_inter	*inter;
 
 	i = -1;
 	while (++i < xs.count)
 	{
-		inter = malloc(sizeof(t_intersection));
+		inter = malloc(sizeof(t_inter));
 		*inter = xs.inters[i];
 		ft_lstadd_back(lst, ft_lstnew(inter));
 	}
@@ -82,14 +82,14 @@ t_xs	intersect_world(t_world w, t_ray ray)
 		object = ((t_object *)objs->content);
 		if (! object)
 			return (printf("null object [intersect world]"), (t_xs){0, NULL});
-		xs = ft_intersect(*object, ray);
+		xs = intersect(*object, ray);
 		if (xs.count > 0)
 			push_intersections(&lst, xs);
-		destroy_intersections(&xs);
+		destroy_inters(&xs);
 		objs = objs->next;
 	}
 	xs = inters_list2arr(lst);
-	sort_intersections(xs);
+	sort_inters(xs);
 	ft_lstclear(&lst, free);
 	return (xs);
 }

@@ -1,4 +1,4 @@
-#include "mutils.h"
+#include "utils.h"
 #include <stdlib.h>
 
 static bool	is_digit(char c)

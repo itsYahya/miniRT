@@ -1,4 +1,4 @@
-#include "mutils.h"
+#include "utils.h"
 
 void	*ft_arr_free(char **arr)
 {

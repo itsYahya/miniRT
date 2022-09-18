@@ -1,9 +1,9 @@
 #include "get_next_line.h"
-#include "mutils.h"
+#include "utils.h"
 #include <fcntl.h>
 #include "matrix.h"
 #include <errno.h>
-#include "transform.h"
+#include "matrix.h"
 #include "canvas.h"
 #include "raytracer.h"
 #include "algebra.h"

@@ -1,4 +1,4 @@
-#include "mutils.h"
+#include "utils.h"
 
 void	chomp(char *s, char c)
 {

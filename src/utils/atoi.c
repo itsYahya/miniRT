@@ -1,4 +1,4 @@
-#include "mutils.h"
+#include "utils.h"
 
 static int	ft_isdigit(int ch)
 {
