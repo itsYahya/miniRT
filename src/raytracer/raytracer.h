@@ -11,6 +11,8 @@
 # include "object.h"
 # include <stdarg.h>
 # include "params.h"
+# include "utils.h"
+# include <stdio.h>
 
 typedef struct s_ray t_ray;
 struct s_ray
@@ -85,6 +87,10 @@ t_tuple			ft_lighting(t_material material, t_light light, t_tuple position, t_tu
 // material
 t_material		ft_material();
 bool			material_equal(t_material m1, t_material m2);
+void			setMatAmbient(t_material *mat, float ambient);
+void			setMatDiffuse(t_material *mat, float diffuse);
+void			setMatSpecular(t_material *mat, float specular);
+void			setMatShininess(t_material *mat, float shininess);
 
 // world
 t_world			ft_world();

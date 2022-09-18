@@ -27,7 +27,7 @@ t_canvas	ft_simple_sphere()
 	t_canvas canvas = ft_canvas(WIDTH, HEIGHT);
 	t_object sphere = ft_sphere();
 	sphere.material = ft_material();
-	sphere.material.color = ft_color(0.5, 0.0, 1);
+	sphere.material.color = ft_color(1, 0.0, 1);
 	t_light	light = point_light(point(-10, 10, -10), ft_color(1, 1, 1));
 	y = -1;
 	while (++y < canvas_pixels)

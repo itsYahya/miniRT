@@ -1,5 +1,4 @@
 #include "raytracer.h"
-#include <stdio.h>
 
 t_tuple	reflect(t_tuple incoming, t_tuple normal)
 {
@@ -23,28 +22,36 @@ t_tuple	ft_correct_color(t_tuple color)
 	return (color);
 }
 
-t_tuple	ft_lighting(t_material material, t_light light, t_tuple position,
-			t_tuple eyev, t_tuple normalv)
+t_tuple	ft_lighting(t_material material, t_light light, t_tuple position, t_tuple eyev, t_tuple normalv)
 {
-	t_tuple	diffuse = ft_color(0, 0, 0);
-	t_tuple specular = ft_color(0, 0, 0);
-	t_tuple lightv = normalize(subst_tuple(light.position, position));
-	t_color	effictive_color = ft_hadamard_product(material.color, light.intensity);
-	t_tuple	ambient = multiply_tuple(effictive_color, material.ambient);
-	float light_dot_normal = dot(lightv, normalv);
+	t_tuple	effective_color;
+	t_tuple	ambient;
+	t_tuple diffuse;
+	t_tuple	specular;
 
-	if (light_dot_normal < 0)
-		return (add_tuple(ambient, add_tuple(diffuse, specular)));
-	diffuse = multiply_tuple(effictive_color, material.diffuse * light_dot_normal);
-	t_tuple reflectv = reflect(multiply_tuple(lightv, -1), normalv);
-	float reflect_dot_eye = dot(reflectv, eyev);
-	if (reflect_dot_eye <= 0)
+	effective_color = tuple_product(material.color, light.intensity);
+	t_tuple	lighv = normalize(subst_tuple(light.position, position));
+
+	// ambient
+	ambient = multiply_tuple(effective_color, material.ambient);
+
+	float lDotN = dot(lighv, normalv);
+	if (lDotN < 0) {
 		specular = ft_color(0, 0, 0);
-	else
-	{
-		float factor = pow(reflect_dot_eye, material.shininess);
-		specular = multiply_tuple(light.intensity, material.specular * factor);
+		diffuse = ft_color(0, 0, 0);
+	} else {
+		// diffuse
+		diffuse = multiply_tuple(effective_color, material.diffuse * lDotN);
+
+		t_tuple	reflectv = reflect(negate_tuple(lighv), normalv);
+		float rDotE = dot(reflectv, eyev);
+		if (rDotE < 0) {
+			specular = ft_color(0, 0, 0);
+		} else {
+			// specular
+			float factor = pow(rDotE, material.shininess);
+			specular = multiply_tuple(light.intensity, material.specular * factor);
+		}
 	}
-	t_tuple result = (add_tuple(ambient, add_tuple(diffuse, specular)));
-	return (ft_correct_color(result));
+	return (add_tuple(ambient, add_tuple(diffuse, specular)));
 }
