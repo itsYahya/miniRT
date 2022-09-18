@@ -42,8 +42,8 @@ struct s_light
     t_color	intensity;
 };
 
-typedef struct s_world t_world;
-struct s_world
+typedef struct s_scene t_scene;
+struct s_scene
 {
 	t_light		light;
 	t_list		*objects;
@@ -93,14 +93,14 @@ void			setMatSpecular(t_material *mat, float specular);
 void			setMatShininess(t_material *mat, float shininess);
 
 // world
-t_world			ft_world();
-t_world			default_world();
-void			destroy_world(t_world w);
-t_xs			intersect_world(t_world w, t_ray ray);
+t_scene			ft_scene();
+t_scene			default_scene();
+void			destroy_scene(t_scene w);
+t_xs			intersect_scene(t_scene w, t_ray ray);
 
 // color
-t_color			color_at(t_world w, t_ray r);
-t_color			shade_hit(t_world w, t_comps comps);
+t_color			color_at(t_scene w, t_ray r);
+t_color			shade_hit(t_scene w, t_comps comps);
 t_comps			hitpoint_info(t_inter intersection, t_ray r);
 
 #endif

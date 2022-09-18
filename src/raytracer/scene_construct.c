@@ -1,13 +1,13 @@
 #include "raytracer.h"
 
-t_world			ft_world()
+t_scene			ft_scene()
 {
-	return (t_world){
+	return (t_scene){
 		.objects = NULL
 	};
 }
 
-t_world			default_world()
+t_scene			default_scene()
 {
 	t_list		*objects;
 	t_object	*obj;
@@ -20,13 +20,13 @@ t_world			default_world()
 	*obj = ft_sphere();
 	obj->transform = scale(0.5, 0.5, 0.5);
 	ft_lstadd_back(&objects, ft_lstnew(obj));
-	return (t_world){
+	return (t_scene){
 		.light = point_light(point(-10, 10, -10), ft_color(1, 1, 1)),
 		.objects = objects
 	};
 }
 
-void			destroy_world(t_world w)
+void			destroy_scene(t_scene w)
 {
 	ft_lstclear(&w.objects, free);
 }

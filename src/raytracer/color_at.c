@@ -27,18 +27,18 @@ t_comps			hitpoint_info(t_inter intersection, t_ray r)
 	return (comps);
 }
 
-t_color	shade_hit(t_world w, t_comps comps)
+t_color	shade_hit(t_scene w, t_comps comps)
 {
 	return ft_lighting(comps.object.material, w.light, comps.point, comps.eyev, comps.normalv);
 }
 
-t_color color_at(t_world w, t_ray r)
+t_color color_at(t_scene w, t_ray r)
 {
 	t_xs			xs;
 	t_inter	intersection;
 	t_comps			comps;
 
-	xs = intersect_world(w, r);
+	xs = intersect_scene(w, r);
 	intersection = ft_hit(xs);
 	if (intersection.t < 0)
 		return ft_color(0, 0, 0);
