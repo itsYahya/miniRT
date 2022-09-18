@@ -1,9 +1,9 @@
 #include "raytracer.h"
 #include <stdio.h>
 
-t_tuple			reflect(t_tuple v, t_tuple normal)
+t_tuple	reflect(t_tuple incoming, t_tuple normal)
 {
-	return subst_tuple(v, multiply_tuple(normal, dot(v, normal) * 2));
+	return subst_tuple(incoming, multiply_tuple(normal, dot(incoming, normal) * 2));
 }
 
 t_light	point_light(t_tuple position, t_color intensity)

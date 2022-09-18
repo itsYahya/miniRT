@@ -7,6 +7,7 @@
 #include "canvas.h"
 #include "raytracer.h"
 #include "algebra.h"
+#include "tests.h"
 
 int	main(int argc, char **argv)
 {
@@ -15,5 +16,4 @@ int	main(int argc, char **argv)
 	int		i;
 	(void)	i;
 
-	renderer();
 }

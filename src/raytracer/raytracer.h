@@ -10,6 +10,7 @@
 # include "utils.h"
 # include "object.h"
 # include <stdarg.h>
+# include "params.h"
 
 typedef struct s_ray t_ray;
 struct s_ray
@@ -57,13 +58,13 @@ struct s_comps
 	bool		inside;
 };
 
-
 // globals
 t_inter		ft_inter(float t, t_object object);
 t_xs		ft_inters(unsigned int count, ...);
 t_xs		intersect(t_object object, t_ray ray);
 t_tuple		normal_at(t_object object, t_tuple p);
 t_inter		ft_hit(t_xs xs);
+void		set_transform(t_object *obj, t_matrix transform);
 void		destroy_inters(t_xs *xs);
 
 // ray

@@ -37,6 +37,7 @@ struct s_object
 {
 	t_matrix	transform;
 	t_matrix	inverted_transform;
+	t_matrix	transpose_matrix;
 	t_material	material;
 	t_type		type;
 	union
