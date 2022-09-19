@@ -3,7 +3,7 @@
 bool	is_shadowed(t_scene s, t_light light, t_tuple point)
 {
 	t_tuple	p2l;
-	float	p2l_distance;
+	double	p2l_distance;
 	t_xs 	xs;
 	t_inter	i;
 

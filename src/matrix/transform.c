@@ -1,6 +1,6 @@
 #include "matrix.h"
 
-t_matrix	translate(float x, float y, float z)
+t_matrix	translate(double x, double y, double z)
 {
 	return (t_matrix){{
 		1, 0, 0, x,
@@ -10,7 +10,7 @@ t_matrix	translate(float x, float y, float z)
 	}};
 }
 
-t_matrix	scale(float x, float y, float z)
+t_matrix	scale(double x, double y, double z)
 {
 	return (t_matrix){{
 		x, 0, 0, 0,
@@ -20,7 +20,7 @@ t_matrix	scale(float x, float y, float z)
 	}};
 }
 
-t_matrix	rotate_x(float radians)
+t_matrix	rotate_x(double radians)
 {
 	return (t_matrix){{
 		1, 0,				0, 				0,
@@ -30,7 +30,7 @@ t_matrix	rotate_x(float radians)
 	}};
 }
 
-t_matrix	rotate_y(float radians)
+t_matrix	rotate_y(double radians)
 {
 	return (t_matrix){{
 		cos(radians),	0,	sin(radians),	0,
@@ -40,7 +40,7 @@ t_matrix	rotate_y(float radians)
 	}};
 }
 
-t_matrix	rotate_z(float radians)
+t_matrix	rotate_z(double radians)
 {
 	return (t_matrix){{
 		cos(radians),	-sin(radians),	0,	0,

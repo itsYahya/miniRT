@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "pair.h"
 
-static float		determinant(t_matrix m, uint8_t size);
+static double		determinant(t_matrix m, uint8_t size);
 
 static t_matrix submatrix(t_matrix m, uint8_t size, uint8_t row, uint16_t col)
 {
@@ -29,9 +29,9 @@ static t_matrix submatrix(t_matrix m, uint8_t size, uint8_t row, uint16_t col)
 	return (result);
 }
 
-static float	cofactor(t_matrix m, uint8_t size, uint8_t row, uint8_t col)
+static double	cofactor(t_matrix m, uint8_t size, uint8_t row, uint8_t col)
 {
-	float	minor;
+	double	minor;
 
 	m = submatrix(m, size, row, col);
 	minor = determinant(m, size - 1);
@@ -40,9 +40,9 @@ static float	cofactor(t_matrix m, uint8_t size, uint8_t row, uint8_t col)
 	return -minor;
 }
 
-static float		determinant(t_matrix m, uint8_t size)
+static double		determinant(t_matrix m, uint8_t size)
 {
-	float	det;
+	double	det;
 	int		col;
 
 	if (size == 2)
@@ -56,7 +56,7 @@ static float		determinant(t_matrix m, uint8_t size)
 
 t_matrix	inverse(t_matrix mt)
 {
-	float		det;
+	double		det;
 	int			i;
 	int			j;
 	t_matrix	result;

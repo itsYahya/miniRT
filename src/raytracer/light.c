@@ -5,7 +5,7 @@ t_tuple	reflect(t_tuple incoming, t_tuple normal)
 	return subst_tuple(incoming, multiply_tuple(normal, dot(incoming, normal) * 2));
 }
 
-t_light	point_light(t_tuple position, t_color color, float ratio)
+t_light	point_light(t_tuple position, t_color color, double ratio)
 {
 	return (t_light){position, color, ratio};
 }
@@ -36,7 +36,7 @@ t_tuple	ft_lighting(t_material material, t_light light, t_tuple position, t_tupl
 	ambient = multiply_tuple(effective_color, material.ambient);
 
 	// diffuse + specular
-	float lDotN = dot(lighv, normalv);
+	double lDotN = dot(lighv, normalv);
 	if (in_shadow || lDotN < 0) {
 		specular = ft_color(0, 0, 0);
 		diffuse = ft_color(0, 0, 0);
@@ -45,11 +45,11 @@ t_tuple	ft_lighting(t_material material, t_light light, t_tuple position, t_tupl
 		diffuse = multiply_tuple(effective_color, material.diffuse * lDotN);
 
 		t_tuple	reflectv = reflect(negate_tuple(lighv), normalv);
-		float rDotE = dot(reflectv, eyev);
+		double rDotE = dot(reflectv, eyev);
 		if (rDotE < 0) {
 			specular = ft_color(0, 0, 0);
 		} else {
-			float factor = pow(rDotE, material.shininess);
+			double factor = pow(rDotE, material.shininess);
 			specular = multiply_tuple(light.color, material.specular * factor);
 		}
 	}

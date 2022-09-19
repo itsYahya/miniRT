@@ -33,7 +33,7 @@ t_tuple	negate_tuple(t_tuple v)
 	);
 }
 
-t_tuple	multiply_tuple(t_tuple v, float scalar)
+t_tuple	multiply_tuple(t_tuple v, double scalar)
 {
 	return tuple(
 		v.x * scalar,
@@ -43,7 +43,7 @@ t_tuple	multiply_tuple(t_tuple v, float scalar)
 	);
 }
 
-t_tuple	divide_tuple(t_tuple v, float scalar)
+t_tuple	divide_tuple(t_tuple v, double scalar)
 {
 	return tuple(
 		v.x / scalar,

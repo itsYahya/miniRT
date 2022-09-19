@@ -5,7 +5,7 @@
  * 1  means  the  vectors  are identical
  * -1 means they point in opposite directions
  **/
-float	dot(t_tuple v1, t_tuple v2)
+double	dot(t_tuple v1, t_tuple v2)
 {
 	return (
 		v1.x * v2.x

@@ -2,27 +2,27 @@
 
 static void	test_constructing_camera()
 {
-	float hsize = 160;
-	float vsize = 120;
-	float field_of_view = M_PI_2;
+	double hsize = 160;
+	double vsize = 120;
+	double field_of_view = M_PI_2;
 
 	t_camera c = ft_camera(hsize, vsize, field_of_view);
 	assert(c.hsize == hsize);
 	assert(c.vsize == vsize);
-	assert(c.field_of_view == (float)M_PI_2);
+	assert(c.field_of_view == (double)M_PI_2);
 	assert(matrix_equal(c.transform, IDENTITY_MATRIX));
 }
 
 static void	test_pixel_size_for_horizontal_canvas()
 {
 	t_camera c = ft_camera(200, 125, M_PI_2);
-	assert(c.pixel_size == 0.01f);
+	assert(c.pixel_size == 0.01);
 }
 
 static void	test_pixel_size_for_vertical_canvas()
 {
 	t_camera c = ft_camera(125, 200, M_PI_2);
-	assert(c.pixel_size == 0.01f);
+	assert(c.pixel_size == 0.01);
 }
 
 static void	test_ray_through_center_of_canvas()

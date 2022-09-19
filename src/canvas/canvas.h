@@ -19,7 +19,7 @@ struct s_canvas
 	uint32_t	*img_data;
 };
 
-t_canvas	ft_canvas(float width, float height);
+t_canvas	ft_canvas(double width, double height);
 void		ft_destroy_canvas(t_canvas canvas);
 void		ft_write_pixel(t_canvas c, int x, int y, uint32_t color);
 uint32_t*	ft_pixel_at(t_canvas c, int x, int y);

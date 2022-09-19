@@ -1,6 +1,6 @@
 #include "color.h"
 
-t_color		ft_color(float r, float g, float b)
+t_color		ft_color(double r, double g, double b)
 {
 	if (r < 0 || r > 1 || g < 0 || g > 1 || b < 0 || b > 1)
 		printf("Color values must be between 0 and 1\n");
@@ -17,12 +17,12 @@ bool 		color_equal(t_color c1, t_color c2)
 	);
 }
 
-void	check_color(float *c)
+void	check_color(double *c)
 {
-	if (*c > 1.0f)
-		*c = 1.0f;
-	else if (*c < 0.0f)
-		*c = 0.0f;
+	if (*c > 1.0)
+		*c = 1.0;
+	else if (*c < 0.0)
+		*c = 0.0;
 }
 
 uint32_t	to_raw_color(t_color c)
@@ -46,12 +46,12 @@ uint32_t	to_raw_color(t_color c)
 
 t_color	ft_hexcolor(uint32_t color)
 {
-	float	red;
-	float	green;
-	float	blue;
+	double	red;
+	double	green;
+	double	blue;
 
-	red = (float)((color & 0x00ff0000) >> 16) / 255;
-	green = (float)((color & 0x0000ff00) >> 8) / 255;
-	blue = (float)(color & 0x000000ff) / 255;
+	red = (double)((color & 0x00ff0000) >> 16) / 255;
+	green = (double)((color & 0x0000ff00) >> 8) / 255;
+	blue = (double)(color & 0x000000ff) / 255;
 	return (t_color){{red, green, blue, 1}};
 }

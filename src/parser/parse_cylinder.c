@@ -2,19 +2,19 @@
 // #include "algebra.h"
 // #include "color.h"
 
-// float	rad2deg(float x)
+// double	rad2deg(double x)
 // {
 // 	return (x * 180) / acos(-1);
 // }
 
-// static float	get_xangle(t_tuple orientationv)
+// static double	get_xangle(t_tuple orientationv)
 // {
-// 	float	angle;
+// 	double	angle;
 // 	t_tuple	projection_vect;
 
-// 	projection_vect = clone_withx(orientationv, 0.0f);
-// 	if (! equal(projection_vect.z, 0.0f)) {
-// 		projection_vect = clone_withx(orientationv, 0.0f);
+// 	projection_vect = clone_withx(orientationv, 0.0);
+// 	if (! equal(projection_vect.z, 0.0)) {
+// 		projection_vect = clone_withx(orientationv, 0.0);
 // 		angle = angle_between(vector(0, 0, 1), projection_vect);
 // 		if (projection_vect.y > 0)
 // 			angle *= -1;
@@ -29,12 +29,12 @@
 // 	return (angle);
 // }
 
-// static float	get_yangle(t_tuple orientationv)
+// static double	get_yangle(t_tuple orientationv)
 // {
-// 	float	angle;
+// 	double	angle;
 // 	t_tuple	projection_vect;
 
-// 	projection_vect = clone_withy(orientationv, 0.0f);
+// 	projection_vect = clone_withy(orientationv, 0.0);
 // 	angle = angle_between(vector(0, 0, 1), projection_vect);
 // 	if (projection_vect.x < 0)
 // 		angle *= -1;
@@ -43,8 +43,8 @@
 
 // static void	set_cy_transform(t_object *object)
 // {
-// 	float		x_angle;
-// 	float		y_angle;
+// 	double		x_angle;
+// 	double		y_angle;
 
 // 	x_angle = get_xangle(object->cy.orientation);
 // 	y_angle = get_yangle(object->cy.orientation);
@@ -55,7 +55,7 @@
 // 		translate(object->position.x, object->position.y, object->position.z),
 // 		rotate_y(y_angle),
 // 		rotate_x(-x_angle),
-// 		scale(object->cy.diameter, object->cy.diameter, object->cy.height / 2.0f)
+// 		scale(object->cy.diameter, object->cy.diameter, object->cy.height / 2.0)
 // 	);
 // }
 

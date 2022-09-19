@@ -35,7 +35,7 @@ t_object	parse_sphere(char **tokens);
 int			validate_path(char *path);
 t_tuple		get_orientation_vect3(const char *arg);
 t_tuple		get_position_point(const char *arg);
-float		get_ratio(const char *token);
+double		get_ratio(const char *token);
 t_color		get_color(char *token);
 
 // error handling

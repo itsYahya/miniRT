@@ -3,7 +3,7 @@
 t_light		parse_light(char **tokens)
 {
 	t_tuple		position;
-	float		ratio;
+	double		ratio;
 	t_color		color;
 
 	if (ft_arr_size(tokens) != 4)

@@ -18,17 +18,17 @@ struct s_light
 {
     t_tuple	position;
     t_color	color;
-	float	ratio;
+	double	ratio;
 };
 
 typedef struct s_material t_material;
 struct s_material
 {
 	t_color	color;
-	float	ambient;
-	float	diffuse;
-	float	specular;
-	float	shininess;
+	double	ambient;
+	double	diffuse;
+	double	specular;
+	double	shininess;
 };
 
 // typedef struct s_sphere t_sphere;
@@ -61,13 +61,13 @@ struct s_object
 typedef struct s_camera t_camera;
 struct s_camera
 {
-	float		hsize;
-	float		vsize;
-	float		field_of_view;
+	double		hsize;
+	double		vsize;
+	double		field_of_view;
 	t_matrix	transform;
-	float		pixel_size;
-	float		half_width;
-	float		half_height;
+	double		pixel_size;
+	double		half_width;
+	double		half_height;
 };
 
 typedef struct s_scene t_scene;
@@ -80,9 +80,9 @@ struct s_scene
 t_scene		empty_scene();
 void		add_object(t_scene *scene, t_object obj);
 void		add_light(t_scene *scene, t_light light);
-t_light		point_light(t_tuple position, t_color color, float ratio);
-t_object	new_sphere(t_tuple coords, float radius, t_color color);
-t_camera	ft_camera(float hsize, float vsize, float fv);
+t_light		point_light(t_tuple position, t_color color, double ratio);
+t_object	new_sphere(t_tuple coords, double radius, t_color color);
+t_camera	ft_camera(double hsize, double vsize, double fv);
 t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up);
 
 #endif

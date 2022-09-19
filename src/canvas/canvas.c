@@ -10,7 +10,7 @@ uint32_t*	ft_pixel_at(t_canvas c, int x, int y)
 	return (c.img_data + c.width * y + x);
 }
 
-t_canvas	ft_canvas(float width, float height)
+t_canvas	ft_canvas(double width, double height)
 {
 	t_canvas	canvas;
 	int			temp;

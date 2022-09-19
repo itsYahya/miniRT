@@ -20,11 +20,11 @@ t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up)
 	return matrix_multiply(orientation_transform, translate(-from.x, -from.y, -from.z));
 }
 
-t_camera	ft_camera(float hsize, float vsize, float fv)
+t_camera	ft_camera(double hsize, double vsize, double fv)
 {
 	t_camera	c;
-	float		aspect_ratio;
-	float		half_view;
+	double		aspect_ratio;
+	double		half_view;
 
 	half_view = tan(fv / 2);
 	aspect_ratio = hsize / vsize;
@@ -44,14 +44,14 @@ t_camera	ft_camera(float hsize, float vsize, float fv)
 	return (c);
 }
 
-t_ray		ray_for_pixel(t_camera c, float x, float y)
+t_ray		ray_for_pixel(t_camera c, double x, double y)
 {
 	// offset from edge to the center of the canvas
-	float	xoffset = (x + 0.5) * c.pixel_size;
-	float	yoffset = (y + 0.5) * c.pixel_size;
+	double	xoffset = (x + 0.5) * c.pixel_size;
+	double	yoffset = (y + 0.5) * c.pixel_size;
 
-	float	world_x = c.half_width - xoffset;
-	float	world_y = c.half_height - yoffset;
+	double	world_x = c.half_width - xoffset;
+	double	world_y = c.half_height - yoffset;
 
 	t_tuple pixel = matrix_tuple_multiply(inverse(c.transform), point(world_x, world_y, -1));
 	t_tuple origin = matrix_tuple_multiply(inverse(c.transform), point(0, 0, 0));

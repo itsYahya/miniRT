@@ -24,8 +24,8 @@ static void	test_default_scene()
 	obj = *get_object_at(scene.objects, 0);
 	assert(matrix_equal(obj.transform, IDENTITY_MATRIX));
 	assert(color_equal(obj.material.color, ft_color(0.8, 1.0, 0.6)));
-	assert(obj.material.diffuse == 0.7f);
-	assert(obj.material.specular == 0.2f);
+	assert(obj.material.diffuse == 0.7);
+	assert(obj.material.specular == 0.2);
 
 	// obj2
 	obj = *get_object_at(scene.objects, 1);
@@ -41,10 +41,10 @@ static void	test_intersect_scene_with_ray()
 	t_ray	r = ft_ray(point(0, 0, -5), vector(0, 0, 1));
 	t_xs xs = intersect_scene(s, r);
 	assert(xs.count == 4);
-	assert(xs.inters[0].t == 4.0f);
-	assert(xs.inters[1].t == 4.5f);
-	assert(xs.inters[2].t == 5.5f);
-	assert(xs.inters[3].t == 6.0f);
+	assert(xs.inters[0].t == 4.0);
+	assert(xs.inters[1].t == 4.5);
+	assert(xs.inters[2].t == 5.5);
+	assert(xs.inters[3].t == 6.0);
 	destroy_inters(&xs);
 }
 

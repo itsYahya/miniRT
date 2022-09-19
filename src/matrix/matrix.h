@@ -19,27 +19,27 @@ union u_matrix
 {
 	struct
 	{
-		float	r0_c0;
-		float	r0_c1;
-		float	r0_c2;
-		float	r0_c3;
+		double	r0_c0;
+		double	r0_c1;
+		double	r0_c2;
+		double	r0_c3;
 
-		float	r1_c0;
-		float	r1_c1;
-		float	r1_c2;
-		float	r1_c3;
+		double	r1_c0;
+		double	r1_c1;
+		double	r1_c2;
+		double	r1_c3;
 
-		float	r2_c0;
-		float	r2_c1;
-		float	r2_c2;
-		float	r2_c3;
+		double	r2_c0;
+		double	r2_c1;
+		double	r2_c2;
+		double	r2_c3;
 
-		float	r3_c0;
-		float	r3_c1;
-		float	r3_c2;
-		float	r3_c3;
+		double	r3_c0;
+		double	r3_c1;
+		double	r3_c2;
+		double	r3_c3;
 	};
-	float raw[4][4];
+	double raw[4][4];
 };
 
 t_tuple		get_col(t_matrix t, uint8_t col);
@@ -51,10 +51,10 @@ t_tuple		matrix_tuple_multiply(t_matrix mt, t_tuple t);
 t_matrix	ft_transpose(t_matrix mt);
 t_matrix	inverse(t_matrix mtx);
 
-t_matrix	translate(float x, float y, float z);
-t_matrix	scale(float x, float y, float z);
-t_matrix	rotate_x(float radians);
-t_matrix	rotate_y(float radians);
-t_matrix	rotate_z(float radians);
+t_matrix	translate(double x, double y, double z);
+t_matrix	scale(double x, double y, double z);
+t_matrix	rotate_x(double radians);
+t_matrix	rotate_y(double radians);
+t_matrix	rotate_z(double radians);
 t_matrix	transforms(int count, ...);
 #endif

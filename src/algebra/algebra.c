@@ -1,6 +1,6 @@
 #include "algebra.h"
 
-bool	equal(float a, float b)
+bool	equal(double a, double b)
 {
 	return fabs(a - b) < EPSILON;
 }

@@ -5,40 +5,40 @@ t_material		ft_material()
 	t_material	m;
 
 	m.color = ft_color(1, 1, 1);
-	m.ambient = 0.1f;
-	m.diffuse = 0.9f;
-	m.specular = 0.9f;
-	m.shininess = 200.0f;
+	m.ambient = 0.1;
+	m.diffuse = 0.9;
+	m.specular = 0.9;
+	m.shininess = 200.0;
 	return (m);
 }
 
-void	setMatAmbient(t_material *mat, float ambient)
+void	setMatAmbient(t_material *mat, double ambient)
 {
-	if (ambient < 0.0f)
-		ambient = 0.0f;
+	if (ambient < 0.0)
+		ambient = 0.0;
 	mat->ambient = ambient;
 }
 
-void	setMatDiffuse(t_material *mat, float diffuse)
+void	setMatDiffuse(t_material *mat, double diffuse)
 {
-	if (diffuse < 0.0f)
-		diffuse = 0.0f;
+	if (diffuse < 0.0)
+		diffuse = 0.0;
 	mat->diffuse = diffuse;
 }
 
-void	setMatSpecular(t_material *mat, float specular)
+void	setMatSpecular(t_material *mat, double specular)
 {
-	if (specular < 0.0f)
-		specular = 0.0f;
+	if (specular < 0.0)
+		specular = 0.0;
 	mat->specular = specular;
 }
 
-void	setMatShininess(t_material *mat, float shininess)
+void	setMatShininess(t_material *mat, double shininess)
 {
-	if (shininess < 10.0f)
-		shininess = 10.0f;
-	else if (shininess > 200.0f)
-		shininess = 200.0f;
+	if (shininess < 10.0)
+		shininess = 10.0;
+	else if (shininess > 200.0)
+		shininess = 200.0;
 	mat->shininess = shininess;
 }
 

@@ -2,7 +2,7 @@
 
 t_tuple	normalize(t_tuple v)
 {
-	float	mangt;
+	double	mangt;
 
 	mangt = magnitude(v);
 	return tuple(

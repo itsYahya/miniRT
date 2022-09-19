@@ -6,9 +6,9 @@ static void	print_error_exit()
 	printf("Ratio parser: invalid input\n");
 }
 
-float	get_ratio(const char *token)
+double	get_ratio(const char *token)
 {
-	float	ratio;
+	double	ratio;
 
 	ratio = ft_stod(token);
 	if (ratio > 1 || ratio < 0)

@@ -1,6 +1,6 @@
 #include "utils.h"
 
-float max(float a, float b)
+double max(double a, double b)
 {
 	if (a > b)
 		return (a);

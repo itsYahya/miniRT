@@ -1,6 +1,6 @@
 #include "raytracer.h"
 
-t_inter	ft_inter(float t, t_object object)
+t_inter	ft_inter(double t, t_object object)
 {
 	return (t_inter){t, object};
 }

@@ -21,9 +21,9 @@ static bool	ft_check_rgb(t_rgb data)
 static t_color	rgb_to_color(t_rgb data)
 {
 	return ft_color(
-		(float)data.r / 255.0f,
-		(float)data.g / 255.0f,
-		(float)data.b / 255.0f
+		(double)data.r / 255.0,
+		(double)data.g / 255.0,
+		(double)data.b / 255.0
 		);
 }
 

@@ -25,7 +25,7 @@ static void	normal_at_transformed_sphere()
 	normal = normal_at(s, point(0, 1.70711, -0.70711));
 	assert(is_equal(normal, vector(0, 0.70711, -0.70711)));
 
-	set_transform(&s, transforms(2, scale(1, 0.5, 1), rotate_z(M_PI / 5.0f)));
+	set_transform(&s, transforms(2, scale(1, 0.5, 1), rotate_z(M_PI / 5.0)));
 	normal = normal_at(s, point(0, sqrt(2)/2, -sqrt(2)/2));
 	assert(is_equal(normal, vector(0, 0.97014, -0.24254)));
 }
@@ -61,10 +61,10 @@ static void	material_default()
 	t_material	m = ft_material();
 
 	assert(is_equal(m.color, ft_color(1, 1, 1)));
-	assert(m.ambient == 0.1f);
-	assert(m.diffuse == 0.9f);
-	assert(m.specular == 0.9f);
-	assert(m.shininess == 200.0f);
+	assert(m.ambient == 0.1);
+	assert(m.diffuse == 0.9);
+	assert(m.specular == 0.9);
+	assert(m.shininess == 200.0);
 }
 
 static void	sphere_has_default_material()

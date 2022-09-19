@@ -25,8 +25,8 @@ static void intersect_ray_with_sphere_at_two_points()
 	t_object s = ft_sphere();
 	t_xs	xs = intersect(s, r);
 	assert(xs.count == 2);
-	assert(xs.inters[0].t == 4.0f);
-	assert(xs.inters[1].t == 6.0f);
+	assert(xs.inters[0].t == 4.0);
+	assert(xs.inters[1].t == 6.0);
 	destroy_inters(&xs);
 }
 
@@ -36,8 +36,8 @@ static void	intersect_sphere_at_tangent()
 	t_object s = ft_sphere();
 	t_xs	xs = intersect(s, r);
 	assert(xs.count == 2);
-	assert(xs.inters[0].t == 5.0f);
-	assert(xs.inters[1].t == 5.0f);
+	assert(xs.inters[0].t == 5.0);
+	assert(xs.inters[1].t == 5.0);
 	destroy_inters(&xs);
 }
 
@@ -58,8 +58,8 @@ static void	ray_inside_sphere()
 
 	t_xs xs = intersect(s, r);
 	assert(xs.count == 2);
-	assert(xs.inters[0].t == -1.0f);
-	assert(xs.inters[1].t == 1.0f);
+	assert(xs.inters[0].t == -1.0);
+	assert(xs.inters[1].t == 1.0);
 }
 
 static void	sphere_is_behind_ray()
@@ -69,8 +69,8 @@ static void	sphere_is_behind_ray()
 
 	t_xs xs = intersect(s, r);
 	assert(xs.count == 2);
-	assert(xs.inters[0].t == -6.0f);
-	assert(xs.inters[1].t == -4.0f);
+	assert(xs.inters[0].t == -6.0);
+	assert(xs.inters[1].t == -4.0);
 	destroy_inters(&xs);
 }
 

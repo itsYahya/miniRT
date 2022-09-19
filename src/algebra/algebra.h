@@ -6,6 +6,6 @@
 
 # define EPSILON 0.0001
 
-bool	equal(float a, float b);
+bool	equal(double a, double b);
 
 #endif

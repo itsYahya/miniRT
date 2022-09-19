@@ -9,7 +9,7 @@ t_object	ft_sphere()
 		));
 }
 
-t_object new_sphere(t_tuple coords, float radius, t_color color)
+t_object new_sphere(t_tuple coords, double radius, t_color color)
 {
 	t_object	object;
 	t_matrix	transform;

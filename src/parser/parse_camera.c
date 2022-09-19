@@ -13,7 +13,7 @@ static double	get_fov(const char *arg)
 
 t_camera	parse_camera(char **tokens)
 {
-	float			fv;
+	double			fv;
 	t_tuple			position;
 	t_tuple			look_at;
 	t_camera		c;

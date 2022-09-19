@@ -1,6 +1,6 @@
 #include "tuple.h"
 
-float magnitude(t_tuple v)
+double magnitude(t_tuple v)
 {
 	return sqrt(
 		pow(v.x, 2)
