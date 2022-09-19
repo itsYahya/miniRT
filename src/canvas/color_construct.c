@@ -10,7 +10,12 @@ t_color		ft_color(float r, float g, float b)
 
 bool 		color_equal(t_color c1, t_color c2)
 {
-	return (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b);
+	return (
+		equal(c1.r, c2.r)
+		&& equal(c1.g, c2.g)
+		&& equal(c1.b, c2.b)
+		&& equal(c1.a, c2.a)
+	);
 }
 
 void	check_color(float *c)

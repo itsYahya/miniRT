@@ -5,8 +5,8 @@
 # include "list.h"
 # include <stdio.h>
 
-void	startTimer(const char *key);
-void	endTimer(const char *key);
-void	clearTimer();
+void	start_timer(const char *key);
+void	end_timer(const char *key);
+void	destroy_timer();
 
 #endif

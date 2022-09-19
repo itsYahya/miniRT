@@ -32,7 +32,7 @@ static t_timer* ft_get_timer_by_key(const char *key)
 	return (NULL);
 }
 
-void	startTimer(const char *key)
+void	start_timer(const char *key)
 {
 	t_timer *t = malloc(sizeof(t_timer));
 	t->key = key;
@@ -40,7 +40,7 @@ void	startTimer(const char *key)
 	ft_lstadd_front(&timers, ft_lstnew(t));
 }
 
-void	endTimer(const char *key)
+void	end_timer(const char *key)
 {
 	double now = ft_get_time();
 	t_timer	*t = ft_get_timer_by_key(key);
@@ -48,7 +48,7 @@ void	endTimer(const char *key)
 		printf("%s: %.3fms\n", key, now - t->start);
 }
 
-void	clearTimer()
+void	destroy_timer()
 {
 	ft_lstclear(&timers, free);
 }

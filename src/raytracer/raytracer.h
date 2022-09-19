@@ -35,22 +35,9 @@ struct s_xs
 	t_inter	*inters;
 };
 
-typedef struct s_light t_light;
-struct s_light
-{
-    t_tuple	position;
-    t_color	intensity;
-};
 
-typedef struct s_scene t_scene;
-struct s_scene
-{
-	t_light		light;
-	t_list		*objects;
-};
-
-typedef struct s_comps t_comps;
-struct s_comps
+typedef struct s_computations t_computations;
+struct s_computations
 {
 	float		t;
 	t_object	object;
@@ -59,6 +46,22 @@ struct s_comps
 	t_tuple		normalv;
 	bool		inside;
 };
+
+//  scene
+typedef struct s_scene t_scene;
+struct s_scene
+{
+	t_list	*lights;
+	t_list	*objects;
+};
+
+void		add_object(t_scene *scene, t_object obj);
+void		add_light(t_scene *scene, t_light light);
+t_object	*get_object(t_list *lst);
+t_object	*get_object_at(t_list *lst, int index);
+t_light		*get_light(t_list *lst);
+t_light		*get_light_at(t_list *lst, int index);
+
 
 // globals
 t_inter		ft_inter(float t, t_object object);
@@ -91,6 +94,7 @@ void			setMatAmbient(t_material *mat, float ambient);
 void			setMatDiffuse(t_material *mat, float diffuse);
 void			setMatSpecular(t_material *mat, float specular);
 void			setMatShininess(t_material *mat, float shininess);
+void			print_material(t_material m);
 
 // world
 t_scene			ft_scene();
@@ -100,7 +104,13 @@ t_xs			intersect_scene(t_scene w, t_ray ray);
 
 // color
 t_color			color_at(t_scene w, t_ray r);
-t_color			shade_hit(t_scene w, t_comps comps);
-t_comps			hitpoint_info(t_inter intersection, t_ray r);
+t_color			shade_hit(t_scene w, t_computations comps);
+t_computations			prepare_computations(t_inter intersection, t_ray r);
+
+// camera
+t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up);
+t_camera	ft_camera(float hsize, float vsize, float fv);
+t_ray		ray_for_pixel(t_camera c, float x, float y);
+t_canvas	render(t_camera c, t_scene s);
 
 #endif

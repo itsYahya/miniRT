@@ -17,5 +17,5 @@ void			ft_lstclear(t_list **list, void (*del)(void *));
 void			ft_lstiter(t_list *node, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst,
 					void *(*f)(void *), void (*del)(void *));
-
+t_list			*at(t_list *lst, int index);
 #endif

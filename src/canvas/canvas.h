@@ -5,6 +5,7 @@
 # include <stdint.h>
 # include "mlx.h"
 # include <stdio.h>
+# include "algebra.h"
 
 typedef t_tuple t_color;
 
@@ -29,7 +30,6 @@ void		ft_destroy_canvas(t_canvas canvas);
 void		ft_write_pixel(t_canvas c, int x, int y, uint32_t color);
 uint32_t*	ft_pixel_at(t_canvas c, int x, int y);
 void		ft_show_canvas(t_canvas canvas);
-void		renderer();
 
 void		print_color(t_color c);
 

@@ -37,7 +37,5 @@ t_xs		intersect_sphere(t_object object, t_ray ray)
 		return (t_xs){0, NULL};
 	t[0] = ft_inter((-param.b - sqrt(param.desc)) / (2 * param.a), object);
 	t[1] = ft_inter((-param.b + sqrt(param.desc)) / (2 * param.a), object);
-	if (param.desc == 0)
-		return ft_inters(1, t[0]);
 	return ft_inters(2, t[0], t[1]);
 }

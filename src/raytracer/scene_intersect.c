@@ -68,14 +68,14 @@ static void	push_intersections(t_list **lst, t_xs xs)
 	}
 }
 
-t_xs	intersect_scene(t_scene w, t_ray ray)
+t_xs	intersect_scene(t_scene scene, t_ray ray)
 {
 	t_list		*objs;
 	t_object	*object;
 	t_xs		xs;
 	t_list		*lst;
 
-	objs = w.objects;
+	objs = scene.objects;
 	lst = NULL;
 	while (objs)
 	{

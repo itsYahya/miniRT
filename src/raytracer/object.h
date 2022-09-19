@@ -10,6 +10,13 @@
 # include "matrix.h"
 # include "types.h"
 
+typedef struct s_light t_light;
+struct s_light
+{
+    t_tuple	position;
+    t_color	intensity;
+};
+
 typedef struct s_material t_material;
 struct s_material
 {
@@ -45,6 +52,18 @@ struct s_object
 		t_sphere	sp;
 		t_cylinder	cy;
 	};
+};
+
+typedef struct s_camera t_camera;
+struct s_camera
+{
+	float		hsize;
+	float		vsize;
+	float		field_of_view;
+	t_matrix	transform;
+	float		pixel_size;
+	float		half_width;
+	float		half_height;
 };
 
 #endif

@@ -50,3 +50,12 @@ bool			material_equal(t_material m1, t_material m2)
 		&& m1.specular == m2.specular
 		&& m1.shininess == m2.shininess);
 }
+
+void	print_material(t_material m)
+{
+	print_color(m.color);
+	printf("ambient: %f\n", m.ambient);
+	printf("diffuse: %f\n", m.diffuse);
+	printf("specular: %f\n", m.specular);
+	printf("shininess: %f\n", m.shininess);
+}

@@ -7,3 +7,4 @@ miniRT.exe
 *.rt
 *.dSYM
 src/tests/
+test_miniRT

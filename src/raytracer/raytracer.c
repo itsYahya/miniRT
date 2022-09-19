@@ -10,12 +10,12 @@ t_inter	ft_hit(t_xs xs)
 	t_inter	visible_inter;
 	int				i;
 
-	visible_inter = (t_inter){-1, {}};
+	visible_inter = (t_inter){-1, { .type = E_NONE }};
 	i = -1;
 	while (++i < xs.count)
 	{
 		inter = xs.inters[i];
-		if (visible_inter.t < 0 || (inter.t > 0 && inter.t < visible_inter.t))
+		if (inter.t > 0 && (visible_inter.t < 0 || inter.t < visible_inter.t))
 			visible_inter = inter;
 	}
 	return (visible_inter);

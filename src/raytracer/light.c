@@ -35,15 +35,23 @@ t_tuple	ft_lighting(t_material material, t_light light, t_tuple position, t_tupl
 	// ambient
 	ambient = multiply_tuple(effective_color, material.ambient);
 
-	// diffuse
-	float lDotN = max(dot(lighv, normalv), 0.0f);
-	diffuse = multiply_tuple(effective_color, material.diffuse * lDotN);
+	// diffuse + specular
+	float lDotN = dot(lighv, normalv);
+	if (lDotN < 0) {
+		specular = ft_color(0, 0, 0);
+		diffuse = ft_color(0, 0, 0);
+	} else {
+		// diffuse
+		diffuse = multiply_tuple(effective_color, material.diffuse * lDotN);
 
-	// specular
-	t_tuple	reflectv = reflect(negate_tuple(lighv), normalv);
-	float rDotE = max(dot(reflectv, eyev), 0.0f);
-	float factor = pow(rDotE, material.shininess);
-	specular = multiply_tuple(light.intensity, material.specular * factor);
-
+		t_tuple	reflectv = reflect(negate_tuple(lighv), normalv);
+		float rDotE = dot(reflectv, eyev);
+		if (rDotE < 0) {
+			specular = ft_color(0, 0, 0);
+		} else {
+			float factor = pow(rDotE, material.shininess);
+			specular = multiply_tuple(light.intensity, material.specular * factor);
+		}
+	}
 	return (add_tuple(ambient, add_tuple(diffuse, specular)));
 }
