@@ -26,7 +26,6 @@ static void	ft_shader_init(t_info *info, t_shader *shdata, t_info *shade_info, t
 	shdata->ray.origin = info->point;
 	shdata->ray.direction = shdata->light_vect;
 	shade_info->t = -1;
-	shdata->color.raw = 0;
 }
 
 static float	ft_distance(t_tuple p1, t_tuple p2)
@@ -50,6 +49,7 @@ void	ft_shading(t__data *data, t_info *info, t_ray ray)
 	shade.am_ratio = data->ambient.ratio;
 	shade.ambient = ft_merge_color(info->color, shade.ambient, shade.am_ratio);
 	head = data->lights;
+	shade.color.raw = 0;
 	while (head)
 	{
 		ft_shader_init(info, &shade, &shade_info, head->content);
