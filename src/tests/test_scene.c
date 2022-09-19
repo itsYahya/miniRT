@@ -4,7 +4,7 @@ static void	test_empty_scene()
 {
 	t_scene	scene;
 
-	scene = ft_scene();
+	scene = empty_scene();
 	assert(scene.objects == NULL);
 	assert(scene.lights == NULL);
 }
@@ -95,7 +95,7 @@ static void	test_shading_intersection_from_inside()
 {
 	t_scene s = default_scene();
 	get_light_at(s.lights, 0)->position = point(0, 0.25, 0);
-	get_light_at(s.lights, 0)->intensity = ft_color(1, 1, 1);
+	get_light_at(s.lights, 0)->color = ft_color(1, 1, 1);
 	t_ray r = ft_ray(point(0, 0, 0), vector(0, 0, 1));
 	t_object shape = *get_object_at(s.objects, 1);
 	t_inter	i = ft_inter(0.5, shape);

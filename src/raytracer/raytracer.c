@@ -10,7 +10,7 @@ t_inter	ft_hit(t_xs xs)
 	t_inter	visible_inter;
 	int				i;
 
-	visible_inter = (t_inter){-1, { .type = E_NONE }};
+	visible_inter = (t_inter){-1, { .type = E_INVALID }};
 	i = -1;
 	while (++i < xs.count)
 	{

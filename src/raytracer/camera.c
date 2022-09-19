@@ -58,3 +58,11 @@ t_ray		ray_for_pixel(t_camera c, float x, float y)
 	t_tuple	direction = normalize(subst_tuple(pixel, origin));
 	return (ft_ray(origin, direction));
 }
+
+void	print_camera_info(t_camera c)
+{
+	printf("camera info: \n");
+	printf("hsize: %f, vsize: %f, field_of_view: %f\n", c.hsize, c.vsize, c.field_of_view);
+	printf("transform: \n");
+	print_matrix(c.transform);
+}

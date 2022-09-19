@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include "algebra.h"
+#include "_parser.h"
 
 void	seprator();
 void	test_raysphere();

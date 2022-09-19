@@ -13,6 +13,7 @@
 # include "params.h"
 # include "utils.h"
 # include <stdio.h>
+# include "_parser.h"
 
 typedef struct s_ray t_ray;
 struct s_ray
@@ -47,16 +48,6 @@ struct s_computations
 	bool		inside;
 };
 
-//  scene
-typedef struct s_scene t_scene;
-struct s_scene
-{
-	t_list	*lights;
-	t_list	*objects;
-};
-
-void		add_object(t_scene *scene, t_object obj);
-void		add_light(t_scene *scene, t_light light);
 t_object	*get_object(t_list *lst);
 t_object	*get_object_at(t_list *lst, int index);
 t_light		*get_light(t_list *lst);
@@ -78,13 +69,12 @@ t_tuple			ft_position(t_ray r, float t);
 t_ray			ray_transform(t_ray ray, t_matrix transformation_matrix);
 
 // sphere
-t_object	ft_sphere();
-t_xs		intersect_sphere(t_object object, t_ray ray);
-t_tuple		sphere_normal(t_object object, t_tuple p);
+t_object		ft_sphere();
+t_xs			intersect_sphere(t_object object, t_ray ray);
+t_tuple			sphere_normal(t_object object, t_tuple p);
 
 // light
 t_tuple			reflect(t_tuple v, t_tuple normal);
-t_light			point_light(t_tuple position, t_color intensity);
 t_tuple			ft_lighting(t_material material, t_light light, t_tuple position, t_tuple eyev, t_tuple normalv);
 
 // material
@@ -97,20 +87,19 @@ void			setMatShininess(t_material *mat, float shininess);
 void			print_material(t_material m);
 
 // world
-t_scene			ft_scene();
 t_scene			default_scene();
 void			destroy_scene(t_scene w);
 t_xs			intersect_scene(t_scene w, t_ray ray);
+void			print_scene_info(t_scene scene);
 
 // color
 t_color			color_at(t_scene w, t_ray r);
 t_color			shade_hit(t_scene w, t_computations comps);
-t_computations			prepare_computations(t_inter intersection, t_ray r);
+t_computations	prepare_computations(t_inter intersection, t_ray r);
 
 // camera
-t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up);
-t_camera	ft_camera(float hsize, float vsize, float fv);
-t_ray		ray_for_pixel(t_camera c, float x, float y);
-t_canvas	render(t_camera c, t_scene s);
+t_ray			ray_for_pixel(t_camera c, float x, float y);
+t_canvas		render(t_camera c, t_scene s);
+void			print_camera_info(t_camera c);
 
 #endif

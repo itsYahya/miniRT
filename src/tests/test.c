@@ -2,6 +2,7 @@
 
 int	main()
 {
+	errno = 0;
 	test_light();
 	seprator();
 	test_raysphere();
