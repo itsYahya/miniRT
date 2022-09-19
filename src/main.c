@@ -21,21 +21,19 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (1);
 	errno = 0;
+	start_timer("*parsing");
 	pdata = parser(argv[1]);
+	end_timer("*parsing");
 	if (errno != 0)
 	{
 		// TODO: destroy scene
 		return (1);
 	}
-
 	scene = pdata.scene;
 	camera = pdata.camera;
-	print_camera_info(camera);
-	print_scene_info(scene);
-
-	start_timer("render");
+	start_timer("*render");
 	canvas = render(camera, scene);
-	end_timer("render");
+	end_timer("*render");
 	destroy_timer();
 	ft_show_canvas(canvas);
 	mlx_loop(canvas.mlx_ptr);
