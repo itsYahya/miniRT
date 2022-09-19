@@ -1,12 +1,26 @@
 # include "raytracer.h"
 
-t_object ft_sphere()
+t_object	ft_sphere()
+{
+	return (new_sphere(
+		point(0, 0, 0),
+		1,
+		ft_color(1, 1, 1)
+		));
+}
+
+t_object new_sphere(t_tuple coords, float radius, t_color color)
 {
 	t_object	object;
+	t_matrix	transform;
 
 	object.material = ft_material();
+	object.material.color = color;
 	object.type = E_SPHERE;
-	set_transform(&object, IDENTITY_MATRIX);
+	transform = transforms(2,
+		translate(coords.x, coords.y, coords.z),
+		scale(radius, radius, radius));
+	set_transform(&object, transform);
 	return (object);
 }
 

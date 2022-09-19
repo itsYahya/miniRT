@@ -1,5 +1,4 @@
-#include "canvas.h"
-#include <stdio.h>
+#include "color.h"
 
 t_color		ft_color(float r, float g, float b)
 {

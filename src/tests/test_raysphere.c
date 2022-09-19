@@ -114,7 +114,7 @@ static void hit_when_all_intersections_have_negative_t()
 	t_xs xs = ft_inters(2, i1, i2);
 	t_inter i = ft_hit(xs);
 	assert(i.t == -1);
-	assert(i.object.type == E_NONE);
+	assert(i.object.type == E_INVALID);
 }
 
 static void	hit_is_always_lowest_nonnegative_intersection()
