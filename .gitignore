@@ -6,5 +6,4 @@ miniRT.exe
 .vscode/
 *.rt
 *.dSYM
-src/tests/
 test_miniRT
