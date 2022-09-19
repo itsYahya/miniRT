@@ -65,6 +65,7 @@ typedef struct s_shader
 	t_color	ambient;
 	float	am_ratio;
 	t_color specular;
+	t_color	color;
 }	t_shader;
 
 double	ft_max(double f1, double f2);
