@@ -12,8 +12,6 @@ void	add_object(t_scene *scene, t_object obj)
 {
 	t_object *object_ptr;
 
-	if (errno != 0)
-		return ;
 	object_ptr =  (t_object*)malloc(sizeof(t_object));
 	if (! object_ptr)
 	{
@@ -28,8 +26,6 @@ void	add_light(t_scene *scene, t_light light)
 {
 	t_light *light_ptr;
 
-	if (errno != 0)
-		return ;
 	light_ptr = (t_light*)malloc(sizeof(t_light));
 	if (! light_ptr)
 	{

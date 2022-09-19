@@ -22,7 +22,7 @@ t_tuple	ft_correct_color(t_tuple color)
 	return (color);
 }
 
-t_tuple	ft_lighting(t_material material, t_light light, t_tuple position, t_tuple eyev, t_tuple normalv)
+t_tuple	ft_lighting(t_material material, t_light light, t_tuple position, t_tuple eyev, t_tuple normalv, bool in_shadow)
 {
 	t_tuple	effective_color;
 	t_tuple	ambient;
@@ -37,7 +37,7 @@ t_tuple	ft_lighting(t_material material, t_light light, t_tuple position, t_tupl
 
 	// diffuse + specular
 	float lDotN = dot(lighv, normalv);
-	if (lDotN < 0) {
+	if (in_shadow || lDotN < 0) {
 		specular = ft_color(0, 0, 0);
 		diffuse = ft_color(0, 0, 0);
 	} else {

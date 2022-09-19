@@ -31,6 +31,8 @@ t_color	shade_hit(t_scene scene, t_computations comps)
 {
 	t_list	*lst;
 	t_color	color;
+	t_light	light;
+	bool	shadowed;
 
 	color = ft_color(0, 0, 0);
 	if (comps.t < 0)
@@ -38,12 +40,15 @@ t_color	shade_hit(t_scene scene, t_computations comps)
 	lst = scene.lights;
 	while (lst)
 	{
+		light = *get_light(lst);
+		shadowed = is_shadowed(scene, light, comps.point);
 		color = add_tuple(color, ft_lighting(
 			comps.object.material,
-			*get_light(lst),
+			light,
 			comps.point,
 			comps.eyev,
-			comps.normalv
+			comps.normalv,
+			shadowed
 		));
 		lst = lst->next;
 	}

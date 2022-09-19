@@ -13,6 +13,7 @@
 # include "params.h"
 # include "utils.h"
 # include <stdio.h>
+# include <stdbool.h>
 # include "_parser.h"
 
 typedef struct s_ray t_ray;
@@ -75,7 +76,8 @@ t_tuple			sphere_normal(t_object object, t_tuple p);
 
 // light
 t_tuple			reflect(t_tuple v, t_tuple normal);
-t_tuple			ft_lighting(t_material material, t_light light, t_tuple position, t_tuple eyev, t_tuple normalv);
+t_tuple			ft_lighting(t_material material, t_light light, t_tuple position, t_tuple eyev, t_tuple normalv, bool in_shadow);
+bool			is_shadowed(t_scene s, t_light light, t_tuple point);
 
 // material
 t_material		ft_material();
