@@ -12,4 +12,6 @@ int	main()
 	test_camera();
 	seprator();
 	test_shadow();
+	seprator();
+	test_atan2();
 }
