@@ -4,7 +4,7 @@
 # include <stdlib.h>
 # include <math.h>
 
-# define EPSILON 0.0001
+# define EPSILON 0.001
 
 bool	equal(float a, float b);
 
