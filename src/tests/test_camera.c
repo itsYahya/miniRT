@@ -16,13 +16,13 @@ static void	test_constructing_camera()
 static void	test_pixel_size_for_horizontal_canvas()
 {
 	t_camera c = ft_camera(200, 125, M_PI_2);
-	assert(c.pixel_size == 0.01);
+	assert(equal(c.pixel_size, 0.01));
 }
 
 static void	test_pixel_size_for_vertical_canvas()
 {
 	t_camera c = ft_camera(125, 200, M_PI_2);
-	assert(c.pixel_size == 0.01);
+	assert(equal(c.pixel_size, 0.01));
 }
 
 static void	test_ray_through_center_of_canvas()
@@ -50,17 +50,17 @@ static void	test_ray_when_camera_is_transformed()
 	assert(is_equal(r.direction, vector(sqrt(2) / 2, 0, -sqrt(2) / 2)));
 }
 
-// static void	test_render_scene_with_camera()
-// {
-// 	t_scene		s = default_scene();
-// 	t_camera	c = ft_camera(11, 11, M_PI_2);
-// 	t_tuple		from = point(0, 0, -5);
-// 	t_tuple		to = point(0, 0, 0);
-// 	t_tuple 	up = vector(0, 1, 0);
-// 	c.transform	= view_transform(from, to, up);
-// 	t_canvas image = render(c, s);
-// 	assert(*ft_pixel_at(image, 5, 5) == to_raw_color(ft_color(0.38066, 0.47583, 0.2855)));
-// }
+static void	test_render_scene_with_camera()
+{
+	t_scene		s = default_scene();
+	t_camera	c = ft_camera(11, 11, M_PI_2);
+	t_tuple		from = point(0, 0, -5);
+	t_tuple		to = point(0, 0, 0);
+	t_tuple 	up = vector(0, 1, 0);
+	c.transform	= view_transform(from, to, up);
+	t_canvas image = render(c, s);
+	assert(*ft_pixel_at(image, 5, 5) == to_raw_color(ft_color(0.38066, 0.47583, 0.2855)));
+}
 
 void	test_camera()
 {
@@ -75,6 +75,6 @@ void	test_camera()
 	test_ray_when_camera_is_transformed();
 	printf("OK\n");
 	printf("=> render test: ");
-	// test_render_scene_with_camera();
+	test_render_scene_with_camera();
 	printf("OK\n");
 }

@@ -24,6 +24,7 @@ t_computations			prepare_computations(t_inter intersection, t_ray r)
 		comps.inside = true;
 		comps.normalv = negate_tuple(comps.normalv);
 	}
+	comps.adjusted_point = add_tuple(comps.point, multiply_tuple(comps.normalv, EPSILON));
 	return (comps);
 }
 
@@ -41,11 +42,11 @@ t_color	shade_hit(t_scene scene, t_computations comps)
 	while (lst)
 	{
 		light = *get_light(lst);
-		shadowed = is_shadowed(scene, light, comps.point);
+		shadowed = is_shadowed(scene, light, comps.adjusted_point);
 		color = add_tuple(color, ft_lighting(
 			comps.object.material,
 			light,
-			comps.point,
+			comps.adjusted_point,
 			comps.eyev,
 			comps.normalv,
 			shadowed

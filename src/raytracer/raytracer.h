@@ -44,6 +44,7 @@ struct s_computations
 	double		t;
 	t_object	object;
 	t_tuple		point;
+	t_tuple		adjusted_point;
 	t_tuple		eyev;
 	t_tuple		normalv;
 	bool		inside;

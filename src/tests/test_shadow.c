@@ -68,6 +68,17 @@ static void test_shade_hit_given_intersection_in_shadow()
 	assert(color_equal(c, ft_color(0.1, 0.1, 0.1)));
 }
 
+static void	test_hit_should_offset_point()
+{
+	t_ray r = ft_ray(point(0, 0, -5), vector(0, 0, 1));
+	t_object s = ft_sphere();
+	set_transform(&s, translate(0, 0, 1));
+	t_inter i = ft_inter(5, s);
+	t_computations comps = prepare_computations(i, r);
+	assert(comps.adjusted_point.z < -EPSILON / 2.0);
+	assert(comps.point.z > comps.adjusted_point.z);
+}
+
 void	test_shadow()
 {
 	printf("=> shadow test: ");
@@ -79,5 +90,6 @@ void	test_shadow()
 	printf("OK\n");
 	printf("=> shad_hit() test: ");
 	test_shade_hit_given_intersection_in_shadow();
+	test_hit_should_offset_point();
 	printf("OK\n");
 }
