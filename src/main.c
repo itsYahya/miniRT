@@ -19,7 +19,10 @@ int	main(int argc, char **argv)
 	t_scene		scene;
 
 	if (argc != 2)
+	{
+		printf("Usage: %s <scene_file>\n", argv[0]);
 		return (1);
+	}
 	errno = 0;
 	start_timer("*parsing");
 	pdata = parser(argv[1]);
