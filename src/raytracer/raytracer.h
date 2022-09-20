@@ -72,8 +72,13 @@ t_ray			ray_transform(t_ray ray, t_matrix transformation_matrix);
 
 // sphere
 t_object		ft_sphere();
-t_xs			intersect_sphere(t_object object, t_ray ray);
-t_tuple			sphere_normal(t_tuple p);
+t_xs			local_sphere_intersect(t_object object, t_ray ray);
+t_tuple			local_sphere_normal(t_tuple p);
+
+// plane
+t_object		ft_plane();
+t_tuple			local_plane_normal();
+t_xs			local_plane_intersect(t_object plane, t_ray r);
 
 // light
 t_tuple			reflect(t_tuple v, t_tuple normal);

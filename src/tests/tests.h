@@ -14,6 +14,7 @@ void	test_scene();
 void	test_view_transform();
 void	test_camera();
 void	test_shadow();
+void	test_plane();
 void	test();
 
 #endif
