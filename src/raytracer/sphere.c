@@ -24,15 +24,9 @@ t_object new_sphere(t_tuple coords, double radius, t_color color)
 	return (object);
 }
 
-t_tuple			sphere_normal(t_object object, t_tuple p)
+t_tuple	sphere_normal(t_tuple p)
 {
-	t_tuple normal;
-
-	p = matrix_tuple_multiply(object.inverted_transform, p);
-	normal = subst_tuple(p, point(0, 0, 0));
-	normal = matrix_tuple_multiply(object.transpose_matrix, normal);
-	normal.w = 0;
-	return (normalize(normal));
+	return subst_tuple(p, point(0, 0, 0));
 }
 
 t_xs		intersect_sphere(t_object object, t_ray ray)
@@ -41,7 +35,6 @@ t_xs		intersect_sphere(t_object object, t_ray ray)
 	t_tuple		sphere_to_ray;
 	t_inter		t[2];
 
-	ray = ray_transform(ray, inverse(object.transform));
 	sphere_to_ray = subst_tuple(ray.origin, point(0, 0, 0));
 	param.a = dot(ray.direction, ray.direction);
 	param.b = 2 * dot(ray.direction, sphere_to_ray);

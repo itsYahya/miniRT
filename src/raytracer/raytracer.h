@@ -73,7 +73,7 @@ t_ray			ray_transform(t_ray ray, t_matrix transformation_matrix);
 // sphere
 t_object		ft_sphere();
 t_xs			intersect_sphere(t_object object, t_ray ray);
-t_tuple			sphere_normal(t_object object, t_tuple p);
+t_tuple			sphere_normal(t_tuple p);
 
 // light
 t_tuple			reflect(t_tuple v, t_tuple normal);
