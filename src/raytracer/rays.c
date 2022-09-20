@@ -10,7 +10,7 @@ t_ray	ft_setray(const t_vcamera camera, t_pair pair)
 	ray.origin = camera.origin;
 	fcoords.x = (float)(2 * pair.x) / (float)WIDTH - 1;
 	fcoords.y = (float)(2 * pair.y) / (float)HEIGHT - 1;
-	up = multiply_tuple(camera.up, camera.h * -fcoords.y);
+	up = multiply_tuple(camera.up, camera.h * fcoords.y);
 	right = multiply_tuple(camera.right, camera.w * fcoords.x);
 	ray.direction = add_tuple(camera.forward, add_tuple(up, right));
 	ray.direction = normalize(ray.direction);

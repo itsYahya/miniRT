@@ -1,4 +1,4 @@
-#include "color.h"
+#include "canvas.h"
 
 t_color		ft_hadamard_product(t_color c1, t_color c2)
 {

@@ -1,11 +1,11 @@
 #include "color.h"
 
-t_color	ft_multiply_color(t_color c1, t_color c2)
+t_color	ft_multiply_color(t_color color, t_tuple scaler)
 {
 	t_color	comb;
 
-	comb.r = c1.r * c2.r;
-	comb.g = c1.g * c2.g;
-	comb.b = c1.b * c2.b;
+	comb.r = color.r * scaler.x;
+	comb.g = color.g * scaler.y;
+	comb.b = color.b * scaler.z;
 	return (comb);
 }

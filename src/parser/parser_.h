@@ -50,6 +50,8 @@ typedef struct s_cylinder
 	t_tuple		orientation;
 	float		diameter;
 	float		height;
+	float		min_y;
+	float		max_y;
 }	t_cylinder;
 
 typedef struct s_object t_object;
@@ -96,4 +98,5 @@ void		invalid_argements(char *id);
 void		invalid_identifier(void);
 uint32_t	get_color(char *token);
 
+t_matrix	orientation_transform(t_tuple coords, t_tuple orientation);
 #endif

@@ -1,43 +1,44 @@
 #include "raytracer.h"
-#include "utils.h"
 
-t_tuple			reflect(t_tuple v, t_tuple normal)
+double	ft_cos(t_tuple v1, t_tuple v2)
 {
-	return subst_tuple(v, multiply_tuple(normal, dot(v, normal) * 2));
+	double	d;
+
+	d = dot(v1, v2);
+	d = ft_max(d, 0);
+	return (d);
 }
 
-void	ft_shading(t__data *data, t_info *info, t_tuple viewDir)
+static void	ft_shader_init(t__data *data, t_info *info, t_shader *shdata, t_info *shade_info)
 {
-	t_tuple	obj_color = color2tuple(info->color);
-	t_tuple	light_color = color2tuple(data->light.color);
-	t_tuple	ambient_color = color2tuple(data->ambient.color);
+	shdata->light_point = data->light.point;
+	shdata->light_vect = subst_tuple(shdata->light_point, info->point);
+	shdata->ambient = data->ambient.color;
+	shdata->am_ratio = data->ambient.ratio;
+	shdata->light_color = data->light.color;
+	shdata->light_point = data->light.point;
+	shdata->light_ratio = data->light.bRatio;
+	shdata->ray.origin = info->point;
+	shdata->ray.direction = shdata->light_vect;
+	shade_info->t = -1;
+}
 
-	// ambient
-	t_tuple	ambient = tuple_product(light_color, ambient_color);
-	ambient = multiply_tuple(light_color, data->ambient.ratio);
+void	ft_shading(t__data *data, t_info *info, t_ray ray)
+{
+	t_info		shade_info;
+	t_shader	shade;
+	float	d;
 
-	// diffuse
-	t_tuple lightDir = normalize(subst_tuple(data->light.point, info->point));
-	float diffuseStrength = ft_max(0, dot(info->normal, lightDir)) * data->light.bRatio;
-	t_tuple	diffuse = multiply_tuple(light_color, diffuseStrength);
-
-	// specular
-	float materialSpecular = 1;
-	float materialShininess = 200;
-	t_tuple reflectDir = reflect(negate_tuple(lightDir), info->normal);
-	float spec = pow(ft_max(dot(viewDir, reflectDir), 0.0), materialShininess);
-	t_tuple specular = multiply_tuple(light_color, spec * materialSpecular);
-
-	// combine
-	t_tuple	factor = add_tuple(add_tuple(ambient, diffuse), specular);
-	if (factor.x < -1 || factor.y < -1 || factor.z < -1)
-		printf("error\n");
-	if (factor.x > 1)
-		factor.x = 1;
-	if (factor.y > 1)
-		factor.y = 1;
-	if (factor.z > 1)
-		factor.z = 1;
-	t_tuple	result = tuple_product(factor, obj_color);
-	info->color = tuple2color(result);
+	ft_shader_init(data, info, &shade, &shade_info);
+	d = ft_cos(normalize(shade.light_vect), info->normal);
+	ft_look_inters(data->objects, shade.ray, &shade_info);
+	shade.ambient = ft_merge_color(info->color, shade.ambient, shade.am_ratio);
+	if (shade_info.t == -1)
+	{
+		shade.difuse = ft_merge_color(info->color, shade.light_color, d * shade.light_ratio);
+		shade.specular = ft_specular(&shade, info, multiply_tuple(ray.direction, -1));
+		info->color = ft_add_color(ft_add_color(shade.difuse, shade.ambient), shade.specular);
+	}
+	else
+		info->color = shade.ambient;
 }
