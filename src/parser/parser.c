@@ -39,6 +39,8 @@ static void	parse_line(t_type id, char **tokens, t_pdata *pdata)
 		add_light(&pdata->scene, parse_light(tokens));
 	else if (id == E_SPHERE)
 		add_object(&pdata->scene, parse_sphere(tokens));
+	else if (id == E_PLANE)
+		add_object(&pdata->scene, parse_plane(tokens));
 }
 
 static char	**get_next_line_tokens(int fd)

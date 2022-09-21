@@ -13,5 +13,7 @@ int	main()
 	seprator();
 	test_shadow();
 	seprator();
-	test_atan2();
+	test_plane();
+	seprator();
+	test_orientation_transform();
 }

@@ -50,11 +50,14 @@ struct s_computations
 	bool		inside;
 };
 
+// utils
 t_object	*get_object(t_list *lst);
 t_object	*get_object_at(t_list *lst, int index);
 t_light		*get_light(t_list *lst);
 t_light		*get_light_at(t_list *lst, int index);
-
+double		ft_xangle(t_tuple orientation);
+double		ft_zangle(t_tuple orientation);
+t_matrix	orientation_transform(t_tuple coords, t_tuple orientation);
 
 // globals
 t_inter		ft_inter(double t, t_object object);
@@ -71,9 +74,12 @@ t_tuple			ft_position(t_ray r, double t);
 t_ray			ray_transform(t_ray ray, t_matrix transformation_matrix);
 
 // sphere
-t_object		ft_sphere();
-t_xs			intersect_sphere(t_object object, t_ray ray);
-t_tuple			sphere_normal(t_tuple p);
+t_xs			local_sphere_intersect(t_object object, t_ray ray);
+t_tuple			local_sphere_normal(t_tuple p);
+
+// plane
+t_tuple			local_plane_normal();
+t_xs			local_plane_intersect(t_object plane, t_ray r);
 
 // light
 t_tuple			reflect(t_tuple v, t_tuple normal);

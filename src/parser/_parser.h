@@ -27,7 +27,7 @@ t_pdata	parser(char *scene_file_path);
 t_camera	parse_camera(char **tokens);
 t_light		parse_light(char **tokens);
 t_object	parse_sphere(char **tokens);
-// void		parse_plane(char **tokens, t_pdata *data);
+t_object	parse_plane(char **tokens);
 // void		parse_cylinder(char **tokens, t_pdata *data);
 // void		parse_ambient_lightning(char **tokens, t_pdata *data);
 

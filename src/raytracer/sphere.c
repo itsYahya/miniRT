@@ -24,12 +24,12 @@ t_object new_sphere(t_tuple coords, double radius, t_color color)
 	return (object);
 }
 
-t_tuple	sphere_normal(t_tuple p)
+t_tuple	local_sphere_normal(t_tuple p)
 {
 	return subst_tuple(p, point(0, 0, 0));
 }
 
-t_xs		intersect_sphere(t_object object, t_ray ray)
+t_xs	local_sphere_intersect(t_object object, t_ray ray)
 {
 	t_params	param;
 	t_tuple		sphere_to_ray;
