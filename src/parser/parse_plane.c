@@ -1,21 +1,21 @@
-// #include "_parser.h"
+#include "_parser.h"
 
-// void	parse_plane(char **tokens, t_pdata *data)
-// {
-// 	t_object	*object;
+t_object	parse_plane(char **tokens)
+{
+	t_object	plane;
 
-// 	if (ft_arr_size(tokens) != 4)
-// 		invalid_argements("plane");
-// 	object = malloc(sizeof(t_object));
-// 	object->position = get_position_point(tokens[1]);
-// 	object->color.raw = get_color(tokens[3]);
-// 	object->type = E_PLANE;
-// 	object->plane.orientation = get_orientation_vect3(tokens[2]);
-// 	ft_lstadd_back(&data->objects, ft_lstnew(object));
-// 	if (errno)
-// 	{
-// 		ft_arr_free(tokens);
-// 		ft_lstclear(&data->objects, free);
-// 		invalid_argements("plane");
-// 	}
-// }
+	plane = (t_object){};
+	if (ft_arr_size(tokens) != 4)
+	{
+		invalid_argements("plane");
+		return (plane);
+	}
+    plane = new_plane(
+        get_position_point(tokens[1]),
+        get_orientation_vect3(tokens[2]),
+        get_color(tokens[3])
+	);
+	if (errno)
+		invalid_argements("plane");
+	return (plane);
+}

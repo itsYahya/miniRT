@@ -6,7 +6,6 @@ t_object	parse_sphere(char **tokens)
 
 	if (ft_arr_size(tokens) != 6)
 	{
-		errno = 1;
 		invalid_argements("sphere");
 		return (new_sphere(point(0, 0, 0), 0, ft_color(0, 0, 0)));
 	}
