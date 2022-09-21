@@ -9,18 +9,14 @@ t_object	ft_plane()
 		));
 }
 
-t_object	new_plane (t_tuple coords, t_tuple orientation, t_color color)
+t_object	new_plane(t_tuple coords, t_tuple orientation, t_color color)
 {
 	t_object	object;
-	t_matrix	transform;
 
 	object.material = ft_material();
 	object.material.color = color;
 	object.type = E_PLANE;
-	transform = transforms(2,
-		translate(coords.x, coords.y, coords.z),
-		rotate_y(orientation.y));
-	set_transform(&object, transform);
+	set_transform(&object, orientation_transform(coords, orientation));
 	return (object);
 }
 

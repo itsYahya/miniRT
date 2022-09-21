@@ -4,6 +4,7 @@
 # include <stdbool.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <math.h>
 
 int		ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, int n);
@@ -21,5 +22,7 @@ void	*ft_arr_free(char **arr);
 void	arr_print(char **arr);
 bool	is_int(const char *s);
 double	max(double a, double b);
+double	rad2deg(double x);
+double	deg2rad(double x);
 
 #endif
