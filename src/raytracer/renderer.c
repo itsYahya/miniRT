@@ -17,6 +17,7 @@ void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 	}
 }
 
+
 static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__data *data)
 {
 	t_ray		ray;
@@ -24,6 +25,8 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 
 	init_info(&info);
 	ray = ft_setray(vcamera, pair);
+	info.color = data->ambient.color;
+	info.color = ft_scale_color(info.color, data->ambient.ratio);
 	ft_look_inters(data->objects, ray, &info);
 	if (info.t > 0)
 	{
