@@ -4,9 +4,10 @@ t_tuple	local_cylinder_normal(t_tuple p, t_tuple eyev)
 {
 	t_tuple	normal;
 
+	(void)eyev;
 	normal = vector(p.x, 0, p.z);
-	if (dot(normal, eyev) < 0)
-		return negate_tuple(normal);
+	// if (dot(normal, eyev) < 0)
+	// 	return negate_tuple(normal);
 	return (normal);
 }
 
@@ -58,6 +59,7 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 	t = local_cylinder_intersect(obj, transformed_ray);
 	if (t <= 0 || (info->t > 0 && info->t < t))
 		return ;
+	info->t = t;
 	local_hitp = ft_position(transformed_ray, info->t);
 	eyev = normalize(negate_tuple(transformed_ray.direction));
 	info->color = obj.color;

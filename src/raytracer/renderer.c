@@ -26,7 +26,13 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 	ray = ft_setray(vcamera, pair);
 	ft_look_inters(data->objects, ray, &info);
 	if (info.t > 0)
+	{
+		if (dot(info.normal, negate_tuple(ray.direction)) < 0)
+			info.normal = negate_tuple(info.normal);
+		info.normal = normalize(info.normal);
+		info.point = add_tuple(info.point, multiply_tuple(info.normal, EPSILON));
 		ft_shading(data, &info, ray);
+	}
 	ft_write_pixel(canvas, pair.x, pair.y, info.color);
 }
 
