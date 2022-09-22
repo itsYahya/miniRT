@@ -15,7 +15,7 @@ void	parseCylinder(char **tokens, t__data *data)
 	object->cy.height = ft_stod(tokens[4]);
 	object->cy.min_y = -object->cy.height / 2;
 	object->cy.max_y = object->cy.height / 2;
-	object->transform = orientation_transform(object->position, object->cy.orientation);
+	set_transform(object, orientation_transform(object->position, object->cy.orientation));
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
 	if (errno)
 	{

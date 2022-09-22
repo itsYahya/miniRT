@@ -1,14 +1,8 @@
 #include "raytracer.h"
 
-t_tuple	local_cylinder_normal(t_tuple p, t_tuple eyev)
+static t_tuple	local_cylinder_normal(t_tuple p)
 {
-	t_tuple	normal;
-
-	(void)eyev;
-	normal = vector(p.x, 0, p.z);
-	// if (dot(normal, eyev) < 0)
-	// 	return negate_tuple(normal);
-	return (normal);
+	return vector(p.x, 0, p.z);
 }
 
 # define VALID_Y(y) (y > obj.cy.min_y && y < obj.cy.max_y)
@@ -29,7 +23,7 @@ static double	validate_intersections(t_ray r, t_fpair t, t_object obj)
 	return (-1);
 }
 
-double	local_cylinder_intersect(t_object cy, t_ray r)
+static double	local_cylinder_intersect(t_object cy, t_ray r)
 {
 	t_params	params;
 	t_fpair		t;
@@ -55,7 +49,7 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 	t_ray		transformed_ray;
 	t_tuple		local_hitp;
 
-	transformed_ray = ray_transform(ray, inverse(obj.transform));
+	transformed_ray = ray_transform(ray, obj.inverted_transform);
 	t = local_cylinder_intersect(obj, transformed_ray);
 	if (t <= 0 || (info->t > 0 && info->t < t))
 		return ;
@@ -65,9 +59,6 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 	info->color = obj.color;
 	info->point = matrix_tuple_multiply(obj.transform, local_hitp);
 	info->point.w = 1;
-	info->normal = matrix_tuple_multiply(
-					ft_transpose(inverse(obj.transform)),
-					local_cylinder_normal(local_hitp, eyev)
-					);
+	info->normal = matrix_tuple_multiply(obj.transpose, local_cylinder_normal(local_hitp));
 	info->normal.w = 0;
 }

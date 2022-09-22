@@ -18,8 +18,8 @@ static float	ft_scaler(t_tuple reflect, t_tuple view)
 	float	specular_strenght;
 	float	n;
 
-	specular_strenght = 1;
-	n = 40;
+	specular_strenght = 1.6;
+	n = 64;
 	scaler = pow(ft_cos(reflect, view), n);
 	return (specular_strenght * scaler);
 }

@@ -65,6 +65,8 @@ struct s_object
 	t_color		color;
 	t_type		type;
 	t_matrix	transform;
+	t_matrix	inverted_transform;
+	t_matrix	transpose;
 	union
 	{
 		t_sphere	sphere;
@@ -99,4 +101,5 @@ void		invalid_identifier(void);
 uint32_t	get_color(char *token);
 
 t_matrix	orientation_transform(t_tuple coords, t_tuple orientation);
+void		set_transform(t_object *obj, t_matrix transform);
 #endif
