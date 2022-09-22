@@ -32,6 +32,8 @@ t_xs	intersect(t_object object, t_ray ray)
 		xs = local_sphere_intersect(object, ray);
 	else if (object.type == E_PLANE)
 		xs = local_plane_intersect(object, ray);
+	else if (object.type == E_CYLINDER)
+		xs = local_cylinder_intersect(object, ray);
 	else {
 		printf("object type undefined -> %c [intersect]\n", object.type);
 	}
@@ -48,6 +50,8 @@ t_tuple	normal_at(t_object object, t_tuple p)
 		normal = local_sphere_normal(p);
 	} else if (object.type == E_PLANE) {
 		normal = local_plane_normal(p);
+	} else if (object.type == E_CYLINDER) {
+		normal = local_cylinder_normal(p);
 	} else {
 		printf("object type undefined -> %c [normal_at]\n", object.type);
 		return (normal);

@@ -16,4 +16,6 @@ int	main()
 	test_plane();
 	seprator();
 	test_orientation_transform();
+	seprator();
+	test_cylinder();
 }

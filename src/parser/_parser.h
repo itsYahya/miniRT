@@ -12,6 +12,9 @@
 # include "get_next_line.h"
 # include "matrix.h"
 # include "object.h"
+# include "algebra.h"
+# include "color.h"
+# include "pair.h"
 
 typedef t_tuple	t_vect3;
 typedef	struct s_pdata t_pdata;
@@ -28,7 +31,7 @@ t_camera	parse_camera(char **tokens);
 t_light		parse_light(char **tokens);
 t_object	parse_sphere(char **tokens);
 t_object	parse_plane(char **tokens);
-// void		parse_cylinder(char **tokens, t_pdata *data);
+t_object	parse_cylinder(char **tokens);
 // void		parse_ambient_lightning(char **tokens, t_pdata *data);
 
 // parser utils

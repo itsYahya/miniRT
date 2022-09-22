@@ -2,6 +2,7 @@
 # define TUPLE_H
 # include <stdbool.h>
 # include <math.h>
+# include "algebra.h"
 
 typedef union u_tuple t_tuple;
 union u_tuple
@@ -44,5 +45,7 @@ t_tuple	cross(t_tuple a, t_tuple b);
 void	print_tuple(t_tuple t);
 void	print_point(t_tuple t);
 void	print_vector(t_tuple t);
+
+double	angle_between(t_tuple v1, t_tuple v2);
 
 #endif

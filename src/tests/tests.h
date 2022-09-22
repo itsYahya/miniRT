@@ -16,6 +16,7 @@ void	test_camera();
 void	test_shadow();
 void	test_plane();
 void	test_orientation_transform();
+void	test_cylinder();
 void	test();
 
 #endif

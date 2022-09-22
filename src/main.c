@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	scene = pdata.scene;
+	print_scene_info(scene);
 	camera = pdata.camera;
 	start_timer("*render");
 	canvas = render(camera, scene);

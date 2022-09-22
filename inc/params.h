@@ -4,10 +4,10 @@
 typedef struct s_params t_params;
 struct s_params
 {
-	float	a;
-	float	b;
-	float	c;
-	float	desc;
+	double	a;
+	double	b;
+	double	c;
+	double	desc;
 };
 
 #endif

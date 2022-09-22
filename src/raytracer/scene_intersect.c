@@ -19,7 +19,7 @@ static t_xs	inters_list2arr(t_list *inters)
 	return (xs);
 }
 
-static void	swap(t_inter *i1, t_inter *i2)
+static void	swap_inters(t_inter *i1, t_inter *i2)
 {
 	t_inter	temp;
 
@@ -45,7 +45,7 @@ static void	sort_inters(t_xs xs)
 		{
 			if (xs.inters[j].t > xs.inters[j + 1].t)
 			{
-				swap(xs.inters + j, xs.inters + j + 1);
+				swap_inters(xs.inters + j, xs.inters + j + 1);
 				swapped = true;
 			}
 		}

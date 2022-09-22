@@ -41,6 +41,8 @@ static void	parse_line(t_type id, char **tokens, t_pdata *pdata)
 		add_object(&pdata->scene, parse_sphere(tokens));
 	else if (id == E_PLANE)
 		add_object(&pdata->scene, parse_plane(tokens));
+	else if (id == E_CYLINDER)
+		add_object(&pdata->scene, parse_cylinder(tokens));
 }
 
 static char	**get_next_line_tokens(int fd)

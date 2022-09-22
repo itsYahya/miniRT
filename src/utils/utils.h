@@ -24,5 +24,6 @@ bool	is_int(const char *s);
 double	max(double a, double b);
 double	rad2deg(double x);
 double	deg2rad(double x);
+void	swap(double *a, double *b);
 
 #endif

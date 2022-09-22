@@ -15,6 +15,7 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include "_parser.h"
+# include "pair.h"
 
 typedef struct s_ray t_ray;
 struct s_ray
@@ -56,7 +57,7 @@ t_object	*get_object_at(t_list *lst, int index);
 t_light		*get_light(t_list *lst);
 t_light		*get_light_at(t_list *lst, int index);
 double		ft_xangle(t_tuple orientation);
-double		ft_zangle(t_tuple orientation);
+double		ft_zangle(t_tuple orientation, double x_angle);
 t_matrix	orientation_transform(t_tuple coords, t_tuple orientation);
 
 // globals
@@ -80,6 +81,10 @@ t_tuple			local_sphere_normal(t_tuple p);
 // plane
 t_tuple			local_plane_normal();
 t_xs			local_plane_intersect(t_object plane, t_ray r);
+
+// cylinder
+t_tuple	local_cylinder_normal(t_tuple p);
+t_xs	local_cylinder_intersect(t_object cy, t_ray r);
 
 // light
 t_tuple			reflect(t_tuple v, t_tuple normal);
