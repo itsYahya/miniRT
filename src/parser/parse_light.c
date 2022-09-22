@@ -6,7 +6,7 @@ void	parseLight(char **tokens, t__data *data)
 		invalid_argements("light");
 	data->light.point = get_position_point(tokens[1]);
 	data->light.bRatio = get_ratio(tokens[2]);
-	data->light.color = get_color(tokens[3]);
+	data->light.color.raw = get_color(tokens[3]);
 	if (errno)
 	{
 		ft_lstclear(&data->objects, free);

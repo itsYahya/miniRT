@@ -11,13 +11,14 @@
 # include <fcntl.h>
 # include "get_next_line.h"
 # include "matrix.h"
+# include "color.h"
 
 typedef t_tuple t_vect3;
 
 typedef struct s_ambLightning
 {
 	float	ratio;
-	int		color;
+	t_color	color;
 } t_ambLightning;
 
 typedef struct s_camera
@@ -31,7 +32,7 @@ typedef struct s_light
 {
 	t_tuple point;
 	float	bRatio;
-	int		color;
+	t_color	color;
 }	t_light;
 
 typedef struct s_sphere
@@ -49,6 +50,8 @@ typedef struct s_cylinder
 	t_tuple		orientation;
 	float		diameter;
 	float		height;
+	float		min_y;
+	float		max_y;
 }	t_cylinder;
 
 typedef struct s_object t_object;
@@ -59,14 +62,16 @@ struct s_object
 		t_tuple	position;
 		t_tuple	p;
 	};
-	uint32_t	color;
+	t_color		color;
 	t_type		type;
 	t_matrix	transform;
+	t_matrix	inverted_transform;
+	t_matrix	transpose;
 	union
 	{
 		t_sphere	sphere;
 		t_plane		plane;
-		t_cylinder	cylinder;
+		t_cylinder	cy;
 	};
 };
 
@@ -95,4 +100,6 @@ void		invalid_argements(char *id);
 void		invalid_identifier(void);
 uint32_t	get_color(char *token);
 
+t_matrix	orientation_transform(t_tuple coords, t_tuple orientation);
+void		set_transform(t_object *obj, t_matrix transform);
 #endif
