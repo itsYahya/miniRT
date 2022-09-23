@@ -108,7 +108,6 @@ t_xs			local_cylinder_intersect(t_object cy, t_ray r);
 t_xs			cy_validate_local_inters(t_ray r, t_fpair t, t_object obj);
 
 // cone
-t_object		infinite_cone();
 t_xs			local_cone_intersect(t_object obj, t_ray r);
 t_tuple			local_cone_normal(t_tuple p);
 
