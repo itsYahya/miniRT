@@ -27,7 +27,7 @@ t_xs	intersect(t_object object, t_ray ray)
 
 	xs = (t_xs){0, NULL};
 
-	ray = ray_transform(ray, inverse(object.transform));
+	ray = ray_transform(ray, object.inverted_transform);
 	if (object.type == E_SPHERE)
 		xs = local_sphere_intersect(object, ray);
 	else if (object.type == E_PLANE)
