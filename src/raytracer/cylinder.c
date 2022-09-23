@@ -7,7 +7,7 @@ static t_tuple	local_cylinder_normal(t_tuple p)
 
 # define VALID_Y(y) (y > obj.cy.min_y && y < obj.cy.max_y)
 
-static double	validate_intersections(t_ray r, t_fpair t, t_object obj)
+double	cy_validate_local_inters(t_ray r, t_fpair t, t_object obj)
 {
 	double	y0;
 	double	y1;
@@ -32,20 +32,18 @@ static double	local_cylinder_intersect(t_object cy, t_ray r)
 	if (equal(params.a, 0.0))
 		return (-1);
 	params.b = 2 * (r.origin.x * r.direction.x + r.origin.z * r.direction.z);
-	params.c = pow(r.origin.x, 2) + pow(r.origin.z, 2) - pow(cy.cy.diameter, 2);
+	params.c = pow(r.origin.x, 2) + pow(r.origin.z, 2) - 1;
 	params.desc = pow(params.b, 2) - 4 * params.a * params.c;
 	if (params.desc < 0)
 		return (-1);
 	t._0 = (-params.b - sqrt(params.desc)) / (2 * params.a);
 	t._1 = (-params.b + sqrt(params.desc)) / (2 * params.a);
-	return (validate_intersections(r, t, cy));
+	return (cy_validate_local_inters(r, t, cy));
 }
-
 
 void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 {
 	double		t;
-	t_tuple		eyev;
 	t_ray		transformed_ray;
 	t_tuple		local_hitp;
 
@@ -55,7 +53,6 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 		return ;
 	info->t = t;
 	local_hitp = ft_position(transformed_ray, info->t);
-	eyev = normalize(negate_tuple(transformed_ray.direction));
 	info->color = obj.color;
 	info->point = matrix_tuple_multiply(obj.transform, local_hitp);
 	info->point.w = 1;

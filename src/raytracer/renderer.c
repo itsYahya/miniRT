@@ -13,6 +13,8 @@ void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 			cylinder_intersect(obj, ray, info);
 		else if (obj.type == E_PLANE)
 			ft_solve_plane(ray, obj, info);
+		else if (obj.type == E_CONE)
+			cone_intersect(obj, ray, info);
 		head = head->next;
 	}
 }

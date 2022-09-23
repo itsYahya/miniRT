@@ -6,16 +6,20 @@ void	parseCylinder(char **tokens, t__data *data)
 {
 	if (ft_arr_size(tokens) != 6)
 		invalid_argements("cylinder");
+	t_tuple orientation = get_orientation_vect3(tokens[2]);
+	double diameter = ft_stod(tokens[3]);
+	double height = ft_stod(tokens[4]);
+
 	t_object* object = malloc(sizeof(t_object));
 	object->position = get_position_point(tokens[1]);
 	object->color.raw = get_color(tokens[5]);
 	object->type = E_CYLINDER;
-	object->cy.orientation = get_orientation_vect3(tokens[2]);
-	object->cy.diameter = ft_stod(tokens[3]);
-	object->cy.height = ft_stod(tokens[4]);
-	object->cy.min_y = -object->cy.height / 2;
-	object->cy.max_y = object->cy.height / 2;
-	set_transform(object, orientation_transform(object->position, object->cy.orientation));
+	object->cy.min_y = -height / 2;
+	object->cy.max_y = height / 2;
+	set_transform(object, transforms(2,
+		orientation_transform(object->position, orientation),
+		scale(diameter, 1, diameter)
+	));
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
 	if (errno)
 	{
