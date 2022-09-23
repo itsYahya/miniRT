@@ -32,15 +32,6 @@ struct s_material
 	double	shininess;
 };
 
-typedef struct s_cylinder t_cylinder;
-struct s_cylinder
-{
-	double	min_y;
-	double	max_y;
-	double	radius;
-};
-
-
 typedef struct s_object t_object;
 struct s_object
 {
@@ -49,11 +40,8 @@ struct s_object
 	t_matrix	transpose_matrix;
 	t_material	material;
 	t_type		type;
-
-	union
-	{
-		t_cylinder	cy;
-	};
+	double		min_y;
+	double		max_y;
 };
 
 typedef struct s_camera t_camera;
@@ -83,7 +71,7 @@ t_object	ft_sphere();
 t_object	new_sphere(t_tuple coords, double radius, t_color color);
 t_object	ft_plane();
 t_object	new_plane(t_tuple coords, t_tuple orientation, t_color color);
-t_object	ft_cylinder();
+t_object	infinite_cylinder();
 t_object	new_cylinder(t_tuple coords, t_tuple orientation, t_fpair radius_height, t_color color);
 t_camera	ft_camera(double hsize, double vsize, double fv);
 t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up);

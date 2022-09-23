@@ -6,7 +6,7 @@ t_xs		xs;
 int			count;
 
 # define INTERSECT(ORIGIN, DIR) \
-	cy = ft_cylinder(); \
+	cy = infinite_cylinder(); \
 	r = ft_ray(ORIGIN, DIR); \
 	xs = local_cylinder_intersect(cy, r)
 
@@ -49,7 +49,7 @@ static void	test_normal_on_cylinder()
 {
     t_tuple	p;
 
-    cy = ft_cylinder();
+    cy = infinite_cylinder();
     p = point(1, 0, 0);
     assert(is_equal(local_cylinder_normal(p), vector(1, 0, 0)));
     p = point(0, 5, -1);
@@ -61,9 +61,9 @@ static void	test_normal_on_cylinder()
 }
 
 # define INTERSECT_CONSTRAINED(ORIGIN, DIR) \
-	cy = ft_cylinder(); \
-	cy.cy.min_y = 1; \
-	cy.cy.max_y = 2; \
+	cy = infinite_cylinder(); \
+	cy.min_y = 1; \
+	cy.max_y = 2; \
 	r = ft_ray(ORIGIN, normalize(DIR)); \
 	xs = local_cylinder_intersect(cy, r)
 static void	test_intersect_constrained_cylinder()
