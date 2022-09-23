@@ -18,4 +18,6 @@ int	main()
 	test_orientation_transform();
 	seprator();
 	test_cylinder();
+	seprator();
+	test_cone();
 }
