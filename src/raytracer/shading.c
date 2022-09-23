@@ -13,7 +13,7 @@ static void	ft_shader_init(t_info *info, t_shader *shdata, t_info *shade_info, t
 {
 	shdata->light_point = light->point;
 	shdata->light_vect = subst_tuple(shdata->light_point, info->point);
-	shdata->light_color.raw = light->color;
+	shdata->light_color = light->color;
 	shdata->light_point = light->point;
 	shdata->light_ratio = light->bRatio;
 	shdata->ray.origin = info->point;
@@ -38,11 +38,8 @@ void	ft_shading(t__data *data, t_info *info, t_ray ray)
 	float		d;
 	t_list		*head;
 
-	shade.ambient.raw = data->ambient.color;
-	shade.am_ratio = data->ambient.ratio;
-	shade.ambient = ft_merge_color(info->color, shade.ambient, shade.am_ratio);
+	shade.color = ft_merge_color(info->color, data->ambient.color, data->ambient.ratio);
 	head = data->lights;
-	shade.color.raw = 0;
 	while (head)
 	{
 		ft_shader_init(info, &shade, &shade_info, head->content);
@@ -51,10 +48,10 @@ void	ft_shading(t__data *data, t_info *info, t_ray ray)
 		{
 			d = ft_cos(normalize(shade.light_vect), info->normal);
 			shade.difuse = ft_merge_color(info->color, shade.light_color, d * shade.light_ratio);
-			shade.specular = ft_specular(&shade, info, multiply_tuple(ray.direction, -1));
+			shade.specular = ft_specular(&shade, info, negate_tuple(ray.direction));
 			shade.color = ft_add_color(ft_add_color(shade.difuse, shade.color), shade.specular);
 		}
 		head = head->next;
 	}
-	info->color = ft_add_color(shade.color, shade.ambient);
+	info->color = shade.color;
 }

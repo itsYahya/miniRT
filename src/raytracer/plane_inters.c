@@ -22,8 +22,6 @@ void	ft_solve_plane(t_ray ray, t_object object, t_info *info)
 		info->point = add_tuple(ray.origin, multiply_tuple(ray.direction, t));
 		info->color = object.color;
 		info->normal = p_normal;
-		if (dot(p_normal, negate_tuple(ray.direction)) < 0)
-			info->normal = negate_tuple(info->normal);
 		info->t = t;
 	}
 }

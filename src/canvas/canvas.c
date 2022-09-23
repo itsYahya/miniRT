@@ -8,7 +8,7 @@ void		ft_write_pixel(t_canvas c, int x, int y, t_color color)
 
 uint32_t*	ft_pixel_at(t_canvas c, int x, int y)
 {
-	c.img_data++;
+	// c.img_data++;
 	return (c.img_data + c.width * y + x);
 }
 
