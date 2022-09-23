@@ -26,6 +26,11 @@ union u_fpair
 {
 	struct
 	{
+		float	_0;
+		float	_1;
+	};
+	struct
+	{
 		float	x;
 		float	y;
 	};

@@ -9,9 +9,13 @@
 # include "list.h"
 # include "lst_utils.h"
 # include "params.h"
+# include "algebra.h"
+# include "matrix.h"
+# include "params.h"
+# include "color.h"
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 480
+# define HEIGHT 480
 
 typedef struct s_ray
 {
@@ -38,21 +42,21 @@ typedef struct s_inter_info
 	float	t;
 }	t_info;
 
-typedef struct s_scene t_scene;
-struct s_scene
-{
-
-};
-
+void		init_info(t_info *info);
 void		render(t__data *data);
 void		ft_solve_sphere(const t_ray ray, t_object sph_obj, t_info *info);
 t_vcamera	ft_setup_camera(const t_camera camera);
+void		print_camera(t_vcamera c);
 t_ray		ft_setray(const t_vcamera camera, t_pair pair);
 void		ft_solve_plane(t_ray ray, t_object obj, t_info *info);
 void		ft_look_inters(t_list *head, t_ray ray, t_info *info);
 void		ft_shading(t__data *data, t_info *info, t_ray ray);
-// t_info		ft_lightning(t_light light);
 
+void		cylinder_intersect(t_object obj, t_ray ray, t_info *info);
+t_cylinder	ft_cylinder();
+
+t_ray		ray_transform(t_ray ray, t_matrix transformation_matrix);
+t_tuple		ft_position(t_ray r, float t);
 
 typedef struct s_shader
 {
@@ -68,7 +72,6 @@ typedef struct s_shader
 	t_color	color;
 }	t_shader;
 
-double	ft_max(double f1, double f2);
 t_color	ft_specular(t_shader *shader, t_info *info, t_tuple view);
 double	ft_cos(t_tuple v1, t_tuple v2);
 

@@ -16,3 +16,10 @@ t_ray	ft_setray(const t_vcamera camera, t_pair pair)
 	ray.direction = normalize(ray.direction);
 	return (ray);
 }
+
+t_ray		ray_transform(t_ray ray, t_matrix transformation_matrix)
+{
+	ray.origin = matrix_tuple_multiply(transformation_matrix, ray.origin);
+	ray.direction = matrix_tuple_multiply(transformation_matrix, ray.direction);
+	return (ray);
+}

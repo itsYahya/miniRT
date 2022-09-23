@@ -1,11 +1,4 @@
 #include "raytracer.h"
- 
-double	ft_max(double f1, double f2)
-{
-	if (f1 > f2)
-		return (f1);
-	return (f2);
-}
 
 double	ft_cos(t_tuple v1, t_tuple v2)
 {
@@ -65,4 +58,3 @@ void	ft_shading(t__data *data, t_info *info, t_ray ray)
 	}
 	info->color = ft_add_color(shade.color, shade.ambient);
 }
-
