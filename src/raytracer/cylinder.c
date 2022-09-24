@@ -51,7 +51,7 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 
 	transformed_ray = ray_transform(ray, obj.inverted_transform);
 	t = local_cylinder_intersect(obj, transformed_ray);
-	if (t <= 0 || (info->t > 0 && info->t < t))
+	if (t < EPSILON || (info->t > 0 && info->t < t))
 		return ;
 	info->t = t;
 	local_hitp = ft_position(transformed_ray, info->t);

@@ -14,8 +14,8 @@
 # include "params.h"
 # include "color.h"
 
-# define WIDTH 480
-# define HEIGHT 480
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef struct s_ray
 {
@@ -66,9 +66,8 @@ typedef struct s_shader
 	t_color	difuse;
 	t_color light_color;
 	float	light_ratio;
-	t_color	ambient;
-	float	am_ratio;
 	t_color specular;
+	t_color	color;
 }	t_shader;
 
 t_color	ft_specular(t_shader *shader, t_info *info, t_tuple view);

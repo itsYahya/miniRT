@@ -17,7 +17,6 @@ void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 	}
 }
 
-
 static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__data *data)
 {
 	t_ray		ray;
@@ -30,10 +29,10 @@ static void	per_pixel(const t_pair pair, t_canvas canvas, t_vcamera vcamera, t__
 	ft_look_inters(data->objects, ray, &info);
 	if (info.t > 0)
 	{
-		if (dot(info.normal, negate_tuple(ray.direction)) < 0)
+		if (dot(info.normal, negate_tuple(ray.direction)) <= 0)
 			info.normal = negate_tuple(info.normal);
 		info.normal = normalize(info.normal);
-		info.point = add_tuple(info.point, multiply_tuple(info.normal, EPSILON));
+		info.point = add_tuple(info.point, multiply_tuple(info.normal, EPSILON_2));
 		ft_shading(data, &info, ray);
 	}
 	ft_write_pixel(canvas, pair.x, pair.y, info.color);
