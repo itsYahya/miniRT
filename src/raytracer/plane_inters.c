@@ -23,5 +23,6 @@ void	ft_solve_plane(t_ray ray, t_object object, t_info *info)
 		info->color = object.color;
 		info->normal = p_normal;
 		info->t = t;
+		info->material = object.material;
 	}
 }

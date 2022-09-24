@@ -47,7 +47,7 @@ void	ft_shading(t__data *data, t_info *info, t_ray ray)
 		if (shade_info.t == -1 || ft_distance(shade.light_point, info->point) <= ft_distance(shade_info.point, info->point))
 		{
 			d = ft_cos(normalize(shade.light_vect), info->normal);
-			shade.difuse = ft_merge_color(info->color, shade.light_color, d * shade.light_ratio);
+			shade.difuse = ft_merge_color(info->color, shade.light_color, d * shade.light_ratio * info->material.difuse);
 			shade.specular = ft_specular(&shade, info, negate_tuple(ray.direction));
 			shade.color = ft_add_color(ft_add_color(shade.difuse, shade.color), shade.specular);
 		}

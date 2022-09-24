@@ -61,4 +61,5 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 	info->point.w = 1;
 	info->normal = matrix_tuple_multiply(obj.transpose, local_cylinder_normal(local_hitp));
 	info->normal.w = 0;
+	info->material = obj.material;
 }

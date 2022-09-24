@@ -36,10 +36,11 @@ typedef struct s_vcamera
 
 typedef struct s_inter_info
 {
-	t_color	color;
-	t_tuple	point;
-	t_tuple	normal;
-	float	t;
+	t_color		color;
+	t_tuple		point;
+	t_tuple		normal;
+	float		t;
+	t_material	material;
 }	t_info;
 
 void		init_info(t_info *info);
