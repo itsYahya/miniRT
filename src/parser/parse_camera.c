@@ -14,6 +14,10 @@ static double	get_fov(const char *arg)
 
 void	parseCamera(char **tokens, t__data *data)
 {
+	static int	count = 0;
+
+	if (count++)
+		multiple_elm_exit("C");
 	if (ft_arr_size(tokens) != 4)
 		invalid_argements("camera");
 	data->camera.coordinates = get_position_point(tokens[1]);

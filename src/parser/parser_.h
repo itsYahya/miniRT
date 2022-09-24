@@ -1,5 +1,5 @@
 #ifndef PARSER__H
-#define PARSER__H
+# define PARSER__H
 
 # include "tuple.h"
 # include "list.h"
@@ -54,6 +54,13 @@ typedef struct s_cylinder
 	float		max_y;
 }	t_cylinder;
 
+typedef struct s_material
+{
+	float	specular;
+	float	shininess;
+	float	difuse;
+}	t_material;
+
 typedef struct s_object t_object;
 struct s_object
 {
@@ -67,6 +74,7 @@ struct s_object
 	t_matrix	transform;
 	t_matrix	inverted_transform;
 	t_matrix	transpose;
+	t_material	material;
 	union
 	{
 		t_sphere	sphere;
@@ -99,6 +107,7 @@ void		multiple_elm_exit(char *id);
 void		invalid_argements(char *id);
 void		invalid_identifier(void);
 uint32_t	get_color(char *token);
+void		ft_set_material(t_object *object, char **tokens, int index);
 
 t_matrix	orientation_transform(t_tuple coords, t_tuple orientation);
 void		set_transform(t_object *obj, t_matrix transform);
