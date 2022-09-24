@@ -1,9 +1,9 @@
 #include "parser_.h"
 
-static void	print_error_exit()
+static void	print_error()
 {
+	errno = 1;
 	printf("Ratio parser: invalid input\n");
-	exit(1);
 }
 
 float	get_ratio(const char *token)
@@ -12,6 +12,6 @@ float	get_ratio(const char *token)
 
 	ratio = ft_stod(token);
 	if (ratio > 1 || ratio < 0)
-		print_error_exit();
+		print_error();
 	return (ratio);
 }

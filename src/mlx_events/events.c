@@ -2,26 +2,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "canvas.h"
+#include "miniRT.h"
 
 static int onClose(void *data)
 {
-	t__data *data_ = (t__data *)data;
-	int	i = 0;
-	if (i)
-		printf("hello %f\n", data_->camera.fov);
-	exit(0);
+	ft_destroy(data);
+	return (exit(0), 0);
 }
 
-int	key_ev(int key, t_canvas *canva)
+void	setup_mlxevents(t__data *data)
 {
-	(void)canva;
-	(void)key;
-	exit(0);
-	return (0);
-}
-
-void	ft_setup_mlxevnets(void *win, t__data *data, t_canvas canvas)
-{
-	mlx_hook(win, 17, 0, onClose, data);
-	mlx_hook(win, 2, 0, key_ev, &canvas);
+	if (! data || ! data->canvas.mlx_win)
+	{
+		printf("failed to setup mlx events\n");
+		return ;
+	}
+	mlx_hook(data->canvas.mlx_win, 17, 0, onClose, data);
 }

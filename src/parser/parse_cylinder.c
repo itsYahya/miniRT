@@ -8,7 +8,7 @@ static t_object	*ft_init_cylinder(char **tokens)
 
 	object = malloc(sizeof(t_object));
 	if (!object)
-		exit(0);
+		return (errno = 1, NULL);
 	object->position = get_position_point(tokens[1]);
 	object->color.raw = get_color(tokens[5]);
 	object->type = E_CYLINDER;
@@ -22,20 +22,17 @@ static t_object	*ft_init_cylinder(char **tokens)
 	return (object);
 }
 
-void	parseCylinder(char **tokens, t__data *data)
+int	parseCylinder(char **tokens, t__data *data)
 {
 	t_object	*object;
 	int			size;
 
 	size = ft_arr_size(tokens);
 	if (size < 6 || size > 9)
-		invalid_argements("cylinder");
+		return (invalid_argements("cylinder"), 0);
 	object = ft_init_cylinder(tokens);
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
 	if (errno)
-	{
-		ft_arr_free(tokens);
-		ft_lstclear(&data->objects, free);
 		invalid_argements("cylinder");
-	}
+	return (0);
 }
