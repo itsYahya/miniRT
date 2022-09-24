@@ -41,7 +41,7 @@ static int	ft_read(int fd, t__data *data)
 	char	**tokens;
 	int		id;
 
-	line = get_next_line(fd);
+	line = ft_getline(fd);
 	while (line)
 	{
 		if (ft_strlen(line) > 1)
@@ -56,7 +56,7 @@ static int	ft_read(int fd, t__data *data)
 		if (id != 'N')
 			parseElements(tokens, id, data);
 		tokens = ft_arr_free(tokens);
-		line = get_next_line(fd);
+		line = ft_getline(fd);
 	}
 	return (0);
 }

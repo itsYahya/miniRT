@@ -23,5 +23,6 @@ bool	is_int(const char *s);
 void	swap(float *a, float *b);
 float	ft_min(float a, float b);
 float	ft_max(float a, float b);
+char	*ft_getline(int fd);
 
 #endif
