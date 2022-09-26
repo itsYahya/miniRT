@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include "canvas.h"
 
+int	*ft_errno()
+{
+	static int err = 0;
+	return &err;
+}
+
 void	init(t__data *data)
 {
 	errno = 0;
@@ -15,6 +21,7 @@ void	init(t__data *data)
 
 void	ft_destroy(t__data *data)
 {
+	printf("destroying data\n");
 	if (! data)
 		return ;
 	ft_lstclear(&data->objects, free);

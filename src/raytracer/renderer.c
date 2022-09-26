@@ -45,7 +45,6 @@ void	render(t__data *data)
 	t_vcamera	vcamera;
 
 	pair = (t_pair){{0, 0}};
-	data->canvas = ft_canvas(WIDTH, HEIGHT);
 	vcamera = ft_setup_camera(data->camera);
 	while (pair.y < HEIGHT)
 	{

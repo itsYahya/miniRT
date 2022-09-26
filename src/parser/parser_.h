@@ -7,12 +7,15 @@
 # include "utils.h"
 # include <stdio.h>
 # include <stdlib.h>
-# include <errno.h>
 # include <fcntl.h>
 # include "get_next_line.h"
 # include "matrix.h"
 # include "color.h"
 # include "canvas.h"
+
+int	*ft_errno();
+
+# define errno *ft_errno()
 
 typedef t_tuple t_vect3;
 

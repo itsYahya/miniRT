@@ -41,7 +41,7 @@ static int	ft_read(int fd, t__data *data)
 {
 	char	*line;
 	char	**tokens;
-	int		id;
+	t_type	id;
 
 	while (errno == 0)
 	{
@@ -54,7 +54,7 @@ static int	ft_read(int fd, t__data *data)
 		if (! tokens)
 			break ;
 		id = identifier(tokens[0]);
-		if (id < 0)
+		if (id == E_INVALID)
 			invalid_identifier();
 		else if (id != E_NEWLINE && id != E_INVALID)
 			parseElements(tokens, id, data);

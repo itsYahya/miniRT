@@ -1,8 +1,8 @@
 #include "utils.h"
-#include <errno.h>
 #include <limits.h>
 #include <stdio.h>
 #include <math.h>
+#include "miniRT.h"
 
 static void	ft_remove_trailing_zeros(char *s)
 {
