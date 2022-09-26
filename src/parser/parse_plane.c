@@ -1,16 +1,16 @@
 #include "parser_.h"
 
-void	parsePlane(char **tokens, t__data *data)
+int	parsePlane(char **tokens, t__data *data)
 {
 	t_object	*object;
 	int			size;
 
 	size = ft_arr_size(tokens);
 	if (size < 4 || size > 7)
-		invalid_argements("plane");
+		return (invalid_argements("plane"), 0);
 	object = malloc(sizeof(t_object));
 	if (!object)
-		exit(0);
+		return (errno = 1, 0);
 	object->position = get_position_point(tokens[1]);
 	object->color.raw = get_color(tokens[3]);
 	object->type = E_PLANE;
@@ -18,9 +18,6 @@ void	parsePlane(char **tokens, t__data *data)
 	ft_set_material(object, tokens, 4);
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
 	if (errno)
-	{
-		ft_arr_free(tokens);
-		ft_lstclear(&data->objects, free);
 		invalid_argements("plane");
-	}
+	return (0);
 }

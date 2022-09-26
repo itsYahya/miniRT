@@ -45,7 +45,6 @@ static double	local_cylinder_intersect(t_object cy, t_ray r)
 void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 {
 	double		t;
-	t_tuple		eyev;
 	t_ray		transformed_ray;
 	t_tuple		local_hitp;
 
@@ -55,7 +54,6 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 		return ;
 	info->t = t;
 	local_hitp = ft_position(transformed_ray, info->t);
-	eyev = normalize(negate_tuple(transformed_ray.direction));
 	info->color = obj.color;
 	info->point = matrix_tuple_multiply(obj.transform, local_hitp);
 	info->point.w = 1;
