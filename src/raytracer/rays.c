@@ -1,6 +1,6 @@
 #include "raytracer.h"
 
-t_ray	ft_setray(const t_vcamera camera, t_pair pair)
+t_ray	ft_setray(const t_vcamera camera, t_fpair pair)
 {
 	t_fpair fcoords;
 	t_tuple	up;
