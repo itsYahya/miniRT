@@ -14,8 +14,8 @@
 # include "params.h"
 # include "color.h"
 
-# define WIDTH 480
-# define HEIGHT 480
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef struct s_ray
 {
@@ -36,10 +36,11 @@ typedef struct s_vcamera
 
 typedef struct s_inter_info
 {
-	t_color	color;
-	t_tuple	point;
-	t_tuple	normal;
-	float	t;
+	t_color		color;
+	t_tuple		point;
+	t_tuple		normal;
+	float		t;
+	t_material	material;
 }	t_info;
 
 void		init_info(t_info *info);
@@ -47,7 +48,7 @@ void		render(t__data *data);
 void		ft_solve_sphere(const t_ray ray, t_object sph_obj, t_info *info);
 t_vcamera	ft_setup_camera(const t_camera camera);
 void		print_camera(t_vcamera c);
-t_ray		ft_setray(const t_vcamera camera, t_pair pair);
+t_ray		ft_setray(const t_vcamera camera, t_fpair pair);
 void		ft_solve_plane(t_ray ray, t_object obj, t_info *info);
 void		ft_look_inters(t_list *head, t_ray ray, t_info *info);
 void		ft_shading(t__data *data, t_info *info, t_ray ray);
@@ -69,9 +70,8 @@ typedef struct s_shader
 	t_color	difuse;
 	t_color light_color;
 	float	light_ratio;
-	t_color	ambient;
-	float	am_ratio;
 	t_color specular;
+	t_color	color;
 }	t_shader;
 
 t_color	ft_specular(t_shader *shader, t_info *info, t_tuple view);

@@ -26,7 +26,8 @@ static void	ft_results(t_params param, t_object obj, t_info *info, t_ray ray)
 		info->t = rs;
 		info->color = obj.color;
 		info->point = ft_position(ray, info->t);
-		info->normal = normalize(subst_tuple(info->point, obj.position));
+		info->normal = subst_tuple(info->point, obj.position);
+		info->material = obj.material;
 	}
 }
 

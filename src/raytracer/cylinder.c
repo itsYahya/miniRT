@@ -49,7 +49,7 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 
 	transformed_ray = ray_transform(ray, obj.inverted_transform);
 	t = local_cylinder_intersect(obj, transformed_ray);
-	if (t <= 0 || (info->t > 0 && info->t < t))
+	if (t < EPSILON || (info->t > 0 && info->t < t))
 		return ;
 	info->t = t;
 	local_hitp = ft_position(transformed_ray, info->t);
@@ -58,4 +58,5 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 	info->point.w = 1;
 	info->normal = matrix_tuple_multiply(obj.transpose, local_cylinder_normal(local_hitp));
 	info->normal.w = 0;
+	info->material = obj.material;
 }

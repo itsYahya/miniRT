@@ -2,15 +2,19 @@
 #include "algebra.h"
 #include "color.h"
 
-void	parseCylinder(char **tokens, t__data *data)
+static t_object	*ft_init_cylinder(char **tokens)
 {
-	if (ft_arr_size(tokens) != 6)
-		invalid_argements("cylinder");
-	t_tuple orientation = get_orientation_vect3(tokens[2]);
-	double diameter = ft_stod(tokens[3]);
-	double height = ft_stod(tokens[4]);
+	t_object	*object;
+	t_tuple		orientation;
+	double		diameter;
+	double		height;
 
-	t_object* object = malloc(sizeof(t_object));
+	orientation = get_orientation_vect3(tokens[2]);
+	diameter = ft_stod(tokens[3]);
+	height = ft_stod(tokens[4]);
+	object = malloc(sizeof(t_object));
+	if (!object)
+		return (errno = 1, NULL);
 	object->position = get_position_point(tokens[1]);
 	object->color.raw = get_color(tokens[5]);
 	object->type = E_CYLINDER;
@@ -20,11 +24,21 @@ void	parseCylinder(char **tokens, t__data *data)
 		orientation_transform(object->position, orientation),
 		scale(diameter, 1, diameter)
 	));
+	ft_set_material(object, tokens, 6);
+	return (object);
+}
+
+int	parseCylinder(char **tokens, t__data *data)
+{
+	t_object	*object;
+	int			size;
+
+	size = ft_arr_size(tokens);
+	if (size < 6 || size > 9)
+		return (invalid_argements("cylinder"), 0);
+	object = ft_init_cylinder(tokens);
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
 	if (errno)
-	{
-		ft_arr_free(tokens);
-		ft_lstclear(&data->objects, free);
 		invalid_argements("cylinder");
-	}
+	return (0);
 }
