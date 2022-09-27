@@ -19,24 +19,6 @@ char	*ft_strlcat(char *dest, char *src, int stop)
 	return (dest);
 }
 
-char	*ft_strdup(char *str)
-{
-	char	*dest;
-	int		index;
-
-	index = 0;
-	dest = (char *)ft_calloc(sizeof(char), ft_strlen(str) + 1);
-	if (!dest)
-		return (0);
-	while (str[index] != '\0')
-	{
-		dest[index] = str[index];
-		index++;
-	}
-	dest[index] = '\0';
-	return (dest);
-}
-
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*table;

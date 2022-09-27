@@ -49,7 +49,7 @@ static int	ft_read(int fd, t__data *data)
 		line = ft_getline(fd);
 		if (ft_strlen(line) > 1)
 			chomp(line, '\n');
-		tokens = ft_split(line, ' ');
+		tokens = split_by_space(line);
 		line = ft_free(line);
 		if (! tokens)
 			break ;

@@ -20,7 +20,6 @@ typedef struct s_data
 }	t_data;
 
 char	*ft_strlcat(char *dest, char *src, int stop);
-char	*ft_strdup(char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*get_next_line(int fd);
 char	*get_the_line(char *line, char *table, int *index, int *check);
