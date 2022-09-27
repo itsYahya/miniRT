@@ -19,9 +19,9 @@ static double	local_cone_intersect(t_object obj, t_ray r)
 	params.b = 2 * (r.origin.x * r.direction.x - r.origin.y * r.direction.y + r.origin.z * r.direction.z);
 	params.c = pow(r.origin.x, 2) - pow(r.origin.y, 2) + pow(r.origin.z, 2);
 
-	if (equal(params.a, 0.0) && equal(params.b, 0.0))
+	if (params.a == 0.0 || params.b == 0.0)
 		return (-1);
-	if (equal(params.a, 0.0))
+	if (params.a == 0.0)
 		return (-params.c / params.b);
 	params.desc = pow(params.b, 2) - 4 * params.a * params.c;
 	if (params.desc < 0)
