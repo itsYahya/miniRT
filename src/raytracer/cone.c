@@ -56,11 +56,10 @@ t_xs	local_cone_intersect(t_object obj, t_ray r)
 	params.b = 2 * (r.ox * r.dx - r.oy * r.dy + r.oz * r.dz);
 	params.c = pow(r.ox, 2) - pow(r.oy, 2) + pow(r.oz, 2);
 
-	if (equal(params.a, 0.0) && equal(params.b, 0.0))
+	if (params.a == 0.0 && params.b == 0.0)
 		return (xs);
-	if (equal(params.a, 0.0))
+	if (params.a == 0.0)
 	{
-		// TODO: check if -c/b or -c/(2b)
 		t._0 = -params.c / params.b;
 		return ft_inters(1, ft_inter(t._0, obj));
 	}
