@@ -16,6 +16,8 @@ static t_type	identifier(const char	*id)
 		return (E_SPHERE);
 	if (ft_strcmp("cy", id) == 0)
 		return (E_CYLINDER);
+	if (ft_strcmp("cn", id) == 0)
+		return (E_CONE);
 	if (ft_strcmp("\n", id) == 0 || ft_strcmp("#", id) == 0)
 		return (E_NEWLINE);
 	return (E_INVALID);
@@ -33,8 +35,10 @@ static void	parseElements(char **tokens, int id, t__data *data)
 		parseSphere(tokens, data);
 	else if (id == E_PLANE)
 		parsePlane(tokens, data);
-	else
+	else if (id == E_CYLINDER)
 		parseCylinder(tokens, data);
+	else if (id == E_CONE)
+		parseCone(tokens, data);
 }
 
 static int	ft_read(int fd, t__data *data)
@@ -55,7 +59,7 @@ static int	ft_read(int fd, t__data *data)
 			break ;
 		id = identifier(tokens[0]);
 		if (id == E_INVALID)
-			invalid_identifier();
+			invalid_identifier(tokens[0]);
 		else if (id != E_NEWLINE && id != E_INVALID)
 			parseElements(tokens, id, data);
 		tokens = ft_arr_free(tokens);

@@ -51,13 +51,15 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	t_tuple		orientation;
-	float		diameter;
-	float		height;
 	float		min_y;
 	float		max_y;
 }	t_cylinder;
 
+typedef struct s_cone
+{
+	float		min_y;
+	float		max_y;
+}	t_cone;
 typedef struct s_material
 {
 	float	specular;
@@ -84,6 +86,7 @@ struct s_object
 		t_sphere	sphere;
 		t_plane		plane;
 		t_cylinder	cy;
+		t_cone		cn;
 	};
 };
 
@@ -105,12 +108,13 @@ int			parseLight(char **tokens, t__data *data);
 int			parseSphere(char **tokens, t__data *data);
 int			parsePlane(char **tokens, t__data *data);
 int			parseCylinder(char **tokens, t__data *data);
+void		parseCone(char **tokens, t__data *data);
 t_tuple		get_orientation_vect3(const char *arg);
 t_tuple		get_position_point(const char *arg);
 float		get_ratio(const char *token);
 void		multiple_elm(char *id);
 void		invalid_argements(char *id);
-void		invalid_identifier(void);
+void		invalid_identifier(char *id);
 void		invalid_file();
 uint32_t	get_color(char *token);
 void		ft_set_material(t_object *object, char **tokens, int index);

@@ -54,7 +54,10 @@ void		ft_look_inters(t_list *head, t_ray ray, t_info *info);
 void		ft_shading(t__data *data, t_info *info, t_ray ray);
 
 void		cylinder_intersect(t_object obj, t_ray ray, t_info *info);
-t_cylinder	ft_cylinder();
+double		cy_validate_local_inters(t_ray r, t_fpair t, t_object obj);
+
+t_tuple		local_cone_normal(t_tuple p);
+void		cone_intersect(t_object obj, t_ray ray, t_info *info);
 
 t_ray		ray_transform(t_ray ray, t_matrix transformation_matrix);
 t_tuple		ft_position(t_ray r, float t);

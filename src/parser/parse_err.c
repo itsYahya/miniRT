@@ -12,10 +12,10 @@ void	invalid_argements(char *element)
 	printf("%s parser: invalid number of arguments\n", element);
 }
 
-void	invalid_identifier()
+void	invalid_identifier(char *id)
 {
 	errno = 1;
-	printf("miniRT parsr: invalid identifier\n");
+	printf("parser: invalid identifier %s\n", id);
 }
 
 void	invalid_file()
