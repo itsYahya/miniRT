@@ -24,5 +24,8 @@ void	swap(float *a, float *b);
 float	ft_min(float a, float b);
 float	ft_max(float a, float b);
 char	*ft_getline(int fd);
+char	*ft_strdup(const char *s1);
+char	**split_line(char *line);
+int		count_words(char *line);
 
 #endif
