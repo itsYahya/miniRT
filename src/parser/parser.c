@@ -16,6 +16,8 @@ static int	identifier(const char	*id)
 		return (E_SPHERE);
 	if (ft_strcmp("cy", id) == 0)
 		return (E_CYLINDER);
+	if (ft_strcmp("cn", id) == 0)
+		return (E_CONE);
 	if (ft_strcmp("\n", id) == 0 || ft_strcmp("#", id) == 0)
 		return (E_NEWLINE);
 	return (-1);
@@ -43,6 +45,8 @@ static void	parse_line(t_type id, char **tokens, t_pdata *pdata)
 		add_object(&pdata->scene, parse_plane(tokens));
 	else if (id == E_CYLINDER)
 		add_object(&pdata->scene, parse_cylinder(tokens));
+	else if (id == E_CONE)
+		add_object(&pdata->scene, parse_cone(tokens));
 }
 
 static char	**get_next_line_tokens(int fd)
@@ -85,12 +89,9 @@ t_pdata	parser(char *scene_file_path)
 
 	pdata.scene = empty_scene();
 	pdata.camera = ft_camera(0, 0, 0);
-	if (validate_path(scene_file_path))
-	{
-		failed_to_open_file(scene_file_path);
-		return (pdata);
-	}
-	fd = open(scene_file_path, O_RDONLY);
+	fd = -1;
+	if (validate_path(scene_file_path) == 0)
+		fd = open(scene_file_path, O_RDONLY);
 	if (fd < 0)
 	{
 		failed_to_open_file(scene_file_path);

@@ -64,7 +64,7 @@ t_color color_at(t_scene w, t_ray r)
 
 	xs = intersect_scene(w, r);
 	intersection = ft_hit(xs);
-	if (intersection.t < 0)
+	if (intersection.t <= 0)
 		return ft_color(0, 0, 0);
 	comps = prepare_computations(intersection, r);
 	return shade_hit(w, comps);

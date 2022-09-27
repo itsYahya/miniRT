@@ -9,6 +9,7 @@ typedef enum e_type
 	E_SPHERE = 'S',
 	E_PLANE = 'P',
 	E_CYLINDER = 'Y',
+	E_CONE = 'O',
 	E_NEWLINE = '\n',
 	E_INVALID = -1,
 }	t_type;

@@ -20,8 +20,28 @@
 typedef struct s_ray t_ray;
 struct s_ray
 {
-	t_tuple	origin;
-	t_tuple	direction;
+	union
+	{
+		t_tuple	origin;
+		struct
+		{
+			double ox;
+			double oy;
+			double oz;
+			double ow;
+		};
+	};
+
+	union {
+		t_tuple	direction;
+		struct
+		{
+			double dx;
+			double dy;
+			double dz;
+			double dw;
+		};
+	};
 };
 
 typedef struct s_inter t_inter;
@@ -83,8 +103,13 @@ t_tuple			local_plane_normal();
 t_xs			local_plane_intersect(t_object plane, t_ray r);
 
 // cylinder
-t_tuple	local_cylinder_normal(t_tuple p);
-t_xs	local_cylinder_intersect(t_object cy, t_ray r);
+t_tuple			local_cylinder_normal(t_tuple p);
+t_xs			local_cylinder_intersect(t_object cy, t_ray r);
+t_xs			cy_validate_local_inters(t_ray r, t_fpair t, t_object obj);
+
+// cone
+t_xs			local_cone_intersect(t_object obj, t_ray r);
+t_tuple			local_cone_normal(t_tuple p);
 
 // light
 t_tuple			reflect(t_tuple v, t_tuple normal);

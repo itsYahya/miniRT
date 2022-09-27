@@ -32,6 +32,7 @@ t_light		parse_light(char **tokens);
 t_object	parse_sphere(char **tokens);
 t_object	parse_plane(char **tokens);
 t_object	parse_cylinder(char **tokens);
+t_object	parse_cone(char **tokens);
 // void		parse_ambient_lightning(char **tokens, t_pdata *data);
 
 // parser utils

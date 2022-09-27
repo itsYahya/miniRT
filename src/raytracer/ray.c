@@ -3,8 +3,8 @@
 t_ray	ft_ray(t_tuple origin, t_tuple direction)
 {
 	return (t_ray){
-		origin,
-		direction
+		{origin},
+		{direction}
 	};
 }
 
