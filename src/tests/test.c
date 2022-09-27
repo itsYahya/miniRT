@@ -2,5 +2,5 @@
 
 int main()
 {
-	test_split_line();
+	test_split_by_space();
 }

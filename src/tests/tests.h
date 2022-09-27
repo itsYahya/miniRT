@@ -4,6 +4,6 @@
 # include "utils.h"
 # include <assert.h>
 
-void	test_split_line();
+void	test_split_by_space();
 
 #endif

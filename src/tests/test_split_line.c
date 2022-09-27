@@ -19,11 +19,11 @@ static void	test_count_words()
 
 char	**arr;
 # define EXPECT_SIZE(SIZE, STR) \
-	arr = split_line(STR); \
+	arr = split_by_space(STR); \
 	assert(ft_arr_size(arr) == SIZE); \
 	ft_arr_free(arr)
 
-static void	test_split_line_()
+static void	test_split_by_space_()
 {
 	char	**arr;
 
@@ -34,12 +34,12 @@ static void	test_split_line_()
 	EXPECT_SIZE(7, "sp\t\t\t\t 0.0,0,10 \v\t\r5 0,1,255       \t0.6    1       200");
 }
 
-void	test_split_line()
+void	test_split_by_space()
 {
 	printf("test count words: ");
 	test_count_words();
 	printf("OK\n");
 	printf("test split line: ");
-	test_split_line_();
+	test_split_by_space_();
 	printf("OK\n");
 }

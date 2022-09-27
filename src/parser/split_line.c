@@ -66,7 +66,7 @@ static void	save_words(char **words, char *line)
 	}
 }
 
-char	**split_line(char *line)
+char	**split_by_space(char *line)
 {
 	char	**words;
 	int		words_count;
