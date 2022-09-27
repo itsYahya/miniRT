@@ -11,8 +11,8 @@
 # include "types.h"
 # include "pair.h"
 
-# define WIDTH 480
-# define HEIGHT 320
+# define WIDTH 1280
+# define HEIGHT 720
 
 typedef struct s_light t_light;
 struct s_light
