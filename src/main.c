@@ -2,6 +2,7 @@
 #include "raytracer.h"
 #include "miniRT.h"
 #include <signal.h>
+#include "h_threads.h"
 
 
 int	main(int argc, char **argv)
@@ -14,6 +15,6 @@ int	main(int argc, char **argv)
 	parser(argv[1], &data);
 	ft_canvas(&data.canvas, WIDTH, HEIGHT);
 	if (errno == 0)
-		render(&data);
+		ft_threads_lunsher(&data);
 	ft_destroy(&data);
 }

@@ -44,7 +44,6 @@ typedef struct s_inter_info
 }	t_info;
 
 void		init_info(t_info *info);
-void		render(t__data *data);
 void		ft_solve_sphere(const t_ray ray, t_object sph_obj, t_info *info);
 t_vcamera	ft_setup_camera(const t_camera camera);
 void		print_camera(t_vcamera c);
