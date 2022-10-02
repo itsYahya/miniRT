@@ -100,10 +100,10 @@ void	*render(void *ptr)
 	data = thread->data;
 	pair = (t_pair){{0, thread->begin}};
 	vcamera = thread->vcamera;
-	while (pair.y < thread->end)
+	while (pair.y < thread->end && errno)
 	{
 		pair.x = 0;
-		while (pair.x < WIDTH)
+		while (pair.x < WIDTH && errno)
 		{
 			per_pixel((t_fpair){{pair.x, pair.y}}, data->canvas, vcamera, data);
 			pair.x++;
