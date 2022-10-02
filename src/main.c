@@ -13,8 +13,10 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (1);
 	parser(argv[1], &data);
-	ft_canvas(&data.canvas, WIDTH, HEIGHT);
 	if (errno == 0)
+	{
+		ft_canvas(&data.canvas, WIDTH, HEIGHT);
 		ft_threads_lunsher(&data);
+	}
 	ft_destroy(&data);
 }
