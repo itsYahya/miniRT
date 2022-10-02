@@ -37,5 +37,4 @@ void	destroy_canvas(t_canvas canvas)
 		mlx_destroy_image(canvas.mlx_ptr, canvas.img);
 	if (canvas.mlx_ptr && canvas.mlx_win)
 		mlx_destroy_window(canvas.mlx_ptr, canvas.mlx_win);
-	canvas.mlx_ptr = ft_free(canvas.mlx_ptr);
 }

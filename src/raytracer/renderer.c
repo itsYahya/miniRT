@@ -1,5 +1,5 @@
 #include "raytracer.h"
-#include "mlx_events.h"
+#include "h_threads.h"
 
 void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 {
@@ -89,24 +89,26 @@ static void	per_pixel(const t_fpair pair, t_canvas canvas, t_vcamera vcamera, t_
 	ft_write_pixel(canvas, pair.x, pair.y, color[0]);
 }
 
-void	render(t__data *data)
+void	*render(void *ptr)
 {
 	t_pair		pair;
 	t_vcamera	vcamera;
+	t__data		*data;
+	t_thread	*thread;
 
-	pair = (t_pair){{0, 0}};
-	vcamera = ft_setup_camera(data->camera);
-	while (pair.y < HEIGHT)
+	thread = (t_thread *)ptr;
+	data = thread->data;
+	pair = (t_pair){{0, thread->begin}};
+	vcamera = thread->vcamera;
+	while (pair.y < thread->end && errno)
 	{
 		pair.x = 0;
-		while (pair.x < WIDTH)
+		while (pair.x < WIDTH && errno)
 		{
 			per_pixel((t_fpair){{pair.x, pair.y}}, data->canvas, vcamera, data);
 			pair.x++;
 		}
 		pair.y++;
 	}
-	setup_mlxevents(data);
-	ft_show_canvas(data->canvas);
-	mlx_loop(data->canvas.mlx_ptr);
+	return (NULL);
 }
