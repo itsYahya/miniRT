@@ -16,7 +16,7 @@ typedef struct s_thread
 	pthread_t	thread;
 }	t_thread;
 
-void	ft_threads_lunsher(t__data *data);
+int		ft_threads_lunsher(t__data *data);
 void	*render(void *thread);
 
 #endif
