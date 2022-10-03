@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rays.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:59:36 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 15:59:56 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "raytracer.h"
 
 t_ray	ft_ray(t_tuple origin, t_tuple direction)
 {
-	return (t_ray){
+	return ((t_ray){
 		origin,
 		direction
-	};
+	});
 }
 
 t_ray	ft_setray(const t_vcamera camera, t_fpair pair)
 {
-	t_fpair fcoords;
+	t_fpair	fcoords;
 	t_tuple	up;
 	t_tuple	right;
 	t_ray	ray;
@@ -25,7 +37,7 @@ t_ray	ft_setray(const t_vcamera camera, t_fpair pair)
 	return (ray);
 }
 
-t_ray		ray_transform(t_ray ray, t_matrix transformation_matrix)
+t_ray	ray_transform(t_ray ray, t_matrix transformation_matrix)
 {
 	ray.origin = matrix_tuple_multiply(transformation_matrix, ray.origin);
 	ray.direction = matrix_tuple_multiply(transformation_matrix, ray.direction);

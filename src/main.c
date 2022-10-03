@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:33:41 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 16:34:07 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser_.h"
 #include "raytracer.h"
 #include "miniRT.h"
 #include <signal.h>
 #include "h_threads.h"
-
 
 int	main(int argc, char **argv)
 {

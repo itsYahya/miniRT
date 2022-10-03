@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stod.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:45:02 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 16:26:19 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.h"
 #include <limits.h>
 #include <stdio.h>
@@ -41,11 +53,9 @@ double	ft_stod(const char *s)
 	if (ft_strlen(parts[0]) > 9 || part2_len > 6)
 		return (ft_arr_free(parts), errno = 1, 0.0);
 	part1 = ft_atoi(parts[0]);
-	if (part2_len == 0)
-	{
-		part2 = 0;
-		part2_len = 1;
-	} else
+	part2 = 0;
+	if (! (part2_len == 0 && ++part2_len))
 		part2 = ft_atoi(parts[1]);
-	return (ft_arr_free(parts), sign * ((long double)part1 + part2 / pow(10, part2_len)));
+	return (ft_arr_free(parts),
+		sign * ((long double)part1 + part2 / pow(10, part2_len)));
 }

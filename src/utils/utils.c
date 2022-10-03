@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:42:59 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 15:43:48 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <unistd.h>
 
@@ -39,16 +50,5 @@ int	ft_strcmp(const char *s1, const char *s2)
 	length = ft_strlen(s1);
 	if (length < ft_strlen(s2))
 		length = ft_strlen(s2);
-	return ft_strncmp(s1, s2, length);
-}
-
-
-int	wordCount(char **table)
-{
-	int	i;
-
-	i = 0;
-	while (table[i])
-		i++;
-	return (i);
+	return (ft_strncmp(s1, s2, length));
 }

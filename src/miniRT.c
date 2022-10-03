@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   miniRT.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:33:11 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 16:33:38 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "miniRT.h"
 #include <stdlib.h>
 #include "canvas.h"
 
-int	*ft_errno()
+int	*ft_errno(void)
 {
-	static int err = 0;
-	return &err;
+	static int	err = 0;
+
+	return (&err);
 }
 
 void	init(t__data *data)

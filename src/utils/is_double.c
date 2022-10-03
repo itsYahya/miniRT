@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_double.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:45:54 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 16:24:01 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.h"
 #include <stdlib.h>
 
@@ -39,7 +51,7 @@ bool	is_float(const char *s)
 		if (s[i] == '.' && dot_skiped == 0)
 			dot_skiped = 1;
 		else if (s[i] == 'f')
-			break;
+			break ;
 		else if (! is_digit(s[i]))
 			return (false);
 		i++;
