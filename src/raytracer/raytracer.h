@@ -14,8 +14,8 @@
 # include "params.h"
 # include "color.h"
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 1280
+# define HEIGHT 720
 
 typedef struct s_ray
 {
@@ -36,13 +36,15 @@ typedef struct s_vcamera
 
 typedef struct s_inter_info
 {
-	t_color		color;
 	t_tuple		point;
 	t_tuple		normal;
 	float		t;
-	t_material	material;
+	t_object	object;
+	bool		is_shadowed;
+	t_tuple		eyeV;
 }	t_info;
 
+t_ray		ft_ray(t_tuple origin, t_tuple direction);
 void		init_info(t_info *info);
 void		ft_solve_sphere(const t_ray ray, t_object sph_obj, t_info *info);
 t_vcamera	ft_setup_camera(const t_camera camera);
@@ -50,7 +52,7 @@ void		print_camera(t_vcamera c);
 t_ray		ft_setray(const t_vcamera camera, t_fpair pair);
 void		ft_solve_plane(t_ray ray, t_object obj, t_info *info);
 void		ft_look_inters(t_list *head, t_ray ray, t_info *info);
-void		ft_shading(t__data *data, t_info *info, t_ray ray);
+t_color		ft_shading(t__data *data, t_info *info);
 
 void		cylinder_intersect(t_object obj, t_ray ray, t_info *info);
 double		cy_validate_local_inters(t_ray r, t_fpair t, t_object obj);

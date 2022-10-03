@@ -5,6 +5,7 @@ void	ft_look_inters(t_list *head, t_ray ray, t_info *info)
 {
 	t_object	obj;
 
+	init_info(info);
 	while (head)
 	{
 		obj = lst_object(head);
@@ -25,33 +26,30 @@ static t_color	calculate_color(const t_fpair pair, t_vcamera vcamera, t__data *d
 	t_ray		ray;
 	t_info		info;
 
-	init_info(&info);
 	ray = ft_setray(vcamera, pair);
-	info.color = ft_scale_color(data->ambient.color, data->ambient.ratio);
 	ft_look_inters(data->objects, ray, &info);
 	if (info.t > 0)
 	{
 		if (dot(info.normal, negate_tuple(ray.direction)) <= 0)
 			info.normal = negate_tuple(info.normal);
 		info.normal = normalize(info.normal);
-		info.point = add_tuple(info.point, multiply_tuple(info.normal, EPSILON_2));
-		ft_shading(data, &info, ray);
+		info.point = add_tuple(info.point, multiply_tuple(info.normal, EPSILON));
+		info.eyeV = negate_tuple(ray.direction);
 	}
-	return (info.color);
+	return (ft_shading(data, &info));
 }
 
 static t_color	ft_getcolor_average(t_color *colors, int rays)
 {
-	int			i;
-	long long	r;
-	long long	g;
-	long long	b;
-	t_color		color;
+	int		i;
+	float	r;
+	float	g;
+	float	b;
 
-	r = 0;
-	g = 0;
-	b = 0;
-	i = 0;
+	r = 0.0f;
+	g = 0.0f;
+	b = 0.0f;
+	i = 0.0f;
 	while (i < rays)
 	{
 		r += colors[i].r;
@@ -59,10 +57,7 @@ static t_color	ft_getcolor_average(t_color *colors, int rays)
 		b += colors[i].b;
 		i++;
 	}
-	color.r = r / rays;
-	color.g = g / rays;
-	color.b = b / rays;
-	return (color);
+	return (ft_color(r / (float)rays, g / (float)rays, b / (float)rays));
 }
 
 static void	per_pixel(const t_fpair pair, t_canvas canvas, t_vcamera vcamera, t__data *data)
@@ -100,10 +95,10 @@ void	*render(void *ptr)
 	data = thread->data;
 	pair = (t_pair){{0, thread->begin}};
 	vcamera = thread->vcamera;
-	while (pair.y < thread->end && errno)
+	while (pair.y < thread->end && errno == 0)
 	{
 		pair.x = 0;
-		while (pair.x < WIDTH && errno)
+		while (pair.x < WIDTH && errno == 0)
 		{
 			per_pixel((t_fpair){{pair.x, pair.y}}, data->canvas, vcamera, data);
 			pair.x++;

@@ -53,10 +53,9 @@ void	cylinder_intersect(t_object obj, t_ray ray, t_info *info)
 		return ;
 	info->t = t;
 	local_hitp = ft_position(transformed_ray, info->t);
-	info->color = obj.color;
+	info->object = obj;
 	info->point = matrix_tuple_multiply(obj.transform, local_hitp);
 	info->point.w = 1;
 	info->normal = matrix_tuple_multiply(obj.transpose, local_cylinder_normal(local_hitp));
 	info->normal.w = 0;
-	info->material = obj.material;
 }

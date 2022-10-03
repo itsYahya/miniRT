@@ -1,13 +1,15 @@
 #include "parser_.h"
 
-void	ft_set_material(t_object *object, char **tokens, int index)
+void	ft_set_material(t_object *object, char **tokens, int index, t_color color)
 {
-	object->material.difuse = 0.5;
-	object->material.specular = 0.6;
-	object->material.shininess = 32;
+	object->material.color = color;
+	object->material.ambient = 0.1;
+	object->material.diffuse = 0.9;
+	object->material.specular = 0.9;
+	object->material.shininess = 200.0;
 	if (tokens[index] == NULL)
 		return ;
-	object->material.difuse = ft_stod(tokens[index++]);
+	object->material.diffuse = ft_stod(tokens[index++]);
 	if (tokens[index] == NULL)
 		return ;
 	object->material.specular = ft_stod(tokens[index++]);
@@ -28,10 +30,9 @@ int	parseSphere(char **tokens, t__data *data)
 	if (!object)
 		return (errno = 1, 0);
 	object->position = get_position_point(tokens[1]);
-	object->color.raw = get_color(tokens[3]);
 	object->type = E_SPHERE;
 	object->sphere.diameter = ft_stod(tokens[2]);
-	ft_set_material(object, tokens, 4);
+	ft_set_material(object, tokens, 4, to_color(get_color(tokens[3])));
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
 	if (errno)
 		invalid_argements("sphere");

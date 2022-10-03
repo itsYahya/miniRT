@@ -9,7 +9,7 @@ int	parseAmbLightning(char **tokens, t__data *data)
 	if (ft_arr_size(tokens) != 3)
 		return (invalid_argements("Ambient lightning"), 0);
 	data->ambient.ratio = get_ratio(tokens[1]);
-	data->ambient.color.raw = get_color(tokens[2]);
+	data->ambient.color = to_color(get_color(tokens[2]));
 	if (errno)
 		invalid_argements("Ambient lightning");
 	return (0);

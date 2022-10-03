@@ -24,10 +24,10 @@ static void	ft_results(t_params param, t_object obj, t_info *info, t_ray ray)
 	if (rs > EPSILON && ((info->t < 0 && rs > EPSILON) || rs < info->t))
 	{
 		info->t = rs;
-		info->color = obj.color;
+		info->object = obj;
 		info->point = ft_position(ray, info->t);
 		info->normal = subst_tuple(info->point, obj.position);
-		info->material = obj.material;
+		info->object = obj;
 	}
 }
 

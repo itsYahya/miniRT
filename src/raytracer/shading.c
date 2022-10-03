@@ -1,57 +1,71 @@
 #include "raytracer.h"
 
-double	ft_cos(t_tuple v1, t_tuple v2)
+t_tuple	reflect(t_tuple incoming, t_tuple normal)
 {
-	double	d;
-
-	d = (dot(v1, v2));
-	d = ft_max(d, 0);
-	return (d);
+	return subst_tuple(incoming, multiply_tuple(normal, dot(incoming, normal) * 2));
 }
 
-static void	ft_shader_init(t_info *info, t_shader *shdata, t_info *shade_info, t_light *light)
+t_tuple	ft_lighting(t_material material, t_info *info, t_light light)
 {
-	shdata->light_point = light->point;
-	shdata->light_vect = subst_tuple(shdata->light_point, info->point);
-	shdata->light_color = light->color;
-	shdata->light_point = light->point;
-	shdata->light_ratio = light->bRatio;
-	shdata->ray.origin = info->point;
-	shdata->ray.direction = shdata->light_vect;
-	shade_info->t = -1;
-}
+	t_tuple	effective_color;
+	t_tuple	ambient;
+	t_tuple diffuse;
+	t_tuple	specular;
 
-static float	ft_distance(t_tuple p1, t_tuple p2)
-{
-	t_tuple	vect;
-	float	mag;
+	effective_color = tuple_product(material.color, light.color);
+	t_tuple	lighv = normalize(subst_tuple(light.point, info->point));
 
-	vect = subst_tuple(p1, p2);
-	mag = magnitude(vect);
-	return (mag);
-}
-
-void	ft_shading(t__data *data, t_info *info, t_ray ray)
-{
-	t_info		shade_info;
-	t_shader	shade;
-	float		d;
-	t_list		*head;
-
-	shade.color = ft_merge_color(info->color, data->ambient.color, data->ambient.ratio);
-	head = data->lights;
-	while (head)
-	{
-		ft_shader_init(info, &shade, &shade_info, head->content);
-		ft_look_inters(data->objects, shade.ray, &shade_info);
-		if (shade_info.t == -1 || ft_distance(shade.light_point, info->point) <= ft_distance(shade_info.point, info->point))
-		{
-			d = ft_cos(normalize(shade.light_vect), info->normal);
-			shade.difuse = ft_merge_color(info->color, shade.light_color, d * shade.light_ratio * info->material.difuse);
-			shade.specular = ft_specular(&shade, info, negate_tuple(ray.direction));
-			shade.color = ft_add_color(ft_add_color(shade.difuse, shade.color), shade.specular);
+	ambient = multiply_tuple(effective_color, material.ambient);
+	double lDotN = dot(lighv, info->normal);
+	if (info->is_shadowed || lDotN < 0) {
+		specular = ft_color(0, 0, 0);
+		diffuse = ft_color(0, 0, 0);
+	} else {
+		diffuse = multiply_tuple(effective_color, material.diffuse * lDotN);
+		t_tuple	reflectv = reflect(negate_tuple(lighv), info->normal);
+		double rDotE = dot(reflectv, info->eyeV);
+		if (rDotE < 0) {
+			specular = ft_color(0, 0, 0);
+		} else {
+			double factor = pow(rDotE, material.shininess);
+			specular = multiply_tuple(light.color, material.specular * factor);
 		}
-		head = head->next;
 	}
-	info->color = shade.color;
+	return (add_tuple(ambient, add_tuple(diffuse, specular)));
+}
+
+static bool	is_shadowed(t__data *data, t_light light, t_tuple point)
+{
+	t_tuple	p2l;
+	double	p2l_distance;
+	t_info	info;
+
+	p2l = subst_tuple(light.point, point);
+	p2l_distance = magnitude(p2l);
+	p2l = normalize(p2l);
+	ft_look_inters(data->objects, ft_ray(point, p2l), &info);
+	if (info.t < 0 || info.t >= p2l_distance)
+		return (false);
+	return (true);
+}
+
+// todo check ambient
+t_color	ft_shading(t__data *data, t_info *info)
+{
+	t_list	*lst;
+	t_color	color;
+	t_light	light;
+
+	color = multiply_tuple(data->ambient.color, data->ambient.ratio);
+	if (info->t < 0)
+		return (color);
+	lst = data->lights;
+	while (lst)
+	{
+		light = *(t_light*)lst->content;
+		info->is_shadowed = is_shadowed(data, light, info->point);
+		color = add_tuple(color, ft_lighting(info->object.material, info, light));
+		lst = lst->next;
+	}
+	return (color);
 }

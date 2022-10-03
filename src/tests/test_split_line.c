@@ -36,10 +36,10 @@ static void	test_split_by_space_()
 
 void	test_split_by_space()
 {
-	printf("test count words: ");
+	printf("=> test count words: ");
 	test_count_words();
 	printf("OK\n");
-	printf("test split line: ");
+	printf("=> test split line: ");
 	test_split_by_space_();
 	printf("OK\n");
 }
