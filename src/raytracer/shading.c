@@ -6,7 +6,7 @@
 /*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:02:12 by mzarhou           #+#    #+#             */
-/*   Updated: 2022/10/03 16:32:23 by mzarhou          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:46:11 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_tuple	ft_lighting(t_material material, t_info *info, t_light light)
 	t_lighting_info	vects;
 
 	effective_color = tuple_product(material.color, light.color);
+	effective_color = multiply_tuple(effective_color, light.bratio);
 	vects.lighv = normalize(subst_tuple(light.point, info->point));
 	vects.ambient = multiply_tuple(effective_color, material.ambient);
 	l_dot_n = ft_max(dot(vects.lighv, info->normal), 0);

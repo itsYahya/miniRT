@@ -35,7 +35,7 @@ typedef struct s_camera
 typedef struct s_light
 {
 	t_tuple point;
-	float	bRatio;
+	float	bratio;
 	t_color	color;
 }	t_light;
 
