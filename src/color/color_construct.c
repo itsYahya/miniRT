@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_construct.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:46:17 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 15:46:18 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "canvas.h"
 
-t_color		ft_color(float r, float g, float b)
+t_color	ft_color(float r, float g, float b)
 {
 	return ((t_color){{r, g, b, 0.0}});
 }
@@ -31,7 +43,7 @@ uint32_t	raw_color(t_color c)
 	return (alpha | red | green | blue);
 }
 
-t_color		to_color(uint32_t raw_value)
+t_color	to_color(uint32_t raw_value)
 {
 	float	r;
 	float	g;
