@@ -7,14 +7,14 @@
 # include "color.h"
 # include "utils.h"
 
-typedef struct s_canvas t_canvas;
+typedef struct s_canvas	t_canvas;
 struct s_canvas
 {
 	int			width;
 	int			height;
-	void 		*mlx_ptr;
-	void 		*mlx_win;
-	void 		*img;
+	void		*mlx_ptr;
+	void		*mlx_win;
+	void		*img;
 	uint32_t	*img_data;
 };
 
