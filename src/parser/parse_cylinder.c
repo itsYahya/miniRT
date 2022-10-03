@@ -15,8 +15,8 @@ static t_object	*ft_init_cylinder(char **tokens)
 	object = malloc(sizeof(t_object));
 	if (!object)
 		return (errno = 1, NULL);
+	ft_set_material(object, tokens, 6, to_color(get_color(tokens[5])));
 	object->position = get_position_point(tokens[1]);
-	object->color = to_color(get_color(tokens[5]));
 	object->type = E_CYLINDER;
 	object->cy.min_y = -height / 2;
 	object->cy.max_y = height / 2;
@@ -24,7 +24,6 @@ static t_object	*ft_init_cylinder(char **tokens)
 		orientation_transform(object->position, orientation),
 		scale(diameter, 1, diameter)
 	));
-	ft_set_material(object, tokens, 6);
 	return (object);
 }
 

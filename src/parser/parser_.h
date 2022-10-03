@@ -62,9 +62,11 @@ typedef struct s_cone
 }	t_cone;
 typedef struct s_material
 {
+	t_color	color;
+	float	ambient;
 	float	specular;
 	float	shininess;
-	float	difuse;
+	float	diffuse;
 }	t_material;
 
 typedef struct s_object t_object;
@@ -75,7 +77,6 @@ struct s_object
 		t_tuple	position;
 		t_tuple	p;
 	};
-	t_color		color;
 	t_type		type;
 	t_matrix	transform;
 	t_matrix	inverted_transform;
@@ -99,7 +100,6 @@ typedef struct s__data
 	t_canvas		canvas;
 }	t__data;
 
-
 int			validatePath(char *path);
 int			parser(char *path, t__data *data);
 int			parseAmbLightning(char **tokens, t__data *data);
@@ -108,7 +108,7 @@ int			parseLight(char **tokens, t__data *data);
 int			parseSphere(char **tokens, t__data *data);
 int			parsePlane(char **tokens, t__data *data);
 int			parseCylinder(char **tokens, t__data *data);
-void		parseCone(char **tokens, t__data *data);
+int			parseCone(char **tokens, t__data *data);
 t_tuple		get_orientation_vect3(const char *arg);
 t_tuple		get_position_point(const char *arg);
 float		get_ratio(const char *token);
@@ -117,7 +117,7 @@ void		invalid_argements(char *id);
 void		invalid_identifier(char *id);
 void		invalid_file();
 uint32_t	get_color(char *token);
-void		ft_set_material(t_object *object, char **tokens, int index);
+void		ft_set_material(t_object *object, char **tokens, int index, t_color color);
 
 t_matrix	orientation_transform(t_tuple coords, t_tuple orientation);
 void		set_transform(t_object *obj, t_matrix transform);
