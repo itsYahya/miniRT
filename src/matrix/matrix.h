@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrix.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:56:45 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 15:56:46 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MATRIX_H
 # define MATRIX_H
 
@@ -17,7 +29,7 @@
 	0, 0, 0, 1  \
 }}
 
-typedef union u_matrix t_matrix;
+typedef union u_matrix	t_matrix;
 union u_matrix
 {
 	struct
@@ -42,7 +54,7 @@ union u_matrix
 		float	r3_c2;
 		float	r3_c3;
 	};
-	float raw[4][4];
+	float	raw[4][4];
 };
 
 t_tuple		get_col(t_matrix t, uint8_t col);

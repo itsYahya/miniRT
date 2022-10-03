@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrix_invert.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:52:50 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 15:54:31 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "matrix.h"
 
-static float		determinant(t_matrix m, uint8_t size);
+static float	determinant(t_matrix m, uint8_t size);
 
-static t_matrix submatrix(t_matrix m, uint8_t size, uint8_t row, uint16_t col)
+static t_matrix	submatrix(t_matrix m, uint8_t size, uint8_t row, uint16_t col)
 {
 	t_matrix	result;
 	t_pair		result_index;
@@ -13,14 +25,15 @@ static t_matrix submatrix(t_matrix m, uint8_t size, uint8_t row, uint16_t col)
 	while (++index.y < size)
 	{
 		if (index.y == row)
-			continue;
+			continue ;
 		index.x = -1;
-		result_index.x= -1;
+		result_index.x = -1;
 		while (++index.x < size)
 		{
 			if (index.x == col)
-				continue;
-			result.raw[result_index.y][++result_index.x] = m.raw[index.y][index.x];
+				continue ;
+			result.raw[result_index.y][++result_index.x]
+				= m.raw[index.y][index.x];
 		}
 		result_index.y++;
 	}
@@ -34,11 +47,11 @@ static float	cofactor(t_matrix m, uint8_t size, uint8_t row, uint8_t col)
 	m = submatrix(m, size, row, col);
 	minor = determinant(m, size - 1);
 	if ((row + col) % 2 == 0)
-		return minor;
-	return -minor;
+		return (minor);
+	return (-minor);
 }
 
-static float		determinant(t_matrix m, uint8_t size)
+static float	determinant(t_matrix m, uint8_t size)
 {
 	float	det;
 	int		col;
