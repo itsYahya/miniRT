@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sphere_inters.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:06:11 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 16:06:24 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "raytracer.h"
 #include "algebra.h"
 
@@ -15,7 +27,7 @@ float	get_rs(t_fpair t)
 
 static void	ft_results(t_params param, t_object obj, t_info *info, t_ray ray)
 {
-	t_fpair t;
+	t_fpair	t;
 	float	rs;
 
 	t._0 = (-1 * param.b - sqrt(param.desc)) / (2 * param.a);
@@ -38,7 +50,7 @@ void	ft_solve_sphere(const t_ray ray, t_object obj, t_info *info)
 
 	param.a = dot(ray.direction, ray.direction);
 	vect = subst_tuple(ray.origin, point(obj.p.x, obj.p.y, obj.p.z));
-	param.b = dot(vect, ray.direction)  * 2;
+	param.b = dot(vect, ray.direction) * 2;
 	param.c = dot(vect, vect) - pow(obj.sphere.diameter, 2);
 	param.desc = pow(param.b, 2) - 4 * param.a * param.c;
 	if (param.desc >= 0 && param.a != 0)

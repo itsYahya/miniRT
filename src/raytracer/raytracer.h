@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raytracer.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:00:43 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 16:00:44 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RAYTRACER_H
 # define RAYTRACER_H
 
@@ -69,13 +81,13 @@ typedef struct s_shader
 	t_tuple	light_vect;
 	t_tuple	light_point;
 	t_color	difuse;
-	t_color light_color;
+	t_color	light_color;
 	float	light_ratio;
-	t_color specular;
+	t_color	specular;
 	t_color	color;
 }	t_shader;
 
-t_color	ft_specular(t_shader *shader, t_info *info, t_tuple view);
-double	ft_cos(t_tuple v1, t_tuple v2);
+t_color		ft_specular(t_shader *shader, t_info *info, t_tuple view);
+double		ft_cos(t_tuple v1, t_tuple v2);
 
 #endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   threads.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:54:48 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 16:20:12 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "h_threads.h"
 #include "miniRT.h"
 
@@ -8,39 +20,31 @@ void	ft_init_thread(int index, int step, t__data *data, t_thread *thread)
 	thread->data = data;
 }
 
-int	ft_threads_lunsher(t__data *data)
+void	ft_threads_lunsher(t__data *data)
 {
-	t_thread	threads[THREADS_NUM];
+	t_thread	ths[THREADS_NUM];
 	int			index;
 	t_vcamera	vcamera;
 	int			step;
 
-
 	index = 0;
 	vcamera = ft_setup_camera(data->camera);
 	step = HEIGHT / THREADS_NUM;
-	while (index < THREADS_NUM)
+	while (index < THREADS_NUM && errno == 0)
 	{
-		threads[index].vcamera = vcamera;
-		ft_init_thread(index, step, data, threads + index);
+		ths[index].vcamera = vcamera;
+		ft_init_thread(index, step, data, ths + index);
 		if (index == THREADS_NUM - 1)
-			threads[index].end = HEIGHT;
-		if (pthread_create(&threads[index].thread, NULL, render, &threads[index]))
-		{
-			printf("pthread_create failed\n");
-			return (errno = 1, errno);
-		}
+			ths[index].end = HEIGHT;
+		errno = pthread_create(&ths[index].thread, NULL, render, &ths[index]);
 		index++;
 	}
 	index = 0;
-	while (index < THREADS_NUM)
-		if (pthread_join(threads[index++].thread, NULL))
-		{
-			printf("pthread_join failed\n");
-			return (errno = 1, errno);
-		}
+	while (index < THREADS_NUM && errno == 0)
+		errno = pthread_join(ths[index++].thread, NULL);
+	if (errno)
+		return ;
 	setup_mlxevents(data);
 	ft_show_canvas(data->canvas);
 	mlx_loop(data->canvas.mlx_ptr);
-	return (0);
 }

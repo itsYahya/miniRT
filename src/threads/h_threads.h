@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   h_threads.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:54:46 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 16:20:23 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef H_THREADS_H
 # define H_THREADS_H
 
@@ -16,7 +28,7 @@ typedef struct s_thread
 	pthread_t	thread;
 }	t_thread;
 
-int		ft_threads_lunsher(t__data *data);
+void	ft_threads_lunsher(t__data *data);
 void	*render(void *thread);
 
 #endif
