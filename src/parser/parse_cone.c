@@ -34,7 +34,7 @@ void	parseCone(char **tokens, t__data *data)
 		get_position_point(tokens[1]),
 		get_orientation_vect3(tokens[2]),
 		(t_fpair){{ft_stod(tokens[3]), ft_stod(tokens[4])}},
-		(t_color){.raw = get_color(tokens[5]) }
+		to_color(get_color(tokens[5]))
 	);
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
 	if (errno)

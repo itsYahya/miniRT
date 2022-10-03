@@ -16,7 +16,7 @@ static t_object	*ft_init_cylinder(char **tokens)
 	if (!object)
 		return (errno = 1, NULL);
 	object->position = get_position_point(tokens[1]);
-	object->color.raw = get_color(tokens[5]);
+	object->color = to_color(get_color(tokens[5]));
 	object->type = E_CYLINDER;
 	object->cy.min_y = -height / 2;
 	object->cy.max_y = height / 2;

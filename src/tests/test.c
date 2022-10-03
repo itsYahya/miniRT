@@ -3,4 +3,5 @@
 int main()
 {
 	test_split_by_space();
+	test_color_converter();
 }

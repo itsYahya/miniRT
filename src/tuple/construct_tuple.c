@@ -15,5 +15,5 @@ t_tuple	vector(float x, float y, float z)
 
 t_tuple tuple(float x, float y, float z, float w)
 {
-	return (t_tuple) {x, y, z, w};
+	return (t_tuple) {{x, y, z, w}};
 }

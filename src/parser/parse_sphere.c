@@ -28,7 +28,7 @@ int	parseSphere(char **tokens, t__data *data)
 	if (!object)
 		return (errno = 1, 0);
 	object->position = get_position_point(tokens[1]);
-	object->color.raw = get_color(tokens[3]);
+	object->color = to_color(get_color(tokens[3]));
 	object->type = E_SPHERE;
 	object->sphere.diameter = ft_stod(tokens[2]);
 	ft_set_material(object, tokens, 4);
