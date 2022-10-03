@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_ambient_lightning.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:22:04 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:22:32 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser_.h"
 
-int	parseAmbLightning(char **tokens, t__data *data)
+int	parse_amblightning(char **tokens, t__data *data)
 {
 	static int	count = 0;
 

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_color.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:24:49 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:25:22 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser_.h"
 
 typedef struct s_rgb
 {
-	int r;
-	int g;
-	int b;
+	int	r;
+	int	g;
+	int	b;
 }	t_rgb;
 
 static bool	ft_check_rgb(t_rgb data)
@@ -18,7 +30,7 @@ static bool	ft_check_rgb(t_rgb data)
 	return (true);
 }
 
-static int rgb_to_int(t_rgb data)
+static int	rgb_to_int(t_rgb data)
 {
 	int	color;
 

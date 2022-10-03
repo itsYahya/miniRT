@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_sphere.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:29:41 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:30:20 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser_.h"
 
-void	ft_set_material(t_object *object, char **tokens, int index, t_color color)
+void	ft_set_material(t_object *object,
+		char **tokens, int index, t_color color)
 {
 	object->material.color = color;
 	object->material.ambient = 0.1;
@@ -18,10 +31,10 @@ void	ft_set_material(t_object *object, char **tokens, int index, t_color color)
 	object->material.shininess = ft_stod(tokens[index++]);
 }
 
-int	parseSphere(char **tokens, t__data *data)
+int	parse_sphere(char **tokens, t__data *data)
 {
 	int			size;
-	t_object*	object;
+	t_object	*object;
 
 	size = ft_arr_size(tokens);
 	if (size < 4 || size > 7)

@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split_line.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:50:54 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:52:53 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "assert.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "utils.h"
 
-static int		is_space(char c)
+static int	is_space(char c)
 {
-	return (
-		c == ' '
+	return (c == ' '
 		|| c == '\t'
 		|| c == '\r'
 		|| c == '\v'
 		|| c == '\f'
-		|| c == '\n'
-	);
+		|| c == '\n');
 }
 
 static char	*next_space(char *current)
@@ -26,7 +36,7 @@ static char	*next_space(char *current)
 	return (current);
 }
 
-int		count_words(char *line)
+int	count_words(char *line)
 {
 	int	count;
 
@@ -52,13 +62,16 @@ static void	save_words(char **words, char *line)
 		if (is_space(*line))
 		{
 			line++;
-			continue;
+			continue ;
 		}
 		next = next_space(line);
-		if (*next == '\0') {
+		if (*next == '\0')
+		{
 			words[i++] = ft_strdup(line);
 			break ;
-		} else {
+		}
+		else
+		{
 			*next = 0;
 			words[i++] = ft_strdup(line);
 			line = next + 1;
@@ -74,7 +87,7 @@ char	**split_by_space(char *line)
 	if (! line)
 		return (NULL);
 	line = ft_strdup(line);
-	if (! line )
+	if (!line)
 		return (NULL);
 	words_count = count_words(line);
 	words = (char **)malloc(sizeof(char *) * words_count + 1);

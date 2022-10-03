@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_plane.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:29:02 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:29:03 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser_.h"
 
-int	parsePlane(char **tokens, t__data *data)
+int	parse_plane(char **tokens, t__data *data)
 {
 	t_object	*object;
 	int			size;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:31:10 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:49:26 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSER__H
 # define PARSER__H
 
@@ -13,17 +25,17 @@
 # include "color.h"
 # include "canvas.h"
 
-int	*ft_errno();
+int			*ft_errno(void);
 
 # define errno *ft_errno()
 
-typedef t_tuple t_vect3;
+typedef t_tuple	t_vect3;
 
-typedef struct s_ambLightning
+typedef struct s_amblightning
 {
 	float	ratio;
 	t_color	color;
-} t_ambLightning;
+}	t_amblightning;
 
 typedef struct s_camera
 {
@@ -34,8 +46,8 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	t_tuple point;
-	float	bRatio;
+	t_tuple	point;
+	float	bratio;
 	t_color	color;
 }	t_light;
 
@@ -46,19 +58,19 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	t_tuple		orientation;
+	t_tuple	orientation;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	float		min_y;
-	float		max_y;
+	float	min_y;
+	float	max_y;
 }	t_cylinder;
 
 typedef struct s_cone
 {
-	float		min_y;
-	float		max_y;
+	float	min_y;
+	float	max_y;
 }	t_cone;
 typedef struct s_material
 {
@@ -69,8 +81,7 @@ typedef struct s_material
 	float	diffuse;
 }	t_material;
 
-typedef struct s_object t_object;
-struct s_object
+typedef struct s_object
 {
 	union
 	{
@@ -89,36 +100,37 @@ struct s_object
 		t_cylinder	cy;
 		t_cone		cn;
 	};
-};
+}	t_object;
 
 typedef struct s__data
 {
 	t_camera		camera;
-	t_ambLightning	ambient;
+	t_amblightning	ambient;
 	t_list			*objects;
 	t_list			*lights;
 	t_canvas		canvas;
 }	t__data;
 
-int			validatePath(char *path);
+int			validate_path(char *path);
 int			parser(char *path, t__data *data);
-int			parseAmbLightning(char **tokens, t__data *data);
-int			parseCamera(char **tokens, t__data *data);
-int			parseLight(char **tokens, t__data *data);
-int			parseSphere(char **tokens, t__data *data);
-int			parsePlane(char **tokens, t__data *data);
-int			parseCylinder(char **tokens, t__data *data);
-int			parseCone(char **tokens, t__data *data);
+int			parse_amblightning(char **tokens, t__data *data);
+int			parse_camera(char **tokens, t__data *data);
+int			parse_light(char **tokens, t__data *data);
+int			parse_sphere(char **tokens, t__data *data);
+int			parse_plane(char **tokens, t__data *data);
+int			parse_cylinder(char **tokens, t__data *data);
+int			parse_cone(char **tokens, t__data *data);
 t_tuple		get_orientation_vect3(const char *arg);
 t_tuple		get_position_point(const char *arg);
 float		get_ratio(const char *token);
 void		multiple_elm(char *id);
 void		invalid_argements(char *id);
 void		invalid_identifier(char *id);
-void		invalid_file();
+void		invalid_file(void);
 uint32_t	get_color(char *token);
-void		ft_set_material(t_object *object, char **tokens, int index, t_color color);
-
+void		ft_set_material(t_object *object, char **tokens,
+				int index, t_color color);
 t_matrix	orientation_transform(t_tuple coords, t_tuple orientation);
 void		set_transform(t_object *obj, t_matrix transform);
+
 #endif

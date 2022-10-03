@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_vect3.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:16:40 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:18:36 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser_.h"
 
 static t_vect3	get_vect3(const char *arg)
 {
-	char	**coordinates = ft_split(arg, ',');
+	char	**coordinates;
 	t_vect3	vect3;
 
+	coordinates = ft_split(arg, ',');
 	if (ft_arr_size(coordinates) != 3)
 		return (ft_arr_free(coordinates), errno = 1, (t_vect3){{0, 0, 0, 0}});
 	vect3 = (t_vect3){{
@@ -18,15 +31,15 @@ static t_vect3	get_vect3(const char *arg)
 
 t_vect3	get_orientation_vect3(const char	*arg)
 {
-	t_vect3	vct3 = get_vect3(arg);
+	t_vect3	vct3;
+
+	vct3 = get_vect3(arg);
 	vct3.w = 0;
-	if (
-		vct3.x > 1 || vct3.x < -1
+	if (vct3.x > 1 || vct3.x < -1
 		|| vct3.y > 1 || vct3.y < -1
-		|| vct3.z > 1 || vct3.z < -1
-	)
+		|| vct3.z > 1 || vct3.z < -1)
 		errno = 1;
-	return vct3;
+	return (vct3);
 }
 
 t_tuple	get_position_point(const char *arg)

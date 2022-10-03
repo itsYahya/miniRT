@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_camera.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:24:15 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:24:18 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdio.h>
 #include "parser_.h"
@@ -12,7 +23,7 @@ static double	get_fov(const char *arg)
 	return (result);
 }
 
-int	parseCamera(char **tokens, t__data *data)
+int	parse_camera(char **tokens, t__data *data)
 {
 	static int	count = 0;
 

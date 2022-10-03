@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:49:55 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:49:57 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser_.h"
 
 static t_type	identifier(const char	*id)
@@ -23,22 +35,22 @@ static t_type	identifier(const char	*id)
 	return (E_INVALID);
 }
 
-static void	parseElements(char **tokens, int id, t__data *data)
+static void	parse_elements(char **tokens, int id, t__data *data)
 {
 	if (id == E_AMBLIGHTNING)
-		parseAmbLightning(tokens, data);
+		parse_amblightning(tokens, data);
 	else if (id == E_CAMERA)
-		parseCamera(tokens, data);
+		parse_camera(tokens, data);
 	else if (id == E_LIGHT)
-		parseLight(tokens, data);
+		parse_light(tokens, data);
 	else if (id == E_SPHERE)
-		parseSphere(tokens, data);
+		parse_sphere(tokens, data);
 	else if (id == E_PLANE)
-		parsePlane(tokens, data);
+		parse_plane(tokens, data);
 	else if (id == E_CYLINDER)
-		parseCylinder(tokens, data);
+		parse_cylinder(tokens, data);
 	else if (id == E_CONE)
-		parseCone(tokens, data);
+		parse_cone(tokens, data);
 }
 
 static int	ft_read(int fd, t__data *data)
@@ -61,7 +73,7 @@ static int	ft_read(int fd, t__data *data)
 		if (id == E_INVALID)
 			invalid_identifier(tokens[0]);
 		else if (id != E_NEWLINE && id != E_INVALID)
-			parseElements(tokens, id, data);
+			parse_elements(tokens, id, data);
 		tokens = ft_arr_free(tokens);
 	}
 	return (0);
@@ -71,7 +83,7 @@ int	parser(char *path, t__data *data)
 {
 	int	fd;
 
-	if (validatePath(path))
+	if (validate_path(path))
 		return (invalid_file(), 1);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
