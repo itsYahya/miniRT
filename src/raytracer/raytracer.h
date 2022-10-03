@@ -6,7 +6,7 @@
 /*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:00:43 by mzarhou           #+#    #+#             */
-/*   Updated: 2022/10/03 16:00:44 by mzarhou          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:21:44 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_inter_info
 	float		t;
 	t_object	object;
 	bool		is_shadowed;
-	t_tuple		eyeV;
+	t_tuple		eye_v;
 }	t_info;
 
 t_ray		ft_ray(t_tuple origin, t_tuple direction);

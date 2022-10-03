@@ -6,7 +6,7 @@
 /*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:02:01 by mzarhou           #+#    #+#             */
-/*   Updated: 2022/10/03 16:02:01 by mzarhou          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:21:42 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_color	calculate_color(const t_fpair pair,
 		info.normal = normalize(info.normal);
 		info.point = add_tuple(info.point,
 				multiply_tuple(info.normal, EPSILON));
-		info.eyeV = negate_tuple(ray.direction);
+		info.eye_v = negate_tuple(ray.direction);
 	}
 	return (ft_shading(data, &info));
 }

@@ -6,7 +6,7 @@
 /*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:02:12 by mzarhou           #+#    #+#             */
-/*   Updated: 2022/10/03 16:14:18 by mzarhou          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:32:23 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,16 @@ t_tuple	ft_lighting(t_material material, t_info *info, t_light light)
 	effective_color = tuple_product(material.color, light.color);
 	vects.lighv = normalize(subst_tuple(light.point, info->point));
 	vects.ambient = multiply_tuple(effective_color, material.ambient);
-	l_dot_n = dot(vects.lighv, info->normal);
-	if (info->is_shadowed || l_dot_n < 0)
+	l_dot_n = ft_max(dot(vects.lighv, info->normal), 0);
+	vects.diffuse = multiply_tuple(effective_color, material.diffuse * l_dot_n);
+	vects.reflectv = reflect(negate_tuple(vects.lighv), info->normal);
+	r_dot_e = ft_max(dot(vects.reflectv, info->eye_v), 0);
+	factor = pow(r_dot_e, material.shininess);
+	vects.specular = multiply_tuple(light.color, material.specular * factor);
+	if (info->is_shadowed)
 	{
 		vects.specular = ft_color(0, 0, 0);
 		vects.diffuse = ft_color(0, 0, 0);
-	}
-	else
-	{
-		vects.diffuse = multiply_tuple(effective_color,
-				material.diffuse * l_dot_n);
-		vects.reflectv = reflect(negate_tuple(vects.lighv), info->normal);
-		r_dot_e = dot(vects.reflectv, info->eyeV);
-		if (r_dot_e < 0)
-			vects.specular = ft_color(0, 0, 0);
-		else
-		{
-			factor = pow(r_dot_e, material.shininess);
-			vects.specular = multiply_tuple(light.color,
-					material.specular * factor);
-		}
 	}
 	return (add_tuple(vects.ambient, add_tuple(vects.diffuse, vects.specular)));
 }
