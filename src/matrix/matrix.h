@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:56:45 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 15:56:46 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:13:29 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@
 # include "pair.h"
 # include <math.h>
 # include <stdarg.h>
-
-# define IDENTITY_MATRIX (t_matrix){{ \
-	1, 0, 0, 0, \
-	0, 1, 0, 0, \
-	0, 0, 1, 0, \
-	0, 0, 0, 1  \
-}}
 
 typedef union u_matrix	t_matrix;
 union u_matrix
@@ -72,5 +65,7 @@ t_matrix	rotate_x(float radians);
 t_matrix	rotate_y(float radians);
 t_matrix	rotate_z(float radians);
 t_matrix	transforms(int count, ...);
+
+t_matrix	identity_matrix(void);
 
 #endif
