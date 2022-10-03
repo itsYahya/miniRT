@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:31:10 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:55:32 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:16:40 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 # include "canvas.h"
 
 int			*ft_errno(void);
-
-# define errno *ft_errno()
 
 typedef t_tuple	t_vect3;
 

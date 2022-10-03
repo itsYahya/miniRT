@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_vect3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:16:40 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:18:36 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:21:56 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static t_vect3	get_vect3(const char *arg)
 
 	coordinates = ft_split(arg, ',');
 	if (ft_arr_size(coordinates) != 3)
-		return (ft_arr_free(coordinates), errno = 1, (t_vect3){{0, 0, 0, 0}});
+		return (ft_arr_free(coordinates),
+			*ft_errno() = 1, (t_vect3){{0, 0, 0, 0}});
 	vect3 = (t_vect3){{
 		ft_stod(coordinates[0]),
 		ft_stod(coordinates[1]),
@@ -38,7 +39,7 @@ t_vect3	get_orientation_vect3(const char	*arg)
 	if (vct3.x > 1 || vct3.x < -1
 		|| vct3.y > 1 || vct3.y < -1
 		|| vct3.z > 1 || vct3.z < -1)
-		errno = 1;
+		*ft_errno() = 1;
 	return (vct3);
 }
 

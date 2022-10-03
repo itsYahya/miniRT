@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:24:15 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:24:18 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:55 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static double	get_fov(const char *arg)
 
 	result = ft_stod(arg);
 	if (result < 0 || result > 180)
-		errno = 1;
+		*ft_errno() = 1;
 	return (result);
 }
 
@@ -34,7 +34,7 @@ int	parse_camera(char **tokens, t__data *data)
 	data->camera.coordinates = get_position_point(tokens[1]);
 	data->camera.orientation_vect = get_orientation_vect3(tokens[2]);
 	data->camera.fov = get_fov(tokens[3]);
-	if (errno)
+	if (*ft_errno())
 		invalid_argements("camera");
 	return (0);
 }

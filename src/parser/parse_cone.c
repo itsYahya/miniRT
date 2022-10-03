@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:25:52 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:26:32 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:55 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	parse_cone(char **tokens, t__data *data)
 			to_color(get_color(tokens[5])));
 	ft_set_material(object, tokens, 6, to_color(get_color(tokens[5])));
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
-	if (errno)
+	if (*ft_errno())
 		invalid_argements("cylinder");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:33:11 by mzarhou           #+#    #+#             */
-/*   Updated: 2022/10/03 16:33:38 by mzarhou          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:21 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	*ft_errno(void)
 
 void	init(t__data *data)
 {
-	errno = 0;
+	*ft_errno() = 0;
 	data->objects = NULL;
 	data->lights = NULL;
 	data->canvas.img = NULL;

@@ -6,7 +6,7 @@
 /*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:02:01 by mzarhou           #+#    #+#             */
-/*   Updated: 2022/10/03 16:21:42 by mzarhou          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:17:22 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,10 @@ void	*render(void *ptr)
 	data = thread->data;
 	pair = (t_pair){{0, thread->begin}};
 	vcamera = thread->vcamera;
-	while (pair.y < thread->end && errno == 0)
+	while (pair.y < thread->end && *ft_errno() == 0)
 	{
 		pair.x = 0;
-		while (pair.x < WIDTH && errno == 0)
+		while (pair.x < WIDTH && *ft_errno() == 0)
 		{
 			per_pixel((t_fpair){{pair.x, pair.y}}, data->canvas, vcamera, data);
 			pair.x++;

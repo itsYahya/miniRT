@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:44:18 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 15:44:19 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:21 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ int	ft_canvas(t_canvas *canvas, float width, float height)
 	canvas->height = height;
 	canvas->mlx_ptr = mlx_init();
 	if (! canvas->mlx_ptr)
-		return (errno = 1, 0);
+		return (*ft_errno() = 1, 0);
 	canvas->mlx_win = mlx_new_window(canvas->mlx_ptr,
 			width, height, "Hello world!");
 	if (! canvas->mlx_win)
-		return (errno = 1, 0);
+		return (*ft_errno() = 1, 0);
 	canvas->img = mlx_new_image(canvas->mlx_ptr, width, height);
 	if (! canvas->img)
-		return (errno = 1, 0);
+		return (*ft_errno() = 1, 0);
 	canvas->img_data = (uint32_t *)mlx_get_data_addr(canvas->img,
 			&temp, &temp, &temp);
 	return (0);

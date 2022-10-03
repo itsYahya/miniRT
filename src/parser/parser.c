@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:49:55 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:49:57 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:16:58 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	ft_read(int fd, t__data *data)
 	char	**tokens;
 	t_type	id;
 
-	while (errno == 0)
+	while (*ft_errno() == 0)
 	{
 		id = E_INVALID;
 		line = ft_getline(fd);

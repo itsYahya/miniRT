@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_ratio.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:29:22 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:29:23 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:21 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	print_error(void)
 {
-	errno = 1;
+	*ft_errno() = 1;
 	printf("Ratio parser: invalid input\n");
 }
 

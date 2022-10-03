@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:24:49 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:25:22 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:21 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ uint32_t	get_color(char *token)
 		|| !is_int(colors[0])
 		|| !is_int(colors[1])
 		|| !is_int(colors[2]))
-		return (ft_arr_free(colors), errno = 1, 0);
+		return (ft_arr_free(colors), *ft_errno() = 1, 0);
 	rgb.r = ft_atoi(colors[0]);
 	rgb.g = ft_atoi(colors[1]);
 	rgb.b = ft_atoi(colors[2]);
 	colors = ft_arr_free(colors);
 	if (!ft_check_rgb(rgb))
-		return (errno = 1, 0);
+		return (*ft_errno() = 1, 0);
 	return (rgb_to_int(rgb));
 }

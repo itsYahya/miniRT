@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pair.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 17:22:33 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 17:22:41 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PAIR_H
 # define PAIR_H
 
-typedef union u_pair t_pair;
+typedef union u_pair	t_pair;
 union u_pair
 {
 	struct
@@ -21,7 +33,7 @@ union u_pair
 	};
 };
 
-typedef union u_fpair t_fpair;
+typedef union u_fpair	t_fpair;
 union u_fpair
 {
 	struct

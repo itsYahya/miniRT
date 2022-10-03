@@ -6,7 +6,7 @@
 /*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:33:41 by mzarhou           #+#    #+#             */
-/*   Updated: 2022/10/03 16:34:07 by mzarhou          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:16:26 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (1);
 	parser(argv[1], &data);
-	if (errno == 0)
+	if (*ft_errno() == 0)
 	{
 		ft_canvas(&data.canvas, WIDTH, HEIGHT);
 		ft_threads_lunsher(&data);

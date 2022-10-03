@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:26:57 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:27:13 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:55 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_object	*ft_init_cylinder(char **tokens)
 	height = ft_stod(tokens[4]);
 	object = malloc(sizeof(t_object));
 	if (!object)
-		return (errno = 1, NULL);
+		return (*ft_errno() = 1, NULL);
 	ft_set_material(object, tokens, 6, to_color(get_color(tokens[5])));
 	object->position = get_position_point(tokens[1]);
 	object->type = E_CYLINDER;
@@ -48,7 +48,7 @@ int	parse_cylinder(char **tokens, t__data *data)
 		return (invalid_argements("cylinder"), 0);
 	object = ft_init_cylinder(tokens);
 	ft_lstadd_back(&data->objects, ft_lstnew(object));
-	if (errno)
+	if (*ft_errno())
 		invalid_argements("cylinder");
 	return (0);
 }

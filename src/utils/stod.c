@@ -6,7 +6,7 @@
 /*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:45:02 by mzarhou           #+#    #+#             */
-/*   Updated: 2022/10/03 16:26:19 by mzarhou          ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:21 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ double	ft_stod(const char *s)
 	int		sign;
 
 	if (! s || ! is_double(s))
-		return (errno = 1, 0.0);
+		return (*ft_errno() = 1, 0.0);
 	sign = 1;
 	if (s && *s == '-' && s++)
 		sign = -1;
@@ -51,7 +51,7 @@ double	ft_stod(const char *s)
 	ft_remove_trailing_zeros(parts[1]);
 	part2_len = ft_strlen(parts[1]);
 	if (ft_strlen(parts[0]) > 9 || part2_len > 6)
-		return (ft_arr_free(parts), errno = 1, 0.0);
+		return (ft_arr_free(parts), *ft_errno() = 1, 0.0);
 	part1 = ft_atoi(parts[0]);
 	part2 = 0;
 	if (! (part2_len == 0 && ++part2_len))

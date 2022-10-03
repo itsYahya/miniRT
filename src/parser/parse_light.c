@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_light.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:28:11 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:41:41 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:55 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	parse_light(char **tokens, t__data *data)
 	light->bratio = get_ratio(tokens[2]);
 	light->color = to_color(get_color(tokens[3]));
 	ft_lstadd_back(&data->lights, ft_lstnew(light));
-	if (errno)
+	if (*ft_errno())
 		invalid_argements("light");
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_ambient_lightning.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:22:04 by yel-mrab          #+#    #+#             */
-/*   Updated: 2022/10/03 16:22:32 by yel-mrab         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:15:55 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	parse_amblightning(char **tokens, t__data *data)
 		return (invalid_argements("Ambient lightning"), 0);
 	data->ambient.ratio = get_ratio(tokens[1]);
 	data->ambient.color = to_color(get_color(tokens[2]));
-	if (errno)
+	if (*ft_errno())
 		invalid_argements("Ambient lightning");
 	return (0);
 }
