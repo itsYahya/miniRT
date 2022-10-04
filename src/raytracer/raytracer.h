@@ -78,4 +78,5 @@ typedef struct s_shader
 t_color	ft_specular(t_shader *shader, t_info *info, t_tuple view);
 double	ft_cos(t_tuple v1, t_tuple v2);
 
+void		print_scene_info(const t__data *data);
 #endif

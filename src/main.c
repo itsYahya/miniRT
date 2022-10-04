@@ -15,6 +15,7 @@ int	main(int argc, char **argv)
 	parser(argv[1], &data);
 	if (errno == 0)
 	{
+		print_scene_info(&data);
 		ft_canvas(&data.canvas, WIDTH, HEIGHT);
 		ft_threads_lunsher(&data);
 	}
