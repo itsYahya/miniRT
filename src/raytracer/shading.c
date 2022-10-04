@@ -6,7 +6,7 @@
 /*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:02:12 by mzarhou           #+#    #+#             */
-/*   Updated: 2022/10/03 16:46:11 by mzarhou          ###   ########.fr       */
+/*   Updated: 2022/10/04 13:41:57 by mzarhou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_color	ft_shading(t__data *data, t_info *info)
 
 	color = multiply_tuple(data->ambient.color, data->ambient.ratio);
 	if (info->t < 0)
-		return (color);
+		return (ft_color(0, 0, 0));
 	lst = data->lights;
 	while (lst)
 	{
