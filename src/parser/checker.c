@@ -1,9 +1,18 @@
-#include "parser.h"
-#include "mutils.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 16:11:13 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 16:11:35 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "parser_.h"
 
-int	validatePath(char *path)
+int	validate_path(char *path)
 {
 	int	len;
 

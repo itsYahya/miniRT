@@ -1,7 +1,19 @@
-#include "miniRT.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzarhou <mzarhou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:42:59 by mzarhou           #+#    #+#             */
+/*   Updated: 2022/10/03 15:43:48 by mzarhou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-int	ft_strlen(char *str){
+int	ft_strlen(const char *str)
+{
 	int	index;
 
 	if (!str)
@@ -14,13 +26,10 @@ int	ft_strlen(char *str){
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	int	index;
-
-	index = 0;
 	write(fd, str, ft_strlen(str));
 }
 
-int	ft_strncmp(char *s1, char *s2, int n)
+int	ft_strncmp(const char *s1, const char *s2, int n)
 {
 	int	i;
 
@@ -32,4 +41,14 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	while (s1[i] && s1[i] == s2[i] && i < n - 1)
 		i++;
 	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	length;
+
+	length = ft_strlen(s1);
+	if (length < ft_strlen(s2))
+		length = ft_strlen(s2);
+	return (ft_strncmp(s1, s2, length));
 }

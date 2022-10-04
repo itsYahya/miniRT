@@ -1,6 +1,9 @@
 build
 *.o
+*.a
 miniRT.exe
 .DS_Store
 .vscode/
-*.rt
+*.dSYM
+*.txt
+test_miniRT

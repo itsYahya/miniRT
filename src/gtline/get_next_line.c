@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:48:26 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 15:48:27 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
-#include "mutils.h"
+#include "utils.h"
 
 char	*get_the_rest(char *table, int index, int *check)
 {
@@ -102,15 +114,3 @@ char	*get_next_line(int fd)
 		return (ft_free(data.line));
 	return (data.line);
 }
-
-// int main()
-// {
-// 	//int fd = open("gnlTester/files/41_with_nl", O_RDWR);
-// 	char *buffer = get_next_line(0);
-// 	while (buffer)
-// 	{
-// 		printf("%s", buffer);
-// 		free(buffer);
-// 		buffer = get_next_line(0);
-// 	}
-// }

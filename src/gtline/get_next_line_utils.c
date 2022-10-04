@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mrab <yel-mrab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 15:48:24 by yel-mrab          #+#    #+#             */
+/*   Updated: 2022/10/03 15:48:25 by yel-mrab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*ft_strlcat(char *dest, char *src, int stop)
@@ -17,31 +29,6 @@ char	*ft_strlcat(char *dest, char *src, int stop)
 		dest[index + len] = '\0';
 	}
 	return (dest);
-}
-
-char	*ft_strdup(char *str)
-{
-	char	*dest;
-	int		index;
-
-	index = 0;
-	dest = (char *)ft_calloc(sizeof(char), ft_strlen(str) + 1);
-	if (!dest)
-		return (0);
-	while (str[index] != '\0')
-	{
-		dest[index] = str[index];
-		index++;
-	}
-	dest[index] = '\0';
-	return (dest);
-}
-
-char	*ft_free(char *line)
-{
-	if (line)
-		free(line);
-	return (0);
 }
 
 void	*ft_calloc(size_t count, size_t size)
